@@ -1,6 +1,6 @@
 'use client';
 
-import { HomeSectionItem } from '@/lib/types/product';
+import { HomeSectionItem } from '@/lib/types/all-schemas';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { SmartImage } from '@/components/smart-image';

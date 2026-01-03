@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { Order } from '@/lib/types/product';
+import { Order } from '@/lib/types/all-schemas';
 import { updateOrderStatusAction, updatePaymentStatusAction, deleteOrderAction } from '@/actions/order-actions';
 
 interface OrderActionsProps {

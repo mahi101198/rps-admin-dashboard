@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Modal } from '@/components/ui/modal';
-import { Category, SubCategory } from '@/lib/types/product';
+import { Category, SubCategory } from '@/lib/types/all-schemas';
 import { createSubCategoryAction, updateSubCategoryAction } from '@/actions/category-actions';
 import { toast } from 'sonner';
 import { Loader2, FolderIcon } from 'lucide-react';
@@ -25,7 +25,6 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
   const [formData, setFormData] = useState({
     name: '',
     categoryId: '',
-    image: '',
     rank: 0,
     isActive: true
   });
@@ -36,7 +35,6 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
         setFormData({
           name: subcategory.name,
           categoryId: subcategory.categoryId,
-          image: subcategory.image || '',
           rank: subcategory.rank,
           isActive: subcategory.isActive
         });
@@ -44,7 +42,6 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
         setFormData({
           name: '',
           categoryId: '',
-          image: '',
           rank: 0,
           isActive: true
         });
@@ -120,15 +117,6 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
               ))}
             </SelectContent>
           </Select>
-        </div>
-
-        <div>
-          <ImageUploadField
-            label="Subcategory Icon"
-            value={formData.image}
-            onChange={(value) => setFormData(prev => ({ ...prev, image: value }))}
-            placeholder="https://example.com/image.png"
-          />
         </div>
 
         <div>

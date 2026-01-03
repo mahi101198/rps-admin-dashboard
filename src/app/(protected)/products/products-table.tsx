@@ -15,7 +15,7 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Product, ProductWithDetails } from '@/lib/types/product';
+import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
 import { columns } from './columns';
 import { Search } from 'lucide-react';
 import { Label } from '@/components/ui/label';

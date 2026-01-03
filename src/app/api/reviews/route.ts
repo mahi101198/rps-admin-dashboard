@@ -1,6 +1,6 @@
 import { getFirebaseAdmin } from '@/data/firebase.admin';
 import { NextResponse } from 'next/server';
-import { ProductReview } from '@/lib/types/product';
+import { ProductReview } from '@/lib/types/all-schemas';
 
 export async function GET() {
   try {

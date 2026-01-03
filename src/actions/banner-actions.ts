@@ -2,7 +2,7 @@
 
 import { getFirestore, getStorageBucket } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
-import { Banner } from '@/lib/types/product';
+import { Banner } from '@/lib/types/all-schemas';
 import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 
 // Get all banners

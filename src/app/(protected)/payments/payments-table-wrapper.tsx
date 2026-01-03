@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PaymentDetailsDialog } from './payment-details-dialog';
 import { EditPaymentDialog } from './edit-payment-dialog';
-import { Payment } from '@/lib/types/product';
+import { Payment } from '@/lib/types/all-schemas';
 import { useRouter } from 'next/navigation'; // Add this import
 
 function getPaymentStatusBadgeVariant(status: any) {

@@ -1,11 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { ActionButton } from '@/components/ui/action-button';
+import { Category } from '@/lib/types/all-schemas';
 import { Button } from '@/components/ui/button';
-import { deleteCategoryAction } from '@/actions/category-actions';
+import { toast } from 'sonner';
+import { 
+  deleteCategoryAction, 
+  updateCategoryAction 
+} from '@/actions/category-actions';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { MoreHorizontal, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
 import { CategoryForm } from './category-form';
-import { Category } from '@/lib/types/product';
 
 interface CategoryActionsProps {
   category: Category;
@@ -31,20 +41,24 @@ export function CategoryActions({ category, onRefresh, variant = 'default' }: Ca
             size="sm"
             onClick={() => setShowEditForm(true)}
           >
-            ✏️
+            <Edit className="h-4 w-4" />
           </Button>
-          <ActionButton
-            action={async () => {
-              return await deleteCategoryAction(category.id);
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={async () => {
+              const result = await deleteCategoryAction(category.id);
+              if (result.success) {
+                toast.success(result.message);
+                onRefresh?.();
+              } else {
+                toast.error(result.message);
+              }
             }}
-            confirmMessage={`Are you sure you want to delete the category "${category.name}"? This action cannot be undone.`}
-            variant="ghost" 
-            size="sm" 
             className="text-red-500 hover:text-red-600"
-            loadingText="..."
           >
-            🗑️
-          </ActionButton>
+            <Trash2 className="h-4 w-4" />
+          </Button>
         </div>
         
         <CategoryForm 
@@ -65,19 +79,25 @@ export function CategoryActions({ category, onRefresh, variant = 'default' }: Ca
           size="sm"
           onClick={() => setShowEditForm(true)}
         >
-          ✏️ Edit
+          <Edit className="h-4 w-4 mr-2" />
+          Edit
         </Button>
-        <ActionButton
-          action={async () => {
-            return await deleteCategoryAction(category.id);
-          }}
-          confirmMessage={`Are you sure you want to delete the category "${category.name}"? This action cannot be undone.`}
+        <Button
           variant="destructive"
           size="sm"
-          loadingText="Deleting..."
+          onClick={async () => {
+            const result = await deleteCategoryAction(category.id);
+            if (result.success) {
+              toast.success(result.message);
+              onRefresh?.();
+            } else {
+              toast.error(result.message);
+            }
+          }}
         >
-          🗑️ Delete
-        </ActionButton>
+          <Trash2 className="h-4 w-4 mr-2" />
+          Delete
+        </Button>
       </div>
       
       <CategoryForm 
