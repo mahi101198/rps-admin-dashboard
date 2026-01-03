@@ -2,7 +2,7 @@
 
 import { getFirestore } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
-import { Coupon } from '@/lib/types/product';
+import { Coupon } from '@/lib/types/all-schemas';
 import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 
 // Get all coupons

@@ -2,21 +2,19 @@
 
 import { getFirestore } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
-import { Order, OrderStatus } from '@/lib/types/product';
-import { withAuth, AuthError } from '@/lib/auth';
+import { Order, OrderStatus } from '@/lib/types/all-schemas';
+import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 
 // Get all orders
-export const getOrdersAction = withAuth(async (user) => {
+export async function getOrdersAction(): Promise<Order[]> {
   try {
     const db = getFirestore();
-    console.log('[getOrdersAction] Fetching orders from Firestore...');
+    const snapshot = await db.collection('orders')
+      .orderBy('timestamps.placedAt', 'desc')
+      .limit(100)
+      .get();
     
-    // Get all orders without orderBy to avoid index issues
-    const snapshot = await db.collection('orders').get();
-    
-    console.log('[getOrdersAction] Fetched', snapshot.docs.length, 'orders');
-    
-    const orders = snapshot.docs.map(doc => {
+    return snapshot.docs.map((doc: any) => {
       const data = doc.data();
       return {
         orderId: doc.id,
@@ -28,63 +26,52 @@ export const getOrdersAction = withAuth(async (user) => {
           discount: data.pricing?.discount || 0,
           subtotal: data.pricing?.subtotal || 0,
           tax: data.pricing?.tax || 0,
-          total: data.pricing?.total || 0
+          total: data.pricing?.total || 0,
         },
         status: data.status || 'placed',
         paymentStatus: data.paymentStatus || 'pending',
-        paymentId: data.paymentId || undefined,
+        paymentId: data.paymentId || '',
         paymentMode: data.paymentMode || 'cod',
         timestamps: {
-          placedAt: data.timestamps?.placedAt?._seconds ? new Date(data.timestamps.placedAt._seconds * 1000) : new Date(),
-          updatedAt: data.timestamps?.updatedAt?._seconds ? new Date(data.timestamps.updatedAt._seconds * 1000) : new Date()
+          placedAt: data.timestamps?.placedAt instanceof Date 
+            ? data.timestamps.placedAt 
+            : new Date(),
+          updatedAt: data.timestamps?.updatedAt instanceof Date 
+            ? data.timestamps.updatedAt 
+            : new Date(),
         },
-        updatedAt: data.updatedAt?._seconds ? new Date(data.updatedAt._seconds * 1000) : new Date()
+        updatedAt: data.updatedAt instanceof Date ? data.updatedAt : new Date(),
       } as Order;
     });
-    
-    return orders;
   } catch (error) {
-    console.error('[getOrdersAction] Error:', error);
+    console.error('Error fetching orders:', error);
     return [];
   }
-});
+}
 
 // Get order statistics
-export const getOrderStatsAction = withAuth(async (user) => {
+export async function getOrderStatsAction(): Promise<{
+  total: number;
+  totalOrders: number;
+  totalRevenue: number;
+  placed: number;
+  confirmed: number;
+  paid: number;
+  shipped: number;
+  out_for_delivery: number;
+  delivered: number;
+  cancelled: number;
+  pendingOrders: number;
+  deliveredOrders: number;
+}> {
   try {
     const db = getFirestore();
+    const snapshot = await db.collection('orders').get();
     
-    // Get all orders (inefficient but works for small datasets)
-    const ordersSnapshot = await db.collection('orders').get();
-    const orders = ordersSnapshot.docs.map(doc => {
-      const data = doc.data();
-      return {
-        status: data.status || 'placed',
-        totalAmount: data.pricing?.total || 0,
-        createdAt: data.timestamps?.placedAt?._seconds ? new Date(data.timestamps.placedAt._seconds * 1000) : new Date()
-      };
-    });
-    
-    // Calculate stats
     const stats = {
-      total: orders.length,
-      placed: orders.filter(o => o.status === 'placed').length,
-      confirmed: orders.filter(o => o.status === 'confirmed').length,
-      paid: orders.filter(o => o.status === 'paid').length,
-      shipped: orders.filter(o => o.status === 'shipped').length,
-      out_for_delivery: orders.filter(o => o.status === 'out_for_delivery').length,
-      delivered: orders.filter(o => o.status === 'delivered').length,
-      cancelled: orders.filter(o => o.status === 'cancelled').length,
-      totalRevenue: orders
-        .filter(o => o.status === 'delivered')
-        .reduce((sum, order) => sum + order.totalAmount, 0)
-    };
-    
-    return stats;
-  } catch (error) {
-    console.error('Error fetching order stats:', error);
-    return {
-      total: 0,
+      total: snapshot.size,
+      totalOrders: snapshot.size,
+      totalRevenue: 0,
       placed: 0,
       confirmed: 0,
       paid: 0,
@@ -92,78 +79,69 @@ export const getOrderStatsAction = withAuth(async (user) => {
       out_for_delivery: 0,
       delivered: 0,
       cancelled: 0,
-      totalRevenue: 0
+      pendingOrders: 0,
+      deliveredOrders: 0,
+    };
+    
+    snapshot.forEach((doc: any) => {
+      const data = doc.data();
+      stats.totalRevenue += data.pricing?.total || 0;
+      
+      // Count by status
+      const status = data.status || 'placed';
+      switch (status) {
+        case 'placed':
+          stats.placed++;
+          break;
+        case 'confirmed':
+          stats.confirmed++;
+          break;
+        case 'paid':
+          stats.paid++;
+          break;
+        case 'shipped':
+          stats.shipped++;
+          break;
+        case 'out_for_delivery':
+          stats.out_for_delivery++;
+          break;
+        case 'delivered':
+          stats.delivered++;
+          stats.deliveredOrders++;
+          break;
+        case 'cancelled':
+          stats.cancelled++;
+          break;
+      }
+      
+      // Count pending orders (not delivered or cancelled)
+      if (['placed', 'confirmed', 'paid', 'shipped', 'out_for_delivery'].includes(status)) {
+        stats.pendingOrders++;
+      }
+    });
+    
+    return stats;
+  } catch (error) {
+    console.error('Error fetching order stats:', error);
+    return {
+      total: 0,
+      totalOrders: 0,
+      totalRevenue: 0,
+      placed: 0,
+      confirmed: 0,
+      paid: 0,
+      shipped: 0,
+      out_for_delivery: 0,
+      delivered: 0,
+      cancelled: 0,
+      pendingOrders: 0,
+      deliveredOrders: 0,
     };
   }
-});
+}
 
-// Update order status
-export const updateOrderStatusAction = withAuth(async (
-  user,
-  orderId: string,
-  status: OrderStatus
-) => {
-  try {
-    const db = getFirestore();
-
-    await db.collection('orders').doc(orderId).update({
-      status,
-      'timestamps.updatedAt': new Date()
-    });
-    
-    revalidatePath('/orders');
-    return { success: true, message: 'Order status updated successfully' };
-  } catch (error) {
-    console.error('Error updating order status:', error);
-    return { success: false, message: 'Failed to update order status' };
-  }
-});
-
-// Update payment status
-export const updatePaymentStatusAction = withAuth(async (
-  user,
-  orderId: string,
-  paymentStatus: string
-) => {
-  try {
-    const db = getFirestore();
-
-    await db.collection('orders').doc(orderId).update({
-      paymentStatus,
-      'timestamps.updatedAt': new Date()
-    });
-    
-    revalidatePath('/orders');
-    return { success: true, message: 'Payment status updated successfully' };
-  } catch (error) {
-    console.error('Error updating payment status:', error);
-    return { success: false, message: 'Failed to update payment status' };
-  }
-});
-
-// Delete order
-export const deleteOrderAction = withAuth(async (
-  user,
-  orderId: string
-) => {
-  try {
-    const db = getFirestore();
-    
-    await db.collection('orders').doc(orderId).delete();
-    
-    revalidatePath('/orders');
-    return { success: true, message: 'Order deleted successfully' };
-  } catch (error) {
-    console.error('Error deleting order:', error);
-    return { success: false, message: 'Failed to delete order' };
-  }
-});
-
-// Get a single order by ID
-export const getOrderByIdAction = withAuth(async (
-  user,
-  orderId: string
-): Promise<Order | null> => {
+// Get order by ID
+export async function getOrderAction(orderId: string): Promise<Order | null> {
   try {
     const db = getFirestore();
     const doc = await db.collection('orders').doc(orderId).get();
@@ -183,20 +161,159 @@ export const getOrderByIdAction = withAuth(async (
         discount: data?.pricing?.discount || 0,
         subtotal: data?.pricing?.subtotal || 0,
         tax: data?.pricing?.tax || 0,
-        total: data?.pricing?.total || 0
+        total: data?.pricing?.total || 0,
       },
       status: data?.status || 'placed',
       paymentStatus: data?.paymentStatus || 'pending',
-      paymentId: data?.paymentId || undefined,
+      paymentId: data?.paymentId || '',
       paymentMode: data?.paymentMode || 'cod',
       timestamps: {
-        placedAt: data?.timestamps?.placedAt?._seconds ? new Date(data.timestamps.placedAt._seconds * 1000) : new Date(),
-        updatedAt: data?.timestamps?.updatedAt?._seconds ? new Date(data.timestamps.updatedAt._seconds * 1000) : new Date()
+        placedAt: data?.timestamps?.placedAt instanceof Date 
+          ? data.timestamps.placedAt 
+          : new Date(),
+        updatedAt: data?.timestamps?.updatedAt instanceof Date 
+          ? data.timestamps.updatedAt 
+          : new Date(),
       },
-      updatedAt: data?.updatedAt?._seconds ? new Date(data.updatedAt._seconds * 1000) : new Date()
+      updatedAt: data?.updatedAt instanceof Date ? data.updatedAt : new Date(),
     } as Order;
   } catch (error) {
     console.error('Error fetching order:', error);
     return null;
   }
-});
+}
+
+// Update order status
+export async function updateOrderStatusAction(
+  orderId: string,
+  status: OrderStatus
+): Promise<{ success: boolean; message: string }> {
+  try {
+    await verifyAuth();
+    const db = getFirestore();
+    
+    await db.collection('orders').doc(orderId).update({
+      status,
+      'timestamps.updatedAt': new Date(),
+      updatedAt: new Date(),
+    });
+    
+    revalidatePath('/orders');
+    return { success: true, message: 'Order status updated successfully' };
+  } catch (error) {
+    console.error('Error updating order status:', error);
+    return { success: false, message: 'Failed to update order status' };
+  }
+}
+
+// Update payment status
+export async function updatePaymentStatusAction(
+  orderId: string,
+  paymentStatus: string
+): Promise<{ success: boolean; message: string }> {
+  try {
+    await verifyAuth();
+    const db = getFirestore();
+    
+    await db.collection('orders').doc(orderId).update({
+      paymentStatus,
+      'timestamps.updatedAt': new Date(),
+      updatedAt: new Date(),
+    });
+    
+    revalidatePath('/orders');
+    return { success: true, message: 'Payment status updated successfully' };
+  } catch (error) {
+    console.error('Error updating payment status:', error);
+    return { success: false, message: 'Failed to update payment status' };
+  }
+}
+
+// Delete order
+export async function deleteOrderAction(
+  orderId: string
+): Promise<{ success: boolean; message: string }> {
+  try {
+    await verifyAuth();
+    const db = getFirestore();
+    
+    await db.collection('orders').doc(orderId).delete();
+    
+    revalidatePath('/orders');
+    return { success: true, message: 'Order deleted successfully' };
+  } catch (error) {
+    console.error('Error deleting order:', error);
+    return { success: false, message: 'Failed to delete order' };
+  }
+}
+
+// Create order (for admin to manually create orders)
+export async function createOrderAction(
+  orderData: Omit<Order, 'orderId' | 'timestamps' | 'updatedAt'>
+): Promise<{ success: boolean; message: string; orderId?: string }> {
+  try {
+    await verifyAuth();
+    const db = getFirestore();
+    
+    const newOrder = {
+      ...orderData,
+      timestamps: {
+        placedAt: new Date(),
+        updatedAt: new Date(),
+      },
+      updatedAt: new Date(),
+    };
+    
+    const docRef = await db.collection('orders').add(newOrder);
+    
+    revalidatePath('/orders');
+    return { success: true, message: 'Order created successfully', orderId: docRef.id };
+  } catch (error) {
+    console.error('Error creating order:', error);
+    return { success: false, message: 'Failed to create order' };
+  }
+}
+
+// Get orders by user ID
+export async function getOrdersByUserAction(userId: string): Promise<Order[]> {
+  try {
+    const db = getFirestore();
+    const snapshot = await db.collection('orders')
+      .where('userId', '==', userId)
+      .orderBy('timestamps.placedAt', 'desc')
+      .get();
+    
+    return snapshot.docs.map((doc: any) => {
+      const data = doc.data();
+      return {
+        orderId: doc.id,
+        userId: data.userId || '',
+        items: data.items || [],
+        deliveryAddress: data.deliveryAddress || {},
+        pricing: {
+          deliveryFee: data.pricing?.deliveryFee || 0,
+          discount: data.pricing?.discount || 0,
+          subtotal: data.pricing?.subtotal || 0,
+          tax: data.pricing?.tax || 0,
+          total: data.pricing?.total || 0,
+        },
+        status: data.status || 'placed',
+        paymentStatus: data.paymentStatus || 'pending',
+        paymentId: data.paymentId || '',
+        paymentMode: data.paymentMode || 'cod',
+        timestamps: {
+          placedAt: data.timestamps?.placedAt instanceof Date 
+            ? data.timestamps.placedAt 
+            : new Date(),
+          updatedAt: data.timestamps?.updatedAt instanceof Date 
+            ? data.timestamps.updatedAt 
+            : new Date(),
+        },
+        updatedAt: data.updatedAt instanceof Date ? data.updatedAt : new Date(),
+      } as Order;
+    });
+  } catch (error) {
+    console.error('Error fetching orders by user:', error);
+    return [];
+  }
+}

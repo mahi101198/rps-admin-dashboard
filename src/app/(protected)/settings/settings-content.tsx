@@ -194,9 +194,8 @@ export function SettingsContent() {
         appSettings={{
           ...settings,
           createdAt: parseDate(settings.createdAt),
-          updatedAt: parseDate(settings.updatedAt),
-          lastUpdated: settings.lastUpdated ? parseDate(settings.lastUpdated) : undefined
-        }} 
+          updatedAt: parseDate(settings.updatedAt)
+        } as any} 
         onSettingsUpdate={refreshSettings}
       />
     </div>

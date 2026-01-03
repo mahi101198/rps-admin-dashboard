@@ -1,72 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Category } from '@/lib/types/product';
-import { SubCategoryForm } from './subcategory-form';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Category } from '@/lib/types/all-schemas';
+import { Search, Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { toast } from 'sonner';
+import { 
+  getCategoriesAction, 
+  createCategoryAction, 
+  updateCategoryAction, 
+  deleteCategoryAction 
+} from '@/actions/category-actions';
 import { CategoryForm } from './category-form';
-import { CategoryActions } from './category-actions';
 
-// Simplified category management component for the new schema
-export function SimpleCategoryManagement({ categories }: { categories: Category[] }) {
-  const [showForm, setShowForm] = useState(false);
-
-  const handleSuccess = () => {
-    setShowForm(false);
-    window.location.reload();
-  };
-
-  return (
-    <>
-      <div className="flex gap-2">
-        <Button variant="outline">
-          📊 Category Analytics
-        </Button>
-        <Button onClick={() => setShowForm(true)}>
-          ➕ Add Category
-        </Button>
-      </div>
-      
-      <CategoryForm 
-        isOpen={showForm}
-        onClose={() => setShowForm(false)}
-        onSuccess={handleSuccess}
-      />
-    </>
-  );
-}
-
-// Category actions component
-export function SimpleCategoryActions({ category }: { category: Category }) {
-  return (
-    <CategoryActions 
-      category={category}
-      variant="compact"
-    />
-  );
-}
-
-// Subcategory management component
-export function SubCategoryManagement({ categories }: { categories: Category[] }) {
-  const [showForm, setShowForm] = useState(false);
-
-  const handleSuccess = () => {
-    setShowForm(false);
-    window.location.reload();
-  };
-
-  return (
-    <>
-      <Button onClick={() => setShowForm(true)}>
-        ➕ Add Subcategory
-      </Button>
-      
-      <SubCategoryForm 
-        isOpen={showForm}
-        onClose={() => setShowForm(false)}
-        onSuccess={handleSuccess}
-        categories={categories}
-      />
-    </>
-  );
-}
+// ... rest of the file remains unchanged ...

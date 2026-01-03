@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 import { updatePaymentDetailsAction } from '@/actions/payment-actions';
 import { toast } from 'sonner';
-import { Payment, PaymentStatus } from '@/lib/types/product';
+import { Payment, PaymentStatus } from '@/lib/types/all-schemas';
 import { useRouter } from 'next/navigation';
 
 // Helper function to safely convert timestamps to Date objects

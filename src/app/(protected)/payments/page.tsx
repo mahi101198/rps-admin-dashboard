@@ -1,6 +1,6 @@
 'use client';
 
-import { Payment, PaymentMode, PaymentStatus } from '@/lib/types/product';
+import { Payment, PaymentMode, PaymentStatus } from '@/lib/types/all-schemas';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,7 +10,7 @@ import { PaymentsTableWrapper } from './payments-table-wrapper';
 
 function getPaymentStatusBadgeVariant(status: PaymentStatus) {
   switch (status) {
-    case 'successful':
+    case 'completed':
       return 'default';
     case 'pending':
       return 'outline';
@@ -18,6 +18,8 @@ function getPaymentStatusBadgeVariant(status: PaymentStatus) {
       return 'destructive';
     case 'refunded':
       return 'outline';
+    case 'cancelled':
+      return 'secondary';
     default:
       return 'outline';
   }
@@ -37,12 +39,12 @@ function getMethodBadgeVariant(method: PaymentMode) {
 function getPaymentStats(payments: Payment[]) {
   return {
     total: payments.length,
-    successful: payments.filter(p => p.status === 'successful').length,
+    successful: payments.filter(p => p.status === 'completed').length,
     pending: payments.filter(p => p.status === 'pending').length,
     failed: payments.filter(p => p.status === 'failed').length,
     refunded: payments.filter(p => p.status === 'refunded').length,
     totalAmount: payments
-      .filter(p => p.status === 'successful')
+      .filter(p => p.status === 'completed')
       .reduce((sum, payment) => sum + payment.amount, 0),
     upiPayments: payments.filter(p => p.paymentMethod === 'upi').length,
     codPayments: payments.filter(p => p.paymentMethod === 'cod').length,

@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Order } from '@/lib/types/product';
+import { Order } from '@/lib/types/all-schemas';
 
 interface OrderDetailsDialogProps {
   order: Order;

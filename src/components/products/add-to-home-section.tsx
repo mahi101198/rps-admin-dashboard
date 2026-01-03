@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Product } from '@/lib/types/product';
+import { Product } from '@/lib/types/all-schemas';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
