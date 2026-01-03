@@ -63,9 +63,8 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
   },
-  eslint: {
-    ignoreDuringBuilds: true, // Skip ESLint during build (configured via .eslintrc.json)
-  },
+  // Note: eslint configuration is no longer supported in next.config.ts (Next.js 16+)
+  // Use 'next lint' command or configure in .eslintrc.json instead
   typescript: {
     ignoreBuildErrors: false, // Check TypeScript during build
   },
