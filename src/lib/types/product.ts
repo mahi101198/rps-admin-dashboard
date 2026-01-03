@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 // 2. 📄 Product Details (Heavy data for product pages)
 export const ProductDetailsSchema = z.object({
     productId: z.string(),

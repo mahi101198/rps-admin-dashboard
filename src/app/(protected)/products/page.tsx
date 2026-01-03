@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getProductsAction } from '@/actions/product-actions';
 import { ProductsTableWrapper } from './products-table-wrapper'; // Updated import
 import { ProductForm, ProductFormRef } from './product-form';
-import { Product, ProductWithDetails } from '@/lib/types/product';
+import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
 import { toast } from 'sonner';
 
 export default function ProductsPage() {

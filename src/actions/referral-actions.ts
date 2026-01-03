@@ -2,7 +2,7 @@
 
 import { getFirestore } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
-import { Referral } from '@/lib/types/product';
+import { Referral } from '@/lib/types/all-schemas';
 import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 
 // Get all referrals

@@ -5,7 +5,7 @@ import { ActionButton } from '@/components/ui/action-button';
 import { Button } from '@/components/ui/button';
 import { deleteSubCategoryAction } from '@/actions/category-actions';
 import { SubCategoryForm } from './subcategory-form';
-import { Category, SubCategory } from '@/lib/types/product';
+import { Category, SubCategory } from '@/lib/types/all-schemas';
 
 interface SubCategoryActionsProps {
   subcategory: SubCategory;

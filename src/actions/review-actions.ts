@@ -2,7 +2,7 @@
 
 import { getFirestore } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
-import { ProductReview } from '@/lib/types/product';
+import { ProductReview } from '@/lib/types/all-schemas';
 import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 
 // Get all reviews

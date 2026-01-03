@@ -4,7 +4,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowUpDown } from 'lucide-react';
-import { Order } from '@/lib/types/product';
+import { Order } from '@/lib/types/all-schemas';
 
 const getStatusColor = (status: string) => {
   switch (status) {

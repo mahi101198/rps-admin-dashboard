@@ -1,15 +1,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Category } from '@/lib/types/all-schemas';
 import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Modal } from '@/components/ui/modal';
-import { Category } from '@/lib/types/product';
-import { createCategoryAction, updateCategoryAction } from '@/actions/category-actions';
+import { Switch } from '@/components/ui/switch';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { toast } from 'sonner';
-import { Loader2, FolderIcon } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { createCategoryAction, updateCategoryAction } from '@/actions/category-actions';
 import { ImageUploadField } from '@/components/form/image-upload-field';
+
+const formSchema = z.object({
+  name: z.string().min(1, { message: 'Category name is required' }),
+  image: z.string().url({ message: 'Must be a valid URL' }).or(z.literal('')),
+  rank: z.number().min(0, { message: 'Rank must be 0 or greater' }),
+  isActive: z.boolean(),
+});
 
 interface CategoryFormProps {
   isOpen: boolean;
@@ -20,48 +31,43 @@ interface CategoryFormProps {
 
 export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryFormProps) {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    image: '',
-    rank: 0,
-    isActive: true
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      image: '',
+      rank: 0,
+      isActive: true,
+    },
   });
 
   useEffect(() => {
-    if (isOpen) {
-      if (category) {
-        setFormData({
-          name: category.name,
-          image: category.image || '',
-          rank: category.rank,
-          isActive: category.isActive
-        });
-      } else {
-        setFormData({
-          name: '',
-          image: '',
-          rank: 0,
-          isActive: true
-        });
-      }
+    if (category) {
+      form.reset({
+        name: category.name,
+        image: category.image || '',
+        rank: category.rank || 0,
+        isActive: category.isActive,
+      });
+    } else {
+      form.reset({
+        name: '',
+        image: '',
+        rank: 0,
+        isActive: true,
+      });
     }
-  }, [category, isOpen]);
+  }, [category, form, isOpen]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name.trim()) {
-      toast.error('Please enter a category name');
-      return;
-    }
-
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
-
     try {
       let result;
       if (category) {
-        result = await updateCategoryAction(category.id, formData);
+        result = await updateCategoryAction(category.id, values);
       } else {
-        result = await createCategoryAction(formData);
+        result = await createCategoryAction(values);
       }
 
       if (result.success) {
@@ -76,83 +82,111 @@ export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryF
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={category ? 'Edit Category Details' : 'Create New Category'}
-      description={category ? 'Update category details' : 'Add a new product category'}
-      size="lg"
-    >
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <Label htmlFor="name">Category Name *</Label>
-          <Input
-            id="name"
-            placeholder="e.g., Electronics, Books, Clothing"
-            value={formData.name}
-            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-            className="mt-1"
-          />
-        </div>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>{category ? 'Edit Category' : 'Create Category'}</DialogTitle>
+          <DialogDescription>
+            {category ? 'Update category details' : 'Add a new product category'}
+          </DialogDescription>
+        </DialogHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Category Name *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., Electronics, Books, Clothing" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <div>
-          <ImageUploadField
-            label="Category Icon"
-            value={formData.image}
-            onChange={(value) => setFormData(prev => ({ ...prev, image: value }))}
-            placeholder="https://example.com/image.png"
-          />
-        </div>
+            <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Category Icon</FormLabel>
+                  <FormControl>
+                    <ImageUploadField
+                      label="Category Icon"
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder="https://example.com/image.png"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <div>
-          <Label htmlFor="rank">Display Order</Label>
-          <Input
-            id="rank"
-            type="number"
-            min="0"
-            placeholder="0"
-            value={formData.rank}
-            onChange={(e) => setFormData(prev => ({ ...prev, rank: parseInt(e.target.value) || 0 }))}
-            className="mt-1"
-          />
-          <p className="text-sm text-muted-foreground mt-1">
-            Lower numbers appear first in the list
-          </p>
-        </div>
+            <FormField
+              control={form.control}
+              name="rank"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Display Order</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      min="0"
+                      placeholder="0"
+                      {...field}
+                      onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                    />
+                  </FormControl>
+                  <p className="text-sm text-muted-foreground">
+                    Lower numbers appear first in the list
+                  </p>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            id="isActive"
-            checked={formData.isActive}
-            onChange={(e) => setFormData(prev => ({ ...prev, isActive: e.target.checked }))}
-            className="h-4 w-4"
-          />
-          <Label htmlFor="isActive">Active</Label>
-        </div>
+            <FormField
+              control={form.control}
+              name="isActive"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
+                  <div className="space-y-0.5">
+                    <FormLabel>Active</FormLabel>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
 
-        <div className="flex justify-end gap-3 pt-4 border-t">
-          <Button type="button" variant="outline" onClick={onClose}>
-            Cancel
-          </Button>
-          <Button type="submit" disabled={loading}>
-            {loading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {category ? 'Updating...' : 'Creating...'}
-              </>
-            ) : (
-              <>
-                <FolderIcon className="mr-2 h-4 w-4" />
-                {category ? 'Update Category' : 'Create Category'}
-              </>
-            )}
-          </Button>
-        </div>
-      </form>
-    </Modal>
+            <div className="flex justify-end gap-3 pt-4">
+              <Button type="button" variant="outline" onClick={onClose} disabled={loading}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {category ? 'Updating...' : 'Creating...'}
+                  </>
+                ) : (
+                  category ? 'Update Category' : 'Create Category'
+                )}
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
   );
 }

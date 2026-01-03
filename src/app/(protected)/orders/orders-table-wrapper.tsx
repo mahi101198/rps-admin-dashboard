@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { OrdersTable } from './orders-table';
-import { Order } from '@/lib/types/product';
+import { Order } from '@/lib/types/all-schemas';
 
 export function OrdersTableWrapper({ data }: { data: Order[] }) {
   const router = useRouter();

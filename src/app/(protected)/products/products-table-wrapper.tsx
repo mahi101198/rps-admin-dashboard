@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { ProductsTable } from './products-table';
-import { Product, ProductWithDetails } from '@/lib/types/product';
+import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
 
 export function ProductsTableWrapper({ data, onEditProduct }: { data: Product[]; onEditProduct?: (product: ProductWithDetails) => void }) {
   const router = useRouter();
