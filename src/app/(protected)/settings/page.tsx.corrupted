@@ -1,0 +1,534 @@
+import { getFirebaseAdmin } from '@/data/firebase.admin';
+import { AppSettings } from '@/lib/types/product';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+async function getAppSettings(): Promise<AppSettings | null> {
+  try {
+    const admin = getFirebaseAdmin();
+    const db = admin.firestore();
+    
+    // Assuming settings are stored in a single document with a known ID
+    const settingsDoc = await db.collection('settings').doc('app-settings').get();
+    
+    if (settingsDoc.exists) {
+      const data = settingsDoc.data();
+      return {
+        id: settingsDoc.id,
+        appName: data?.appName || 'RPS Stationery',
+        appVersion: data?.appVersion || '1.0.0',
+        currency: data?.currency || 'INR',
+        currencySymbol: data?.currencySymbol || '₹',
+        deliveryCharge: data?.deliveryCharge || data?.deliveryFee || 50,
+        freeDeliveryThreshold: data?.freeDeliveryThreshold || data?.freeDeliveryAbove || 500,
+        taxRate: data?.taxRate || 0.18,
+        supportPhone: data?.supportPhone || '+91-9999999999',
+        supportEmail: data?.supportEmail || 'support@rpsstationery.com',
+        referralBonus: data?.referralBonus || 0,
+        razorpayKeyId: data?.razorpayKeyId || '',
+        razorpayKeySecret: data?.razorpayKeySecret || '',
+        createdAt: data?.createdAt?._seconds ? new Date(data.createdAt._seconds * 1000) : new Date(),
+        updatedAt: data?.updatedAt?._seconds ? new Date(data.updatedAt._seconds * 1000) : new Date()
+      } as AppSettings;
+    }
+    
+    // Return default settings if not found
+    return {
+      id: 'app-settings',
+      appName: 'RPS Stationery',
+      appVersion: '1.0.0',
+      currency: 'INR',
+      currencySymbol: '₹',
+      deliveryCharge: 50,
+      freeDeliveryThreshold: 500,
+      taxRate: 0.18,
+      supportPhone: '+91-9999999999',
+      supportEmail: 'support@rpsstationery.com',
+      referralBonus: 0,
+      razorpayKeyId: '',
+      razorpayKeySecret: '',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    } as AppSettings;
+  } catch (error) {
+    console.error('Error fetching app settings:', error);
+    return null;
+  }
+}
+
+function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR'
+  }).format(amount);
+}
+
+export default async function SettingsPage() {
+  const appSettings = await getAppSettings();
+
+  if (!appSettings) {
+    return (
+      <div className="p-6">
+        <div className="text-center py-8">
+          <div className="text-4xl mb-4">⚙️</div>
+          <h3 className="font-semibold mb-2">Settings Unavailable</h3>
+          <p className="text-muted-foreground">Unable to load application settings</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold">⚙️ Settings Management</h1>
+          <p className="text-muted-foreground">Configure application settings and preferences</p>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline">
+            🔄 Reset to Defaults
+          </Button>
+          <Button>
+            💾 Save Changes
+          </Button>
+        </div>
+      </div>
+
+      {/* Settings Overview Cards */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Delivery Fee</CardTitle>
+            <span className="text-2xl">🚚</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(appSettings.deliveryCharge)}</div>
+            <p className="text-xs text-muted-foreground">Standard shipping</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Free Delivery</CardTitle>
+            <span className="text-2xl">🆓</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(appSettings.freeDeliveryThreshold)}</div>
+            <p className="text-xs text-muted-foreground">Minimum order amount</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Tax Rate</CardTitle>
+            <span className="text-2xl">📊</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{(appSettings.taxRate * 100).toFixed(1)}%</div>
+            <p className="text-xs text-muted-foreground">GST/VAT rate</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Referral Bonus</CardTitle>
+            <span className="text-2xl">💰</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(appSettings.referralBonus)}</div>
+            <p className="text-xs text-muted-foreground">For successful referrals</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Last Updated</CardTitle>
+            <span className="text-2xl">📅</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-sm font-bold">{appSettings.updatedAt.toLocaleDateString()}</div>
+            <p className="text-xs text-muted-foreground">Settings modified</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Settings Configuration */}
+      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+        {/* Delivery & Pricing Settings */}
+        <Card>
+          <CardHeader>
+            <CardTitle>🚚 Delivery & Pricing</CardTitle>
+            <CardDescription>Configure delivery fees and thresholds</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="deliveryCharge">Standard Delivery Fee</Label>
+              <div className="flex items-center space-x-2">
+                <Input
+                  id="deliveryCharge"
+                  type="number"
+                  min="0"
+                  step="10"
+                  defaultValue={appSettings.deliveryCharge}
+                  className="flex-1"
+                />
+                <Badge variant="outline">{appSettings.currency}</Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Fee charged for standard delivery
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="freeDeliveryThreshold">Free Delivery Above</Label>
+              <div className="flex items-center space-x-2">
+                <Input
+                  id="freeDeliveryThreshold"
+                  type="number"
+                  min="0"
+                  step="50"
+                  defaultValue={appSettings.freeDeliveryThreshold}
+                  className="flex-1"
+                />
+                <Badge variant="outline">{appSettings.currency}</Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Minimum order amount for free delivery
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="taxRate">Tax Rate (GST/VAT)</Label>
+              <div className="flex items-center space-x-2">
+                <Input
+                  id="taxRate"
+                  type="number"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  defaultValue={appSettings.taxRate}
+                  className="flex-1"
+                />
+                <Badge variant="outline">%</Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Tax rate as decimal (0.18 = 18%)
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="currency">Currency</Label>
+              <Input
+                id="currency"
+                type="text"
+                defaultValue={appSettings.currency}
+              />
+              <p className="text-xs text-muted-foreground">
+                Currency code (e.g., INR, USD)
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="currencySymbol">Currency Symbol</Label>
+              <Input
+                id="currencySymbol"
+                type="text"
+                defaultValue={appSettings.currencySymbol}
+              />
+              <p className="text-xs text-muted-foreground">
+                Currency symbol (e.g., ₹, $)
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Referral & Payment Settings */}
+        <Card>
+          <CardHeader>
+            <CardTitle>💰 Referral & Payment</CardTitle>
+            <CardDescription>Configure referral bonuses and payment gateway settings</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="referralBonus">Referral Bonus</Label>
+              <div className="flex items-center space-x-2">
+                <Input
+                  id="referralBonus"
+                  type="number"
+                  min="0"
+                  step="10"
+                  defaultValue={appSettings.referralBonus}
+                  className="flex-1"
+                />
+                <Badge variant="outline">{appSettings.currency}</Badge>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Bonus amount for successful referrals
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="razorpayKeyId">Razorpay Key ID</Label>
+              <Input
+                id="razorpayKeyId"
+                type="text"
+                defaultValue={appSettings.razorpayKeyId}
+              />
+              <p className="text-xs text-muted-foreground">
+                Razorpay API Key ID for payment processing
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="razorpayKeySecret">Razorpay Key Secret</Label>
+              <Input
+                id="razorpayKeySecret"
+                type="password"
+                defaultValue={appSettings.razorpayKeySecret}
+              />
+              <p className="text-xs text-muted-foreground">
+                Razorpay API Key Secret for payment processing
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Contact & Support Settings */}
+        <Card>
+          <CardHeader>
+            <CardTitle>📞 Contact & Support</CardTitle>
+            <CardDescription>Configure support contact information</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="supportPhone">Support Phone</Label>
+              <Input
+                id="supportPhone"
+                type="tel"
+                defaultValue={appSettings.supportPhone}
+              />
+              <p className="text-xs text-muted-foreground">
+                Customer support phone number
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="supportEmail">Support Email</Label>
+              <Input
+                id="supportEmail"
+                type="email"
+                defaultValue={appSettings.supportEmail}
+              />
+              <p className="text-xs text-muted-foreground">
+                Customer support email address
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="appName">App Name</Label>
+              <Input
+                id="appName"
+                type="text"
+                defaultValue={appSettings.appName}
+              />
+              <p className="text-xs text-muted-foreground">
+                Application name
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="appVersion">App Version</Label>
+              <Input
+                id="appVersion"
+                type="text"
+                defaultValue={appSettings.appVersion}
+              />
+              <p className="text-xs text-muted-foreground">
+                Current application version
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4 bg-muted/50">
+              <h4 className="font-medium mb-2">Current Settings Summary</h4>
+              <div className="text-sm space-y-1">
+                <div>• App: {appSettings.appName} v{appSettings.appVersion}</div>
+                <div>• Currency: {appSettings.currency} ({appSettings.currencySymbol})</div>
+                <div>• Standard fee: {formatCurrency(appSettings.deliveryCharge)}</div>
+                <div>• Free above: {formatCurrency(appSettings.freeDeliveryThreshold)}</div>
+                <div>• Tax rate: {(appSettings.taxRate * 100).toFixed(1)}%</div>
+                <div>• Referral bonus: {formatCurrency(appSettings.referralBonus)}</div>
+                <div>• Support: {appSettings.supportPhone} | {appSettings.supportEmail}</div>
+                <div>• Last updated: {appSettings.updatedAt.toLocaleDateString()}</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-2">
+        <Button variant="outline">
+          🔄 Reset to Defaults
+        </Button>
+        <Button>
+          💾 Save Changes
+        </Button>
+      </div>
+    </div>
+  );
+}              <Label htmlFor="appName">App Name</Label>
+              <Input
+                id="appName"
+                type="text"
+                defaultValue={appSettings.appName}
+              />
+              <p className="text-xs text-muted-foreground">
+                Application name
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="appVersion">App Version</Label>
+              <Input
+                id="appVersion"
+                type="text"
+                defaultValue={appSettings.appVersion}
+              />
+              <p className="text-xs text-muted-foreground">
+                Current application version
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4 bg-muted/50">
+              <h4 className="font-medium mb-2">Current Settings Summary</h4>
+              <div className="text-sm space-y-1">
+                <div>• App: {appSettings.appName} v{appSettings.appVersion}</div>
+                <div>• Currency: {appSettings.currency} ({appSettings.currencySymbol})</div>
+                <div>• Standard fee: {formatCurrency(appSettings.deliveryCharge)}</div>
+                <div>• Free above: {formatCurrency(appSettings.freeDeliveryThreshold)}</div>
+                <div>• Tax rate: {(appSettings.taxRate * 100).toFixed(1)}%</div>
+                <div>• Referral bonus: {formatCurrency(appSettings.referralBonus)}</div>
+                <div>• Support: {appSettings.supportPhone} | {appSettings.supportEmail}</div>
+                <div>• Last updated: {appSettings.updatedAt.toLocaleDateString()}</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-2">
+        <Button variant="outline">
+          🔄 Reset to Defaults
+        </Button>
+        <Button>
+          💾 Save Changes
+        </Button>
+      </div>
+    </div>
+  );
+}              <Label htmlFor="appName">App Name</Label>
+              <Input
+                id="appName"
+                type="text"
+                defaultValue={appSettings.appName}
+              />
+              <p className="text-xs text-muted-foreground">
+                Application name
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="appVersion">App Version</Label>
+              <Input
+                id="appVersion"
+                type="text"
+                defaultValue={appSettings.appVersion}
+              />
+              <p className="text-xs text-muted-foreground">
+                Current application version
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4 bg-muted/50">
+              <h4 className="font-medium mb-2">Current Settings Summary</h4>
+              <div className="text-sm space-y-1">
+                <div>• App: {appSettings.appName} v{appSettings.appVersion}</div>
+                <div>• Currency: {appSettings.currency} ({appSettings.currencySymbol})</div>
+                <div>• Standard fee: {formatCurrency(appSettings.deliveryCharge)}</div>
+                <div>• Free above: {formatCurrency(appSettings.freeDeliveryThreshold)}</div>
+                <div>• Tax rate: {(appSettings.taxRate * 100).toFixed(1)}%</div>
+                <div>• Support: {appSettings.supportPhone} | {appSettings.supportEmail}</div>
+                <div>• Last updated: {appSettings.updatedAt.toLocaleDateString()}</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-2">
+        <Button variant="outline">
+          🔄 Reset to Defaults
+        </Button>
+        <Button>
+          💾 Save Changes
+        </Button>
+      </div>
+    </div>
+  );
+}              <Label htmlFor="appName">App Name</Label>
+              <Input
+                id="appName"
+                type="text"
+                defaultValue={appSettings.appName}
+              />
+              <p className="text-xs text-muted-foreground">
+                Application name
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="appVersion">App Version</Label>
+              <Input
+                id="appVersion"
+                type="text"
+                defaultValue={appSettings.appVersion}
+              />
+              <p className="text-xs text-muted-foreground">
+                Current application version
+              </p>
+            </div>
+
+            <div className="rounded-lg border p-4 bg-muted/50">
+              <h4 className="font-medium mb-2">Current Settings Summary</h4>
+              <div className="text-sm space-y-1">
+                <div>• App: {appSettings.appName} v{appSettings.appVersion}</div>
+                <div>• Currency: {appSettings.currency} ({appSettings.currencySymbol})</div>
+                <div>• Standard fee: {formatCurrency(appSettings.deliveryCharge)}</div>
+                <div>• Free above: {formatCurrency(appSettings.freeDeliveryThreshold)}</div>
+                <div>• Tax rate: {(appSettings.taxRate * 100).toFixed(1)}%</div>
+                <div>• Support: {appSettings.supportPhone} | {appSettings.supportEmail}</div>
+                <div>• Last updated: {appSettings.updatedAt.toLocaleDateString()}</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-2">
+        <Button variant="outline">
+          🔄 Reset to Defaults
+        </Button>
+        <Button>
+          💾 Save Changes
+        </Button>
+      </div>
+    </div>
+  );
+}

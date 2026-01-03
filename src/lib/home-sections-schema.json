@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RPS Dashboard Home Sections Schema",
+  "description": "Complete JSON schema for home sections with category-based structure",
+  "type": "object",
+  "definitions": {
+    "Product": {
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number", "minimum": 0 },
+        "discountPrice": { "type": "number", "minimum": 0 },
+        "image": { "type": "string", "format": "uri" },
+        "stock": { "type": "integer", "minimum": 0 },
+        "categoryId": { "type": "string" },
+        "subcategoryId": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "name", "price", "image", "stock", "categoryId", "subcategoryId", "isActive", "createdAt", "updatedAt"]
+    },
+    "HomeSectionItem": {
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "rank": { "type": "integer", "minimum": 1 },
+        "product": { "$ref": "#/definitions/Product" },
+        "addedAt": { "type": "string", "format": "date-time" },
+        "priceOverride": { "type": ["number", "null"] }
+      },
+      "required": ["productId", "rank", "addedAt"]
+    }
+  },
+  "properties": {
+    "home_sections": {
+      "type": "object",
+      "description": "Root collection for home sections organized by category",
+      "patternProperties": {
+        "^[a-zA-Z0-9_-]+$": {
+          "type": "object",
+          "description": "Category-based home section document",
+          "properties": {
+            "categoryId": { "type": "string" },
+            "title": { "type": "string" },
+            "sections": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "sectionId": { "type": "string" },
+                  "title": { "type": "string" },
+                  "type": { "type": "string", "enum": ["flashSale", "popular", "recommended", "banner"] },
+                  "createdAt": { "type": "string", "format": "date-time" },
+                  "updatedAt": { "type": "string", "format": "date-time" }
+                },
+                "required": ["sectionId", "title", "type", "createdAt", "updatedAt"]
+              }
+            },
+            "createdAt": { "type": "string", "format": "date-time" },
+            "updatedAt": { "type": "string", "format": "date-time" }
+          },
+          "required": ["categoryId", "title", "sections", "createdAt", "updatedAt"],
+          "patternProperties": {
+            "^(popular|flashSale|newArrivals|recommended|banner)$": {
+              "type": "object",
+              "description": "Section subcollection containing individual product items",
+              "patternProperties": {
+                "^[a-zA-Z0-9_-]+$": {
+                  "$ref": "#/definitions/HomeSectionItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["home_sections"],
+  "examples": [
+    {
+      "home_sections": {
+        "stationery": {
+          "categoryId": "stationery",
+          "title": "Stationery",
+          "sections": [
+            {
+              "sectionId": "popular",
+              "title": "Popular Products",
+              "type": "popular",
+              "createdAt": "2023-01-01T00:00:00Z",
+              "updatedAt": "2023-01-01T00:00:00Z"
+            },
+            {
+              "sectionId": "flashSale",
+              "title": "Flash Sale",
+              "type": "flashSale",
+              "createdAt": "2023-01-01T00:00:00Z",
+              "updatedAt": "2023-01-01T00:00:00Z"
+            }
+          ],
+          "createdAt": "2023-01-01T00:00:00Z",
+          "updatedAt": "2023-01-01T00:00:00Z",
+          "popular": {
+            "product123": {
+              "productId": "product123",
+              "rank": 1,
+              "product": {
+                "productId": "product123",
+                "name": "Premium Pen",
+                "price": 150,
+                "discountPrice": 120,
+                "image": "https://example.com/pen.jpg",
+                "stock": 50,
+                "categoryId": "stationery",
+                "subcategoryId": "pens",
+                "isActive": true,
+                "createdAt": "2023-01-01T00:00:00Z",
+                "updatedAt": "2023-01-01T00:00:00Z"
+              },
+              "addedAt": "2023-01-01T00:00:00Z"
+            }
+          },
+          "flashSale": {
+            "product456": {
+              "productId": "product456",
+              "rank": 1,
+              "product": {
+                "productId": "product456",
+                "name": "Notebook Set",
+                "price": 300,
+                "discountPrice": 250,
+                "image": "https://example.com/notebook.jpg",
+                "stock": 30,
+                "categoryId": "stationery",
+                "subcategoryId": "notebooks",
+                "isActive": true,
+                "createdAt": "2023-01-01T00:00:00Z",
+                "updatedAt": "2023-01-01T00:00:00Z"
+              },
+              "addedAt": "2023-01-01T00:00:00Z",
+              "priceOverride": 200
+            }
+          }
+        },
+        "housekeeping": {
+          "categoryId": "housekeeping",
+          "title": "Housekeeping",
+          "sections": [
+            {
+              "sectionId": "popular",
+              "title": "Popular Products",
+              "type": "popular",
+              "createdAt": "2023-01-01T00:00:00Z",
+              "updatedAt": "2023-01-01T00:00:00Z"
+            }
+          ],
+          "createdAt": "2023-01-01T00:00:00Z",
+          "updatedAt": "2023-01-01T00:00:00Z",
+          "popular": {
+            "product789": {
+              "productId": "product789",
+              "rank": 1,
+              "product": {
+                "productId": "product789",
+                "name": "Cleaning Spray",
+                "price": 200,
+                "discountPrice": 180,
+                "image": "https://example.com/cleaner.jpg",
+                "stock": 25,
+                "categoryId": "housekeeping",
+                "subcategoryId": "cleaning-supplies",
+                "isActive": true,
+                "createdAt": "2023-01-01T00:00:00Z",
+                "updatedAt": "2023-01-01T00:00:00Z"
+              },
+              "addedAt": "2023-01-01T00:00:00Z"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

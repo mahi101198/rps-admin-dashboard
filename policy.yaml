@@ -1,0 +1,89 @@
+bindings:
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-artifactregistry.iam.gserviceaccount.com
+  role: roles/artifactregistry.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-cloudaicompanion.iam.gserviceaccount.com
+  role: roles/cloudaicompanion.serviceAgent
+- members:
+  - user:mk7823807402@gmail.com
+  role: roles/cloudasset.owner
+- members:
+  - serviceAccount:1090273726787@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - user:mk7823807402@gmail.com
+  role: roles/cloudfunctions.admin
+- members:
+  - serviceAccount:service-1090273726787@gcf-admin-robot.iam.gserviceaccount.com
+  role: roles/cloudfunctions.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-cloudscheduler.iam.gserviceaccount.com
+  role: roles/cloudscheduler.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@containerregistry.iam.gserviceaccount.com
+  role: roles/containerregistry.ServiceAgent
+- members:
+  - serviceAccount:1090273726787@cloudservices.gserviceaccount.com
+  - serviceAccount:rps-statationary-jaipur@appspot.gserviceaccount.com
+  - user:mk7823807402@gmail.com
+  role: roles/editor
+- members:
+  - serviceAccount:cloud-run-events-sa@rps-statationary-jaipur.iam.gserviceaccount.com
+  - serviceAccount:rps-statationary-jaipur@appspot.gserviceaccount.com
+  role: roles/eventarc.eventReceiver
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-firebase.iam.gserviceaccount.com
+  role: roles/firebase.managementServiceAgent
+- members:
+  - serviceAccount:firebase-adminsdk-fbsvc@rps-statationary-jaipur.iam.gserviceaccount.com
+  role: roles/firebase.sdkAdminServiceAgent
+- members:
+  - user:mk7823807402@gmail.com
+  role: roles/firebaseappcheck.admin
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-firebaseappcheck.iam.gserviceaccount.com
+  role: roles/firebaseappcheck.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-firebasemods.iam.gserviceaccount.com
+  role: roles/firebasemods.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@firebase-rules.iam.gserviceaccount.com
+  role: roles/firebaserules.system
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-firebasestorage.iam.gserviceaccount.com
+  role: roles/firebasestorage.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-firestore.iam.gserviceaccount.com
+  role: roles/firestore.serviceAgent
+- members:
+  - serviceAccount:service-1090273726787@gcp-sa-pubsub.iam.gserviceaccount.com
+  role: roles/iam.serviceAccountTokenCreator
+- members:
+  - user:developerchiragjuneja@gmail.com
+  - user:mk7823807402@gmail.com
+  - user:rpsjpr7@gmail.com
+  - user:rpsstationaryjaipur@gmail.com
+  role: roles/owner
+- members:
+  - serviceAccount:cloud-run-events-sa@rps-statationary-jaipur.iam.gserviceaccount.com
+  - serviceAccount:rps-statationary-jaipur@appspot.gserviceaccount.com
+  role: roles/run.invoker
+- members:
+  - serviceAccount:service-1090273726787@serverless-robot-prod.iam.gserviceaccount.com
+  role: roles/run.serviceAgent
+- members:
+  - user:mk7823807402@gmail.com
+  role: roles/storage.admin
+- members:
+  - user:ankityadav.sde@gmail.com
+  - user:mk7823807402@gmail.com
+  role: roles/viewer
+etag: BwY_RTbAy9s=
+version: 1
