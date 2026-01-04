@@ -8,43 +8,94 @@ import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
 // Get all orders
 export async function getOrdersAction(): Promise<Order[]> {
   try {
-    const db = getFirestore();
-    const snapshot = await db.collection('orders')
-      .orderBy('timestamps.placedAt', 'desc')
-      .limit(100)
-      .get();
+    console.log('Fetching orders...');
+    console.log('Environment:', process.env.NODE_ENV);
+    console.log('Firebase Project ID:', process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID);
     
-    return snapshot.docs.map((doc: any) => {
+    const db = getFirestore();
+    
+    // First, let's check ALL collections to verify connection
+    try {
+      const allCollections = await db.listCollections();
+      console.log('Available collections:', allCollections.map(c => c.id).join(', '));
+    } catch (listError: any) {
+      console.warn('Could not list collections:', listError.message);
+    }
+    
+    // Use simple query without orderBy since it's causing issues
+    // We'll sort on the client side instead
+    let snapshot;
+    try {
+      console.log('Fetching orders without orderBy...');
+      snapshot = await db.collection('orders')
+        .limit(100)
+        .get();
+      console.log('Orders fetched successfully, count:', snapshot.size);
+    } catch (fetchError: any) {
+      console.error('Failed to fetch orders:', fetchError.message);
+      throw fetchError;
+    }
+    
+    // If we have 0 orders, let's check if the collection exists at all
+    if (snapshot.size === 0) {
+      console.warn('⚠️ No orders found in the database!');
+      console.warn('Database path: projects/' + process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID + '/databases/(default)/documents/orders');
+      
+      // Try to get a single document to verify collection exists
+      const testSnapshot = await db.collection('orders').limit(1).get();
+      console.log('Test query result - Empty:', testSnapshot.empty, 'Size:', testSnapshot.size);
+    }
+    
+    const orders = snapshot.docs.map((doc: any) => {
       const data = doc.data();
+      
+      // Helper function to convert Firestore Timestamp to Date
+      const toDate = (timestamp: any): Date => {
+        if (!timestamp) return new Date();
+        if (timestamp instanceof Date) return timestamp;
+        if (timestamp.toDate && typeof timestamp.toDate === 'function') {
+          return timestamp.toDate();
+        }
+        if (timestamp._seconds) {
+          return new Date(timestamp._seconds * 1000);
+        }
+        return new Date();
+      };
+      
+      // Debug: Log pricing data and all available fields
+      if (doc.id) {
+        console.log(`Order ${doc.id.slice(-6)} amountBreakdown:`, data.amountBreakdown);
+      }
+      
       return {
         orderId: doc.id,
         userId: data.userId || '',
         items: data.items || [],
-        deliveryAddress: data.deliveryAddress || {},
+        deliveryAddress: data.deliveryInfo?.address || {},
         pricing: {
-          deliveryFee: data.pricing?.deliveryFee || 0,
-          discount: data.pricing?.discount || 0,
-          subtotal: data.pricing?.subtotal || 0,
-          tax: data.pricing?.tax || 0,
-          total: data.pricing?.total || 0,
+          deliveryFee: data.amountBreakdown?.deliveryFee || 0,
+          discount: data.amountBreakdown?.discount || 0,
+          subtotal: data.amountBreakdown?.subTotal || 0,
+          tax: data.amountBreakdown?.taxAmount || 0,
+          total: data.amountBreakdown?.finalAmount || data.amountBreakdown?.totalOrderAmount || 0,
         },
         status: data.status || 'placed',
         paymentStatus: data.paymentStatus || 'pending',
         paymentId: data.paymentId || '',
         paymentMode: data.paymentMode || 'cod',
         timestamps: {
-          placedAt: data.timestamps?.placedAt instanceof Date 
-            ? data.timestamps.placedAt 
-            : new Date(),
-          updatedAt: data.timestamps?.updatedAt instanceof Date 
-            ? data.timestamps.updatedAt 
-            : new Date(),
+          placedAt: toDate(data.createdAt),
+          updatedAt: toDate(data.timestamps?.updatedAt || data.updatedAt),
         },
-        updatedAt: data.updatedAt instanceof Date ? data.updatedAt : new Date(),
+        updatedAt: toDate(data.timestamps?.updatedAt || data.updatedAt),
       } as Order;
     });
-  } catch (error) {
+    
+    console.log('Orders processed successfully:', orders.length);
+    return orders;
+  } catch (error: any) {
     console.error('Error fetching orders:', error);
+    console.error('Error details:', error.message, error.code);
     return [];
   }
 }
@@ -85,7 +136,8 @@ export async function getOrderStatsAction(): Promise<{
     
     snapshot.forEach((doc: any) => {
       const data = doc.data();
-      stats.totalRevenue += data.pricing?.total || 0;
+      // Use amountBreakdown instead of pricing
+      stats.totalRevenue += data.amountBreakdown?.finalAmount || data.amountBreakdown?.totalOrderAmount || 0;
       
       // Count by status
       const status = data.status || 'placed';
@@ -151,31 +203,41 @@ export async function getOrderAction(orderId: string): Promise<Order | null> {
     }
     
     const data = doc.data();
+    
+    // Helper function to convert Firestore Timestamp to Date
+    const toDate = (timestamp: any): Date => {
+      if (!timestamp) return new Date();
+      if (timestamp instanceof Date) return timestamp;
+      if (timestamp.toDate && typeof timestamp.toDate === 'function') {
+        return timestamp.toDate();
+      }
+      if (timestamp._seconds) {
+        return new Date(timestamp._seconds * 1000);
+      }
+      return new Date();
+    };
+    
     return {
       orderId: doc.id,
       userId: data?.userId || '',
       items: data?.items || [],
-      deliveryAddress: data?.deliveryAddress || {},
+      deliveryAddress: data?.deliveryInfo?.address || {},
       pricing: {
-        deliveryFee: data?.pricing?.deliveryFee || 0,
-        discount: data?.pricing?.discount || 0,
-        subtotal: data?.pricing?.subtotal || 0,
-        tax: data?.pricing?.tax || 0,
-        total: data?.pricing?.total || 0,
+        deliveryFee: data?.amountBreakdown?.deliveryFee || 0,
+        discount: data?.amountBreakdown?.discount || 0,
+        subtotal: data?.amountBreakdown?.subTotal || 0,
+        tax: data?.amountBreakdown?.taxAmount || 0,
+        total: data?.amountBreakdown?.finalAmount || data?.amountBreakdown?.totalOrderAmount || 0,
       },
       status: data?.status || 'placed',
       paymentStatus: data?.paymentStatus || 'pending',
       paymentId: data?.paymentId || '',
       paymentMode: data?.paymentMode || 'cod',
       timestamps: {
-        placedAt: data?.timestamps?.placedAt instanceof Date 
-          ? data.timestamps.placedAt 
-          : new Date(),
-        updatedAt: data?.timestamps?.updatedAt instanceof Date 
-          ? data.timestamps.updatedAt 
-          : new Date(),
+        placedAt: toDate(data?.createdAt),
+        updatedAt: toDate(data?.timestamps?.updatedAt || data?.updatedAt),
       },
-      updatedAt: data?.updatedAt instanceof Date ? data.updatedAt : new Date(),
+      updatedAt: toDate(data?.timestamps?.updatedAt || data?.updatedAt),
     } as Order;
   } catch (error) {
     console.error('Error fetching order:', error);
