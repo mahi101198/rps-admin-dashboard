@@ -52,11 +52,31 @@ export function OrdersTable({ data, onDataChange }: { data: Order[]; onDataChang
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [statusFilter, setStatusFilter] = React.useState<string>('all');
+  const [statusFilter, setStatusFilter] = React.useState<string>('active'); // Default to 'active' instead of 'all'
 
   const filteredData = React.useMemo(() => {
-    if (statusFilter === 'all') return validatedData;
-    return validatedData.filter(order => order.status === statusFilter);
+    let result = validatedData;
+    
+    // Apply status filter
+    if (statusFilter === 'active') {
+      // Show only active orders (exclude delivered and cancelled)
+      result = result.filter(order => 
+        order.status !== 'delivered' && order.status !== 'cancelled'
+      );
+    } else if (statusFilter !== 'all') {
+      // Filter by specific status
+      result = result.filter(order => order.status === statusFilter);
+    }
+    // If 'all', show everything
+    
+    // Sort by timestamp descending (newest first) as default
+    result = [...result].sort((a, b) => {
+      const dateA = a.timestamps?.placedAt || a.updatedAt;
+      const dateB = b.timestamps?.placedAt || b.updatedAt;
+      return new Date(dateB).getTime() - new Date(dateA).getTime();
+    });
+    
+    return result;
   }, [validatedData, statusFilter]);
 
   const table = useReactTable({
@@ -90,11 +110,13 @@ export function OrdersTable({ data, onDataChange }: { data: Order[]; onDataChang
             <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
           <SelectContent>
+            <SelectItem value="active">Active Orders</SelectItem>
             <SelectItem value="all">All Orders</SelectItem>
             <SelectItem value="placed">Placed</SelectItem>
             <SelectItem value="confirmed">Confirmed</SelectItem>
             <SelectItem value="paid">Paid</SelectItem>
             <SelectItem value="shipped">Shipped</SelectItem>
+            <SelectItem value="out_for_delivery">Out for Delivery</SelectItem>
             <SelectItem value="delivered">Delivered</SelectItem>
             <SelectItem value="cancelled">Cancelled</SelectItem>
           </SelectContent>

@@ -27,10 +27,13 @@ export default function LoginPage() {
 
   // If user is already logged in, redirect to the intended page
   useEffect(() => {
-    if (user) {
-      router.replace(redirectTo);
+    if (user && !loading) {
+      // Use replace instead of push to prevent back button issues
+      const destination = redirectTo === '/' ? '/dashboard' : redirectTo;
+      console.log('User authenticated, redirecting to:', destination);
+      router.replace(destination);
     }
-  }, [user, router, redirectTo]);
+  }, [user, loading, router, redirectTo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,10 +41,8 @@ export default function LoginPage() {
     
     try {
       await signIn(email, password);
-      // Wait a brief moment for the cookie to be set
-      await new Promise(resolve => setTimeout(resolve, 100));
-      // Redirect to the intended page after successful login
-      router.replace(redirectTo);
+      // The redirect will be handled by the useEffect hook once the user state is updated
+      // This ensures the cookie is set before redirect happens
     } catch (err: any) {
       // Handle specific error messages
       if (err?.code === 'auth/invalid-credential' || err?.code === 'auth/wrong-password' || err?.code === 'auth/user-not-found') {
@@ -54,9 +55,13 @@ export default function LoginPage() {
     }
   };
 
-  // If user is already logged in, redirect silently (no flash)
-  if (user) {
-    return null;
+  // If user is already logged in or loading, show redirecting message
+  if (loading || user) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Redirecting...</div>
+      </div>
+    );
   }
 
   return (

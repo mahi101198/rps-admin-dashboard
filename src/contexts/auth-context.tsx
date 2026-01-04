@@ -105,11 +105,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // The user should be automatically detected by onAuthStateChanged
+      // The user will be automatically detected by onAuthStateChanged
+      // Don't set loading to false here - let onAuthStateChanged handle it
+      // This ensures the user state and cookie are properly set before loading becomes false
     } catch (error: any) {
-      throw error;
-    } finally {
       setLoading(false);
+      throw error;
     }
   };
 
