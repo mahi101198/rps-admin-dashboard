@@ -20,7 +20,8 @@ import {
   Heart, 
   BarChart3, 
   Gift,
-  Home
+  Home,
+  Smartphone
 } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/sidebar';
 
@@ -62,6 +63,11 @@ const data = {
       url: '/payments',
       icon: CreditCard,
     },
+    // {
+    //   title: 'Payments',
+    //   url: '/payments',
+    //   icon: CreditCard,
+    // },
     {
       title: 'Carts',
       url: '/carts',
@@ -96,6 +102,11 @@ const data = {
       title: 'Settings',
       url: '/settings',
       icon: Settings,
+    },
+    {
+      title: 'Play Store',
+      url: '/playstore',
+      icon: Smartphone,
     },
   ],
 };
