@@ -38,6 +38,12 @@ import {
 } from '@/actions/category-actions';
 import EnhancedImageUpload from '@/components/form/enhanced-image-upload';
 import { useRouter } from 'next/navigation';
+import { 
+  DEFAULT_SHIPPING_INFO, 
+  DEFAULT_SHIPPING_INFO_TITLE, 
+  DEFAULT_RETURN_POLICY_TITLE, 
+  DEFAULT_RETURN_POLICY_DESCRIPTION 
+} from '@/lib/constant';
 
 const MAX_IMAGES = 6;
 
@@ -181,10 +187,10 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(
             miniInfo: [],
             tags: [],
             colors: [],
-            shippingInfo: '',
-            shippingInfoTitle: '',
-            returnTitle: '',
-            returnDescription: '',
+            shippingInfo: DEFAULT_SHIPPING_INFO,
+            shippingInfoTitle: DEFAULT_SHIPPING_INFO_TITLE,
+            returnTitle: DEFAULT_RETURN_POLICY_TITLE,
+            returnDescription: DEFAULT_RETURN_POLICY_DESCRIPTION,
             maxQuantityPerUser: 10,
           },
     });
@@ -340,10 +346,10 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(
           miniInfo: [],
           tags: [],
           colors: [],
-          shippingInfo: '',
-          shippingInfoTitle: '',
-          returnTitle: '',
-          returnDescription: '',
+          shippingInfo: DEFAULT_SHIPPING_INFO,
+          shippingInfoTitle: DEFAULT_SHIPPING_INFO_TITLE,
+          returnTitle: DEFAULT_RETURN_POLICY_TITLE,
+          returnDescription: DEFAULT_RETURN_POLICY_DESCRIPTION,
           maxQuantityPerUser: 10,
         });
         
