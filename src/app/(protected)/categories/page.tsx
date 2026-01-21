@@ -359,9 +359,13 @@ export default function CategoriesPage() {
                     return (
                       <tr key={subCategory.id} className="border-b hover:bg-muted/50">
                         <td className="p-3">
-                          <div className="h-10 w-10 bg-muted rounded flex items-center justify-center text-xl">
-                            📂
-                          </div>
+                          {subCategory.image ? (
+                            <img src={subCategory.image} alt={subCategory.name} className="h-10 w-10 object-cover rounded" />
+                          ) : (
+                            <div className="h-10 w-10 bg-muted rounded flex items-center justify-center text-xl">
+                              📂
+                            </div>
+                          )}
                         </td>
                         <td className="p-3">
                           <div className="font-medium">{subCategory.name}</div>

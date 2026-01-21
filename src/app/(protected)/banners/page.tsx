@@ -163,6 +163,9 @@ export default function BannersPage() {
                       <Badge variant="outline">
                         Rank {banner.rank || 0}
                       </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        ⏱️ {banner.view_change_time || 5}s
+                      </Badge>
                     </div>
                     <p className="font-medium">{banner.title}</p>
                     {banner.linkTo && (
@@ -179,7 +182,8 @@ export default function BannersPage() {
                         imageUrl: banner.imageUrl,
                         linkTo: banner.linkTo,
                         rank: banner.rank,
-                        isActive: banner.isActive
+                        isActive: banner.isActive,
+                        view_change_time: banner.view_change_time
                       }}
                       onSuccess={fetchBanners}
                     />

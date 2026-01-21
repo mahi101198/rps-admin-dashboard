@@ -15,8 +15,8 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
-import { columns } from './columns';
+import { Product, ProductWithDetails, Category, SubCategory } from '@/lib/types/all-schemas';
+import { createColumns } from './columns';
 import { Search } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -26,11 +26,13 @@ import { toast } from 'sonner';
 
 interface ProductsTableProps {
   data: Product[];
+  categories: Category[];
+  subCategories: SubCategory[];
   onEditProduct?: (product: ProductWithDetails) => void;
   onDataChange?: () => void; // Add this prop
 }
 
-export function ProductsTable({ data, onEditProduct, onDataChange }: ProductsTableProps) {
+export function ProductsTable({ data, categories, subCategories, onEditProduct, onDataChange }: ProductsTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [isLoadingProduct, setIsLoadingProduct] = React.useState(false);
@@ -63,7 +65,7 @@ export function ProductsTable({ data, onEditProduct, onDataChange }: ProductsTab
 
   const table = useReactTable({
     data,
-    columns,
+    columns: createColumns(categories, subCategories),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
@@ -133,7 +135,7 @@ export function ProductsTable({ data, onEditProduct, onDataChange }: ProductsTab
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell colSpan={10} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>

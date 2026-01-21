@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Product } from '@/lib/types/all-schemas';
+import { Product, Category, SubCategory } from '@/lib/types/all-schemas';
 import { ColumnDef } from '@tanstack/react-table';
 import { ChevronDown, ChevronsUpDown, ChevronUp } from 'lucide-react';
 import { SmartImage } from '@/components/smart-image';
@@ -28,7 +28,7 @@ const sortHeader = (column: any, label: string) => {
   );
 };
 
-export const columns: ColumnDef<Product>[] = [
+export const createColumns = (categories: Category[], subCategories: SubCategory[]): ColumnDef<Product>[] => [
   {
     accessorKey: 'name',
     header: ({ column }) => sortHeader(column, 'Product Name'),
@@ -74,7 +74,8 @@ export const columns: ColumnDef<Product>[] = [
     header: ({ column }) => sortHeader(column, 'Category'),
     cell: ({ row }) => {
       const categoryId = row.getValue('categoryId') as string;
-      return <div className="truncate max-w-[80px] text-xs">{categoryId}</div>;
+      const category = categories.find(c => c.id === categoryId);
+      return <div className="truncate max-w-[80px] text-xs">{category?.name || categoryId}</div>;
     },
   },
   {
@@ -82,7 +83,8 @@ export const columns: ColumnDef<Product>[] = [
     header: ({ column }) => sortHeader(column, 'Sub Category'),
     cell: ({ row }) => {
       const subcategoryId = row.getValue('subcategoryId') as string;
-      return <div className="truncate max-w-[80px] text-xs">{subcategoryId}</div>;
+      const subcategory = subCategories.find(sc => sc.id === subcategoryId);
+      return <div className="truncate max-w-[100px] text-xs">{subcategory?.name || subcategoryId}</div>;
     },
   },
   {

@@ -74,6 +74,7 @@ export interface SubCategory {
   description?: string;
   categoryId: string;
   categoryName?: string;
+  image?: string;  // Subcategory image URL
   rank: number;
   isActive: boolean;
   createdAt?: Date;  // Optional since it's not always in the data
@@ -88,6 +89,7 @@ export interface Banner {
   linkTo: string;
   rank: number;
   isActive: boolean;
+  view_change_time: number; // Time in seconds to show each banner before changing
   createdAt: Date;
   updatedAt: Date;
 }

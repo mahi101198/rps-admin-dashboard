@@ -20,6 +20,7 @@ export async function getBannersAction(): Promise<Banner[]> {
         linkTo: data.linkTo || '',
         rank: data.rank || 0,
         isActive: data.isActive ?? true,
+        view_change_time: data.view_change_time || 5, // Default to 5 seconds if not set
         createdAt: data.createdAt?._seconds ? 
           new Date(data.createdAt._seconds * 1000) : 
           data.createdAt instanceof Date ? data.createdAt :
@@ -88,7 +89,33 @@ export async function deleteBannerAction(
   try {
     await verifyAuth();
     const db = getFirestore();
+    const bucket = getStorageBucket();
 
+    // Get banner data to retrieve image URL before deletion
+    const bannerDoc = await db.collection('banners').doc(bannerId).get();
+    
+    if (bannerDoc.exists) {
+      const bannerData = bannerDoc.data();
+      
+      // Delete image from Firebase Storage if it exists
+      if (bannerData?.imageUrl && bucket) {
+        try {
+          // Extract file path from URL
+          // URL format: https://storage.googleapis.com/bucket-name/banners/filename
+          const urlParts = bannerData.imageUrl.split('/');
+          const fileName = urlParts.pop(); // Get filename
+          if (fileName) {
+            await bucket.file(`banners/${fileName}`).delete();
+            console.log(`Deleted banner image: banners/${fileName}`);
+          }
+        } catch (error) {
+          console.warn('Failed to delete banner image from storage:', error);
+          // Continue with banner deletion even if image deletion fails
+        }
+      }
+    }
+
+    // Delete banner document
     await db.collection('banners').doc(bannerId).delete();
     
     revalidatePath('/banners');
