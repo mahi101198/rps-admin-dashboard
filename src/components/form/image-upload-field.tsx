@@ -1,25 +1,33 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Upload, X } from 'lucide-react';
 import { toast } from 'sonner';
-import { uploadProductImageAction } from '@/actions/product-actions';
 
 interface ImageUploadFieldProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  onFileSelect?: (file: File | null) => void;
+  entityType?: 'category' | 'subcategory' | 'product';
 }
 
-export function ImageUploadField({ label, value, onChange, placeholder }: ImageUploadFieldProps) {
+export function ImageUploadField({ label, value, onChange, placeholder, onFileSelect, entityType = 'product' }: ImageUploadFieldProps) {
   const [uploadType, setUploadType] = useState<'url' | 'upload'>('url');
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(value || null);
+
+  // Update preview when value changes externally
+  useEffect(() => {
+    if (value && value !== previewUrl) {
+      setPreviewUrl(value);
+    }
+  }, [value]);
 
   // Handle file selection
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,18 +46,23 @@ export function ImageUploadField({ label, value, onChange, placeholder }: ImageU
       return;
     }
 
-    // For new products, we'll just show a preview and let the form handle the upload
-    // For existing products, we would need the productId to upload properly
-    // For now, we'll just show a preview and let the user upload later
+    // Create a preview using FileReader
     const reader = new FileReader();
     reader.onload = (e) => {
       if (e.target?.result) {
         setPreviewUrl(e.target.result as string);
-        // Don't call onChange here as we're not actually uploading yet
-        toast.info('Image selected. Will upload when saving the product.');
       }
     };
     reader.readAsDataURL(file);
+
+    // Store the file for later upload
+    if (onFileSelect) {
+      onFileSelect(file);
+      toast.success(`${entityType === 'subcategory' ? 'Subcategory' : entityType === 'category' ? 'Category' : 'Product'} image selected. Will upload when saving.`);
+    } else {
+      toast.info('Image selected. Will upload when saving.');
+    }
+    
     setUploading(false);
   };
 
@@ -66,6 +79,9 @@ export function ImageUploadField({ label, value, onChange, placeholder }: ImageU
     setPreviewUrl(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
+    }
+    if (onFileSelect) {
+      onFileSelect(null);
     }
   };
 

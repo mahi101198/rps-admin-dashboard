@@ -2,9 +2,16 @@
 
 import { useRouter } from 'next/navigation';
 import { ProductsTable } from './products-table';
-import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
+import { Product, ProductWithDetails, Category, SubCategory } from '@/lib/types/all-schemas';
 
-export function ProductsTableWrapper({ data, onEditProduct }: { data: Product[]; onEditProduct?: (product: ProductWithDetails) => void }) {
+interface ProductsTableWrapperProps {
+  data: Product[];
+  categories: Category[];
+  subCategories: SubCategory[];
+  onEditProduct?: (product: ProductWithDetails) => void;
+}
+
+export function ProductsTableWrapper({ data, categories, subCategories, onEditProduct }: ProductsTableWrapperProps) {
   const router = useRouter();
 
   const handleDataChange = () => {
@@ -13,6 +20,12 @@ export function ProductsTableWrapper({ data, onEditProduct }: { data: Product[];
   };
 
   return (
-    <ProductsTable data={data} onEditProduct={onEditProduct} onDataChange={handleDataChange} />
+    <ProductsTable 
+      data={data} 
+      categories={categories}
+      subCategories={subCategories}
+      onEditProduct={onEditProduct} 
+      onDataChange={handleDataChange} 
+    />
   );
 }

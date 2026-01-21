@@ -16,6 +16,7 @@ type BannerClient = {
   linkTo: string;
   rank: number;
   isActive: boolean;
+  view_change_time?: number; // Optional for backward compatibility
 };
 
 interface BannerActionsProps {

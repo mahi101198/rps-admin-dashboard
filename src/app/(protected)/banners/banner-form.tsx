@@ -24,6 +24,7 @@ export function BannerForm({ isOpen, onClose, banner, onSuccess }: BannerFormPro
     linkTo: banner?.linkTo || '',
     rank: banner?.rank || 1,
     isActive: banner?.isActive ?? true,
+    view_change_time: banner?.view_change_time || 5, // Default 5 seconds
   });
   
   const bannerImageUploadRef = useRef<any>(null);
@@ -46,6 +47,7 @@ export function BannerForm({ isOpen, onClose, banner, onSuccess }: BannerFormPro
           linkTo: formData.linkTo,
           rank: formData.rank,
           isActive: formData.isActive,
+          view_change_time: formData.view_change_time,
         };
         
         const result = await createBannerAction(createData);
@@ -91,6 +93,7 @@ export function BannerForm({ isOpen, onClose, banner, onSuccess }: BannerFormPro
         linkTo: formData.linkTo,
         rank: formData.rank,
         isActive: formData.isActive,
+        view_change_time: formData.view_change_time,
       };
 
       let result;
@@ -167,6 +170,23 @@ export function BannerForm({ isOpen, onClose, banner, onSuccess }: BannerFormPro
             onChange={(e) => setFormData(prev => ({ ...prev, rank: parseInt(e.target.value) || 1 }))}
             required
           />
+        </div>
+
+        <div>
+          <Label htmlFor="view_change_time">View Change Time (seconds) *</Label>
+          <Input
+            id="view_change_time"
+            type="number"
+            min="1"
+            max="60"
+            value={formData.view_change_time}
+            onChange={(e) => setFormData(prev => ({ ...prev, view_change_time: parseInt(e.target.value) || 5 }))}
+            placeholder="5"
+            required
+          />
+          <p className="text-sm text-muted-foreground mt-1">
+            Time in seconds to display this banner before changing to the next one
+          </p>
         </div>
 
         <div className="flex items-center space-x-2">

@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Modal } from '@/components/ui/modal';
 import { Category, SubCategory } from '@/lib/types/all-schemas';
-import { createSubCategoryAction, updateSubCategoryAction } from '@/actions/category-actions';
+import { createSubCategoryAction, updateSubCategoryAction, uploadSubCategoryImageAction } from '@/actions/category-actions';
 import { toast } from 'sonner';
 import { Loader2, FolderIcon } from 'lucide-react';
 import { ImageUploadField } from '@/components/form/image-upload-field';
@@ -25,9 +25,11 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
   const [formData, setFormData] = useState({
     name: '',
     categoryId: '',
+    image: '',
     rank: 0,
     isActive: true
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -35,16 +37,20 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
         setFormData({
           name: subcategory.name,
           categoryId: subcategory.categoryId,
+          image: subcategory.image || '',
           rank: subcategory.rank,
           isActive: subcategory.isActive
         });
+        setImageFile(null);
       } else {
         setFormData({
           name: '',
           categoryId: '',
+          image: '',
           rank: 0,
           isActive: true
         });
+        setImageFile(null);
       }
     }
   }, [subcategory, isOpen]);
@@ -60,10 +66,36 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
 
     try {
       let result;
+      let subcategoryId = subcategory?.id;
+
       if (subcategory) {
+        // Edit mode - if there's a new image file, upload it first
+        if (imageFile) {
+          const uploadResult = await uploadSubCategoryImageAction(imageFile, subcategory.id);
+          if (uploadResult.success && uploadResult.imageUrl) {
+            formData.image = uploadResult.imageUrl;
+          } else {
+            toast.error(uploadResult.message);
+            setLoading(false);
+            return;
+          }
+        }
         result = await updateSubCategoryAction(subcategory.id, formData);
       } else {
+        // Create mode - create subcategory first, then upload image if exists
         result = await createSubCategoryAction(formData);
+        
+        if (result.success && result.subCategoryId && imageFile) {
+          subcategoryId = result.subCategoryId;
+          const uploadResult = await uploadSubCategoryImageAction(imageFile, subcategoryId);
+          
+          if (uploadResult.success && uploadResult.imageUrl) {
+            // Update subcategory with the uploaded image URL
+            await updateSubCategoryAction(subcategoryId, { image: uploadResult.imageUrl });
+          } else {
+            toast.warning('Subcategory created but image upload failed');
+          }
+        }
       }
 
       if (result.success) {
@@ -103,6 +135,7 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
         <div>
           <Label htmlFor="categoryId">Parent Category *</Label>
           <Select
+            key={`category-${formData.categoryId}-${isOpen}`}
             value={formData.categoryId}
             onValueChange={(value) => setFormData(prev => ({ ...prev, categoryId: value }))}
           >
@@ -117,6 +150,17 @@ export function SubCategoryForm({ isOpen, onClose, subcategory, onSuccess, categ
               ))}
             </SelectContent>
           </Select>
+        </div>
+
+        <div>
+          <Label htmlFor="image">Subcategory Image</Label>
+          <ImageUploadField
+            label="Subcategory Image"
+            value={formData.image}
+            onChange={(url) => setFormData(prev => ({ ...prev, image: url }))}
+            onFileSelect={(file) => setImageFile(file)}
+            entityType="subcategory"
+          />
         </div>
 
         <div>
