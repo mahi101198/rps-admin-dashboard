@@ -260,6 +260,47 @@ export const deleteProductAction = withAuth(async (
 ): Promise<{ success: boolean; message: string }> => {
   try {
     const db = getFirestore();
+    const bucket = getStorageBucket();
+
+    // Get product data to retrieve image URLs before deletion
+    const productDoc = await db.collection('products').doc(productId).get();
+    const productDetailsDoc = await db.collection('product_details').doc(productId).get();
+    
+    // Collect all image URLs to delete
+    const imageUrlsToDelete: string[] = [];
+    
+    if (productDoc.exists) {
+      const productData = productDoc.data();
+      if (productData?.image) {
+        imageUrlsToDelete.push(productData.image);
+      }
+    }
+    
+    if (productDetailsDoc.exists) {
+      const detailsData = productDetailsDoc.data();
+      if (detailsData?.images && Array.isArray(detailsData.images)) {
+        imageUrlsToDelete.push(...detailsData.images);
+      }
+    }
+
+    // Delete images from Firebase Storage
+    if (bucket && imageUrlsToDelete.length > 0) {
+      for (const imageUrl of imageUrlsToDelete) {
+        try {
+          // Extract file path from URL
+          // URL format: https://storage.googleapis.com/bucket-name/products/filename
+          const urlParts = imageUrl.split('/');
+          const fileName = urlParts.pop(); // Get filename
+          if (fileName) {
+            await bucket.file(`products/${fileName}`).delete();
+            console.log(`Deleted image: products/${fileName}`);
+          }
+        } catch (error) {
+          console.warn('Failed to delete image from storage:', imageUrl, error);
+          // Continue with other deletions even if one fails
+        }
+      }
+    }
 
     // Delete main product document
     await db.collection('products').doc(productId).delete();

@@ -725,9 +725,10 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(
         miniInfo: [],
         tags: [],
         colors: [],
-        shippingInfo: '',
-        returnTitle: '',
-        returnDescription: '',
+        shippingInfo: DEFAULT_SHIPPING_INFO,
+        shippingInfoTitle: DEFAULT_SHIPPING_INFO_TITLE,
+        returnTitle: DEFAULT_RETURN_POLICY_TITLE,
+        returnDescription: DEFAULT_RETURN_POLICY_DESCRIPTION,
         maxQuantityPerUser: 10,
       });
       

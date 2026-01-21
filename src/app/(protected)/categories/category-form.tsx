@@ -12,7 +12,7 @@ import { Switch } from '@/components/ui/switch';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
-import { createCategoryAction, updateCategoryAction } from '@/actions/category-actions';
+import { createCategoryAction, updateCategoryAction, uploadCategoryImageAction } from '@/actions/category-actions';
 import { ImageUploadField } from '@/components/form/image-upload-field';
 
 const formSchema = z.object({
@@ -31,6 +31,7 @@ interface CategoryFormProps {
 
 export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryFormProps) {
   const [loading, setLoading] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,6 +51,7 @@ export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryF
         rank: category.rank || 0,
         isActive: category.isActive,
       });
+      setImageFile(null);
     } else {
       form.reset({
         name: '',
@@ -57,6 +59,7 @@ export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryF
         rank: 0,
         isActive: true,
       });
+      setImageFile(null);
     }
   }, [category, form, isOpen]);
 
@@ -64,10 +67,36 @@ export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryF
     setLoading(true);
     try {
       let result;
+      let categoryId = category?.id;
+
       if (category) {
+        // Edit mode - if there's a new image file, upload it first
+        if (imageFile) {
+          const uploadResult = await uploadCategoryImageAction(imageFile, category.id);
+          if (uploadResult.success && uploadResult.imageUrl) {
+            values.image = uploadResult.imageUrl;
+          } else {
+            toast.error(uploadResult.message);
+            setLoading(false);
+            return;
+          }
+        }
         result = await updateCategoryAction(category.id, values);
       } else {
+        // Create mode - create category first, then upload image if exists
         result = await createCategoryAction(values);
+        
+        if (result.success && result.categoryId && imageFile) {
+          categoryId = result.categoryId;
+          const uploadResult = await uploadCategoryImageAction(imageFile, categoryId);
+          
+          if (uploadResult.success && uploadResult.imageUrl) {
+            // Update category with the uploaded image URL
+            await updateCategoryAction(categoryId, { image: uploadResult.imageUrl });
+          } else {
+            toast.warning('Category created but image upload failed');
+          }
+        }
       }
 
       if (result.success) {
@@ -121,6 +150,8 @@ export function CategoryForm({ isOpen, onClose, category, onSuccess }: CategoryF
                       value={field.value}
                       onChange={field.onChange}
                       placeholder="https://example.com/image.png"
+                      onFileSelect={(file) => setImageFile(file)}
+                      entityType="category"
                     />
                   </FormControl>
                   <FormMessage />

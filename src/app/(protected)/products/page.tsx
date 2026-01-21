@@ -2,13 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { getProductsAction } from '@/actions/product-actions';
+import { getCategoriesAction, getSubCategoriesAction } from '@/actions/category-actions';
 import { ProductsTableWrapper } from './products-table-wrapper'; // Updated import
 import { ProductForm, ProductFormRef } from './product-form';
-import { Product, ProductWithDetails } from '@/lib/types/all-schemas';
+import { Product, ProductWithDetails, Category, SubCategory } from '@/lib/types/all-schemas';
 import { toast } from 'sonner';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductWithDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const productFormRef = useRef<ProductFormRef>(null);
@@ -16,8 +19,14 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const fetchedProducts = await getProductsAction();
+        const [fetchedProducts, fetchedCategories, fetchedSubCategories] = await Promise.all([
+          getProductsAction(),
+          getCategoriesAction(),
+          getSubCategoriesAction()
+        ]);
         setProducts(fetchedProducts);
+        setCategories(fetchedCategories);
+        setSubCategories(fetchedSubCategories);
         setLoading(false);
       } catch (error) {
         toast.error('Failed to load products');
@@ -48,8 +57,14 @@ export default function ProductsPage() {
     // Re-fetch the products data
     const fetchProducts = async () => {
       try {
-        const fetchedProducts = await getProductsAction();
+        const [fetchedProducts, fetchedCategories, fetchedSubCategories] = await Promise.all([
+          getProductsAction(),
+          getCategoriesAction(),
+          getSubCategoriesAction()
+        ]);
         setProducts(fetchedProducts);
+        setCategories(fetchedCategories);
+        setSubCategories(fetchedSubCategories);
       } catch (error) {
         toast.error('Failed to refresh products');
       }
@@ -69,7 +84,12 @@ export default function ProductsPage() {
         <ProductForm mode="create" onDataChange={handleDataChange} /> {/* Pass onDataChange prop */}
       </div>
       
-      <ProductsTableWrapper data={products} onEditProduct={handleEditProduct} /> {/* Pass onEditProduct prop */}
+      <ProductsTableWrapper 
+        data={products} 
+        categories={categories}
+        subCategories={subCategories}
+        onEditProduct={handleEditProduct} 
+      /> {/* Pass categories and subcategories */}
       
       {/* Edit Product Form */}
       {selectedProduct && (

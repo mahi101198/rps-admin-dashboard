@@ -1,6 +1,6 @@
 'use server';
 
-import { getFirestore } from '@/data/firebase.admin';
+import { getFirestore, getStorageBucket } from '@/data/firebase.admin';
 import { revalidatePath } from 'next/cache';
 import { Category, SubCategory } from '@/lib/types/all-schemas';
 import { withAuth, verifyAuth, AuthError } from '@/lib/auth';
@@ -254,5 +254,71 @@ export async function deleteSubCategoryAction(
   } catch (error) {
     console.error('Error deleting subcategory:', error);
     return { success: false, message: 'Failed to delete subcategory' };
+  }
+}
+
+// Upload category image
+export async function uploadCategoryImageAction(
+  file: File,
+  categoryId: string
+): Promise<{ success: boolean; message: string; imageUrl?: string }> {
+  try {
+    await verifyAuth();
+    
+    const bucket = getStorageBucket();
+    if (!bucket) {
+      return { success: false, message: 'Storage not configured' };
+    }
+
+    const fileName = `categories/${categoryId}_${Date.now()}.${file.name.split('.').pop()}`;
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
+    
+    const fileUpload = bucket.file(fileName);
+    await fileUpload.save(fileBuffer, {
+      metadata: {
+        contentType: file.type,
+      },
+    });
+
+    const imageUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
+    
+    revalidatePath('/categories');
+    return { success: true, message: 'Category image uploaded successfully', imageUrl };
+  } catch (error) {
+    console.error('Error uploading category image:', error);
+    return { success: false, message: 'Failed to upload category image' };
+  }
+}
+
+// Upload subcategory image
+export async function uploadSubCategoryImageAction(
+  file: File,
+  subcategoryId: string
+): Promise<{ success: boolean; message: string; imageUrl?: string }> {
+  try {
+    await verifyAuth();
+    
+    const bucket = getStorageBucket();
+    if (!bucket) {
+      return { success: false, message: 'Storage not configured' };
+    }
+
+    const fileName = `subcategories/${subcategoryId}_${Date.now()}.${file.name.split('.').pop()}`;
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
+    
+    const fileUpload = bucket.file(fileName);
+    await fileUpload.save(fileBuffer, {
+      metadata: {
+        contentType: file.type,
+      },
+    });
+
+    const imageUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
+    
+    revalidatePath('/categories');
+    return { success: true, message: 'Subcategory image uploaded successfully', imageUrl };
+  } catch (error) {
+    console.error('Error uploading subcategory image:', error);
+    return { success: false, message: 'Failed to upload subcategory image' };
   }
 }
