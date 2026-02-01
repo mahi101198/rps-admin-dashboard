@@ -20,8 +20,10 @@ import {
   Heart, 
   BarChart3, 
   Gift,
-  Home,
-  Smartphone
+  LayoutGrid,
+  Smartphone,
+  Database,
+  Image
 } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/sidebar';
 
@@ -39,14 +41,19 @@ const data = {
       icon: Store,
     },
     {
-      title: 'Products',
+      title: 'Products (SKU-wise)',
       url: '/products',
       icon: Package,
     },
     {
+      title: 'SKU Master Data',
+      url: '/product-data-ingestion',
+      icon: Database,
+    },
+    {
       title: 'Home Sections',
       url: '/home-sections',
-      icon: Home,
+      icon: LayoutGrid,
     },
     {
       title: 'Categories',
@@ -107,6 +114,11 @@ const data = {
       title: 'Play Store',
       url: '/playstore',
       icon: Smartphone,
+    },
+    {
+      title: 'Media Manager',
+      url: '/media',
+      icon: Image,
     },
   ],
 };

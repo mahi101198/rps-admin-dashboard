@@ -1,0 +1,1260 @@
+[
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "punching-machine-kangaro",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Kangaro",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1577720643272-265a88e54aed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW5jaCBtYWNoaW5lIHR3byBob2xlIGRvY3VtZW50fGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Kangaro Punching Machine - 2 Hole"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Kangaro Punching Machine - 2 Hole",
+        "url": "https://images.unsplash.com/photo-1577720643272-265a88e54aed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW5jaCBtYWNoaW5lIHR3byBob2xlIGRvY3VtZW50fGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Office Equipment & Supplies",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Precision 2-hole punch capability",
+          "Heavy-duty metal body for reliable operation",
+          "Punches up to 20 sheets in one action",
+          "Standard hole spacing for universal binding",
+          "Smooth lever action with consistent results",
+          "Professional office and institutional grade"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Kangaro",
+          "Holes": "2-hole punch capability",
+          "Material": "Heavy-duty metal construction",
+          "Type": "Desktop 2-hole punch machine",
+          "Capacity": "Up to 20 sheets per punch",
+          "Features": "Smooth lever, non-slip base",
+          "Country of Origin": "India",
+          "Hole Spacing": "Standard universal spacing"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional Kangaro 2-hole punch machine for precise document preparation. Heavy-duty metal construction punches up to 20 sheets with consistent hole spacing for standard ring binding. Perfect for offices, schools, and file preparation. Smooth lever action with reliable performance."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 83,
+        "sku_id": "punching-machine-kangaro-2hole",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "2-hole punch machine",
+          "pack": "Single unit",
+          "color": "Black",
+          "size": "Standard size"
+        },
+        "mrp": 93
+      }
+    ],
+    "subtitle": "Two-hole punch · Metal body · Heavy-duty",
+    "rating": {
+      "average": 4.5,
+      "count": 1123
+    },
+    "title": "Kangaro Punching Machine - 2 Hole",
+    "id": "punching-machine-kangaro"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "register-172-pages",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate Register - 172 Pages"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate Register - 172 Pages",
+        "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Professional hardbound register",
+          "Durable hardcover protection",
+          "172 quality pages",
+          "A4 format",
+          "Excellent for record-keeping",
+          "Long-lasting durability"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Cover": "Hardcover",
+          "Brand": "Classmate",
+          "Binding": "Hardbound",
+          "Type": "Register / Hardbound notebook",
+          "Pages": "172",
+          "Size": "A4 (210 x 297 mm)",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional hardbound register with 172 pages. Durable hardcover protection makes it ideal for record-keeping and formal documentation in offices and institutions."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 125,
+        "sku_id": "register-172-pages-hb",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "172 sheets",
+          "cover_type": "Hardcover",
+          "binding": "Hardbound",
+          "size": "A4"
+        },
+        "mrp": 180
+      }
+    ],
+    "subtitle": "A4 size · Hardbound · Professional",
+    "rating": {
+      "average": 4.5,
+      "count": 987
+    },
+    "title": "Classmate Register - 172 Pages",
+    "id": "register-172-pages"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "scale-infinity-small",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Infinity",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFzdGljJTIwcnVsZXIlMjBzY2FsZSUyMGluY2hlc3xlbnwxfHx8fDE3Njk4MzkyMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Infinity Small Scale - 4.8 inches"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Infinity Small Scale - 4.8 inches",
+        "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFzdGljJTIwcnVsZXIlMjBzY2FsZSUyMGluY2hlc3xlbnwxfHx8fDE3Njk4MzkyMjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Geometry & Scales",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Compact 4.8-inch size",
+          "Transparent plastic construction",
+          "Fits easily in pencil boxes",
+          "Lightweight and portable",
+          "Perfect for students and travelers",
+          "Affordable essential ruler"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Infinity",
+          "Material": "Clear plastic",
+          "Type": "Compact transparent ruler",
+          "Portability": "Fits in pencil boxes and bags",
+          "Country of Origin": "India",
+          "Measurements": "Both metric and basic markings",
+          "Length": "4.8 inches / 12 cm",
+          "Color": "Transparent"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Compact and portable 4.8-inch scale from Infinity. Made of transparent plastic with clear markings. Perfect for pocket bags, pencil cases, and on-the-go measurements. Ideal for students, artists, and professionals who need a portable measuring tool."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 8,
+        "sku_id": "scale-infinity-small-4pt8in",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Compact ruler",
+          "pack": "Single",
+          "color": "Transparent",
+          "size": "4.8 inches / 12 cm"
+        },
+        "mrp": 15
+      }
+    ],
+    "subtitle": "Compact size · Portable · Student essential",
+    "rating": {
+      "average": 4.2,
+      "count": 756
+    },
+    "title": "Infinity Small Scale - 4.8 inches",
+    "id": "scale-infinity-small"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "scale-metal-12inch",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMHJ1bGVyJTIwc2NhbGUlMjBtZWFzdXJpbmd8ZW58MXx8fHwxNzY5ODM5MjIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Metal Scale - 12 inches"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Metal Scale - 12 inches",
+        "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMHJ1bGVyJTIwc2NhbGUlMjBtZWFzdXJpbmd8ZW58MXx8fHwxNzY5ODM5MjIxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Geometry & Scales",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Durable stainless steel construction",
+          "Precisely etched markings",
+          "Professional-grade quality",
+          "Long-lasting durability",
+          "Perfect for technical drawings",
+          "Ideal for offices and professionals"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Material": "Stainless steel",
+          "Type": "Professional grade ruler",
+          "Markings": "Precisely etched metric & imperial",
+          "Surface": "Smooth polished",
+          "Country of Origin": "India",
+          "Applications": "Technical drawings, engineering, drafting",
+          "Length": "12 inches / 30 cm",
+          "Color": "Silver/Metallic"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional-grade metal ruler constructed from high-quality stainless steel with precisely etched markings. Ideal for technical drawings, engineering work, and professional use. Smooth polished surface ensures accurate measurements. Long-lasting and durable for years of reliable service."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 45,
+        "sku_id": "scale-metal-12in-stainless",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Metal ruler",
+          "pack": "Single",
+          "color": "Silver / Metallic",
+          "size": "12 inches / 30 cm"
+        },
+        "mrp": 70
+      }
+    ],
+    "subtitle": "Stainless steel · Precise markings · Professional grade",
+    "rating": {
+      "average": 4.6,
+      "count": 987
+    },
+    "title": "Metal Scale - 12 inches",
+    "id": "scale-metal-12inch"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "scale-plastic-domes",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFzdGljJTIwcnVsZXIlMjBzY2FsZSUyMGluY2hlc3xlbnwxfHx8fDE3Njk4MzkyMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Plastic Scale - 12 inches"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Plastic Scale - 12 inches",
+        "url": "https://images.unsplash.com/photo-1685038408124-e20ecac92293?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFzdGljJTIwcnVsZXIlMjBzY2FsZSUyMGluY2hlc3xlbnwxfHx8fDE3Njk4MzkyMjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Geometry & Scales",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "12-inch standard size",
+          "Clear transparent plastic",
+          "Metric and imperial markings",
+          "Crisp, easy-to-read measurements",
+          "Durable construction",
+          "Affordable student essential"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Domes",
+          "Material": "Clear plastic",
+          "Type": "Transparent ruler",
+          "Markings": "Clear etched graduations",
+          "Country of Origin": "India",
+          "Measurements": "Both metric (cm) and imperial (inches)",
+          "Length": "12 inches / 30 cm",
+          "Color": "Clear/Transparent"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Standard 12-inch transparent plastic ruler from Domes. Features both metric and imperial measurements with clear markings. Essential for students, offices, and creative projects."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 15,
+        "sku_id": "scale-plastic-domes-12in",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Plastic ruler",
+          "pack": "Single",
+          "color": "Transparent",
+          "size": "12 inches / 30 cm"
+        },
+        "mrp": 25
+      }
+    ],
+    "subtitle": "12 inches · Transparent · Metric & imperial",
+    "rating": {
+      "average": 4.4,
+      "count": 1234
+    },
+    "title": "Domes Plastic Scale - 12 inches",
+    "id": "scale-plastic-domes"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "scotch-tape-3m",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "3M",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgdHJhbnNwYXJlbnQlMjBzY290Y2h8ZW58MXx8fHwxNzY5ODM5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "3M Scotch Tape - 1 inch"
+        }
+      ],
+      "main_image": {
+        "alt_text": "3M Scotch Tape - 1 inch",
+        "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgdHJhbnNwYXJlbnQlMjBzY290Y2h8ZW58MXx8fHwxNzY5ODM5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Premium 3M Scotch brand quality",
+          "Crystal clear transparent tape",
+          "33 meter roll with extended coverage",
+          "Strong permanent adhesive",
+          "Smooth easy-glide application",
+          "Perfect for office, school, and home use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "3M",
+          "Material": "Clear cellophane with strong adhesive",
+          "Type": "Clear Scotch tape roll",
+          "Features": "Permanent adhesive, easy unwind, smooth glide",
+          "Country of Origin": "USA",
+          "Length": "33 meters",
+          "Width": "1 inch (25mm)",
+          "Transparency": "Crystal clear invisible finish"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium 3M Scotch transparent tape for reliable sealing and wrapping. Crystal-clear finish makes tape invisible once applied. 33-meter roll provides excellent value for frequent use. Strong permanent adhesive holds securely on paper, cardboard, and plastic. Ideal for wrapping gifts, sealing envelopes, repairs, and general office use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 125,
+        "sku_id": "scotch-tape-3m-33m",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Scotch transparent tape",
+          "pack": "33 meter roll",
+          "color": "Clear",
+          "size": "25mm width"
+        },
+        "mrp": 130
+      }
+    ],
+    "subtitle": "Premium quality · Clear · 33 meter roll",
+    "rating": {
+      "average": 4.8,
+      "count": 2876
+    },
+    "title": "3M Scotch Tape - 1 inch",
+    "id": "scotch-tape-3m"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "stapler-domes",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Office Stapler"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Office Stapler",
+        "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Office Equipment & Supplies",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Heavy-duty metal body construction",
+          "Staples up to 20 sheets in one go",
+          "Standard No. 10 staple size compatibility",
+          "Reliable and consistent performance",
+          "Comfortable grip for daily use",
+          "Trusted Domes brand quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Domes",
+          "Material": "Durable metal body with plastic grip",
+          "Type": "Desktop office stapler",
+          "Staple Size": "Standard No. 10",
+          "Capacity": "Up to 20 sheets per staple",
+          "Features": "Reliable jam-free mechanism, non-slip base",
+          "Country of Origin": "India",
+          "Color": "Black"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Domes office stapler with heavy-duty metal construction for reliable document binding. Capable of stapling up to 20 sheets at once using standard No. 10 staples. Perfect for offices, schools, and organizations. Consistent performance with jam-free mechanism. Comfortable grip design for extended use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "stapler-domes-standard",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Desktop stapler",
+          "pack": "Single unit",
+          "color": "Black",
+          "size": "Standard size"
+        },
+        "mrp": 145
+      }
+    ],
+    "subtitle": "Standard size · Metal body · Reliable",
+    "rating": {
+      "average": 4.4,
+      "count": 765
+    },
+    "title": "Domes Office Stapler",
+    "id": "stapler-domes"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "stapler-kangaro",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Kangaro",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Kangaro Standard Stapler"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Kangaro Standard Stapler",
+        "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Office Equipment & Supplies",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Premium Kangaro brand trust and quality",
+          "Ergonomic design for comfortable use",
+          "Staples up to 25 sheets per use",
+          "Heavy-duty construction for professional use",
+          "Smooth jam-free operation",
+          "Perfect for offices and busy workplaces"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Kangaro",
+          "Material": "High-grade metal body with ergonomic grip",
+          "Type": "Professional desktop stapler",
+          "Staple Size": "Standard No. 10",
+          "Capacity": "Up to 25 sheets per staple",
+          "Features": "Smooth operation, jam-free mechanism, non-slip base",
+          "Country of Origin": "India",
+          "Color": "Black"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional Kangaro stapler with premium construction and ergonomic design. Heavy-duty high-grade metal body handles up to 25 sheets per use with smooth, jam-free operation. Trusted brand for offices, schools, and institutions. Comfortable grip for extended use and superior reliability."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 125,
+        "sku_id": "stapler-kangaro-standard",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Professional desktop stapler",
+          "pack": "Single unit",
+          "color": "Black",
+          "size": "Standard size"
+        },
+        "mrp": 185
+      }
+    ],
+    "subtitle": "Professional quality · Ergonomic · Durable",
+    "rating": {
+      "average": 4.6,
+      "count": 1234
+    },
+    "title": "Kangaro Standard Stapler",
+    "id": "stapler-kangaro"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "stapler-kangaro-hd10d",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Kangaro",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Kangaro HD10D Heavy Duty Stapler"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Kangaro HD10D Heavy Duty Stapler",
+        "url": "https://images.unsplash.com/photo-1765407418531-06a22ef8d2ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBzdGFwbGVyJTIwbWV0YWx8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Office Equipment & Supplies",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Heavy-duty model HD10D for professional use",
+          "Staples up to 30 sheets in one go",
+          "Premium metal construction with ergonomic design",
+          "Consistent jam-free performance",
+          "Perfect for high-volume office and industrial use",
+          "Trusted Kangaro premium brand quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Kangaro",
+          "Material": "Premium heavy-gauge metal with grip",
+          "Type": "Heavy-duty professional stapler",
+          "Staple Size": "Standard No. 10",
+          "Capacity": "Up to 30 sheets per staple",
+          "Features": "Jam-free, non-slip base, smooth operation",
+          "Country of Origin": "India",
+          "Model": "HD10D"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Kangaro HD10D professional-grade heavy-duty stapler. Superior capacity to staple up to 30 sheets with consistency and reliability. Premium metal construction engineered for demanding office and industrial environments. Jam-free mechanism ensures smooth daily operation. Perfect for high-volume document binding in offices, schools, and institutions."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 275,
+        "sku_id": "stapler-kangaro-hd10d-standard",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Heavy-duty desktop stapler",
+          "pack": "Single unit",
+          "color": "Black",
+          "size": "Standard size"
+        },
+        "mrp": 395
+      }
+    ],
+    "subtitle": "Heavy-duty · 30 sheets · Professional grade",
+    "rating": {
+      "average": 4.7,
+      "count": 1876
+    },
+    "title": "Kangaro HD10D Heavy Duty Stapler",
+    "id": "stapler-kangaro-hd10d"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "sticky-notepad",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Dochaan",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1762318897823-f7bc4df5b1e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGlja3klMjBub3RlcyUyMHBhZCUyMHllbGxvd3xlbnwxfHx8fDE3Njk4MzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Dochaan Sticky Notepad - 3x3"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Dochaan Sticky Notepad - 3x3",
+        "url": "https://images.unsplash.com/photo-1762318897823-f7bc4df5b1e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGlja3klMjBub3RlcyUyMHBhZCUyMHllbGxvd3xlbnwxfHx8fDE3Njk4MzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Self-adhesive repositionable notes",
+          "3x3 inch ideal size",
+          "100 sheets per pad",
+          "Bright yellow for visibility",
+          "Removable without residue",
+          "Perfect for reminders and quick notes"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Dochaan",
+          "Sheets": "100 per pad",
+          "Type": "Sticky notepad",
+          "Size": "3x3 inches (76 x 76 mm)",
+          "Adhesive": "Repositionable (removable)",
+          "Color": "Bright yellow",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Convenient sticky notepad with strong repositionable adhesive backing. The 3x3 inch size is perfect for reminders, to-do lists, and quick notes in offices, homes, and classrooms. Easy to peel off without leaving residue."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "sticky-notepad-3x3-yellow",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Repositionable adhesive",
+          "pack": "Single pad",
+          "color": "Yellow",
+          "size": "3x3 inches (76 x 76 mm)"
+        },
+        "mrp": 85
+      }
+    ],
+    "subtitle": "Self-adhesive · 100 sheets · Yellow pad",
+    "rating": {
+      "average": 4.6,
+      "count": 1234
+    },
+    "title": "Dochaan Sticky Notepad - 3x3",
+    "id": "sticky-notepad"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "whiteboard-marker-addgel",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Add Gel",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1662304514018-8fd19cd4fc1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZWJvYXJkJTIwbWFya2VyJTIwYmxhY2t8ZW58MXx8fHwxNzY5ODM5MjIyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Add Gel Whiteboard Marker"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Add Gel Whiteboard Marker",
+        "url": "https://images.unsplash.com/photo-1662304514018-8fd19cd4fc1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZWJvYXJkJTIwbWFya2VyJTIwYmxhY2t8ZW58MXx8fHwxNzY5ODM5MjIyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Dry-erase formula for easy wiping",
+          "Bold black ink for clear visibility",
+          "Chisel tip for varied writing styles",
+          "Perfect for presentations and planning",
+          "Long-lasting and fade-resistant",
+          "Professional Add Gel quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Add Gel",
+          "Type": "Whiteboard marker - dry-erase",
+          "Pack Contents": "1 marker",
+          "Tip Type": "Chisel/Bullet for varied lines",
+          "Country of Origin": "India",
+          "Applications": "Whiteboards, glass surfaces, laminated sheets",
+          "Features": "Easy to erase, non-permanent, fast-drying",
+          "Color": "Black ink"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Add Gel whiteboard marker with dry-erase formula for easy cleaning. Bold black ink provides excellent visibility for presentations, meetings, and classroom use. Chisel tip allows for varied line widths. Wipes off cleanly from whiteboards, glass, and laminated surfaces without leaving residue."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 23,
+        "sku_id": "whiteboard-marker-addgel-single",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Dry-erase whiteboard marker",
+          "pack": "Single marker",
+          "color": "Black",
+          "size": "Chisel/Bullet tip"
+        },
+        "mrp": 25
+      }
+    ],
+    "subtitle": "Black ink · Erasable · Dry-erase",
+    "rating": {
+      "average": 4.5,
+      "count": 987
+    },
+    "title": "Add Gel Whiteboard Marker",
+    "id": "whiteboard-marker-addgel"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "writing-book-spiral-67",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Neelgagan",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Neelgagan Writing Book - No 67"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Neelgagan Writing Book - No 67",
+        "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Wire spiral binding for durability",
+          "60 quality pages",
+          "Single line ruled",
+          "Perfect for daily notes",
+          "Student-friendly pricing",
+          "Durable construction"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Neelgagan",
+          "Ruling": "Single line",
+          "Binding": "Wire spiral",
+          "Type": "Spiral-bound writing book",
+          "Country of Origin": "India",
+          "Pages": "60 sheets",
+          "Size": "Regular (A4)",
+          "Model": "No 67"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Durable spiral-bound writing book from Neelgagan featuring 60 sheets of quality ruled paper. Perfect for students, professionals, and everyday note-taking with reliable wire spiral binding."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 75,
+        "sku_id": "writing-book-spiral-67-60pg",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "60 sheets",
+          "ruling": "Single line",
+          "binding": "Wire spiral",
+          "size": "Regular (A4)"
+        },
+        "mrp": 110
+      }
+    ],
+    "subtitle": "Spiral bound · 60 pages · Quality ruled paper",
+    "rating": {
+      "average": 4.3,
+      "count": 876
+    },
+    "title": "Neelgagan Writing Book - No 67",
+    "id": "writing-book-spiral-67"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "writing-pad-conference",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Neelgagan",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Conference Writing Pad - Professional"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Conference Writing Pad - Professional",
+        "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Professional blank paper design",
+          "Premium quality paper",
+          "Ideal for meeting notes",
+          "Compact A5 size",
+          "50 quality sheets",
+          "Perfect for executives and professionals"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Neelgagan",
+          "Ruling": "Blank (unruled)",
+          "Type": "Conference writing pad",
+          "Size": "A5 (148 x 210 mm)",
+          "Pages": "50 sheets",
+          "Paper Quality": "Premium white paper",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional-grade conference writing pad with 50 sheets of premium blank paper. Compact A5 size perfect for business meetings, seminars, and professional note-taking. Premium paper quality ensures smooth writing."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 110,
+        "sku_id": "writing-pad-conference-a5",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "50 sheets",
+          "ruling": "Blank",
+          "color": "White",
+          "size": "A5 (148 x 210 mm)"
+        },
+        "mrp": 160
+      }
+    ],
+    "subtitle": "A5 size · 50 sheets · Blank paper",
+    "rating": {
+      "average": 4.5,
+      "count": 654
+    },
+    "title": "Conference Writing Pad - Professional",
+    "id": "writing-pad-conference"
+  }
+]

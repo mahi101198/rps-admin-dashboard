@@ -1,0 +1,1357 @@
+[
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "highlighter-luxor",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Luxor",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdobGlnaHRlciUyMHBlbiUyMGNvbG9yZnVsfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Luxor Highlighter Pen - Pack of 5"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Luxor Highlighter Pen - Pack of 5",
+        "url": "https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdobGlnaHRlciUyMHBlbiUyMGNvbG9yZnVsfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 5 vibrant assorted colors",
+          "Chisel tip for flexible marking and underlining",
+          "Water-based ink with no bleed-through",
+          "Perfect for students and professionals",
+          "Long-lasting and fade-resistant colors",
+          "Trusted Luxor brand quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Luxor",
+          "Type": "Highlighter pen set",
+          "Pack Contents": "Pack of 5 assorted color highlighters",
+          "Features": "No bleed-through, fade-resistant, long-lasting",
+          "Country of Origin": "India",
+          "Colors": "Yellow, Pink, Blue, Orange, Green",
+          "Ink Type": "Water-based, non-toxic",
+          "Tip Type": "Chisel tip for precise highlighting"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Luxor highlighter pen set pack of 5 with vibrant assorted colors. Features flexible chisel tips that let you highlight or underline with precision. Water-based ink won't bleed through paper even with heavy use. Perfect for students studying, professionals annotating documents, and anyone needing reliable highlighting. Fade-resistant colors ensure your marks stay vibrant."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 125,
+        "sku_id": "highlighter-luxor-5pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Highlighter pen",
+          "pack": "Pack of 5",
+          "color": "Mix colors (Yellow, Pink, Blue, Orange, Green)",
+          "size": "Chisel tip"
+        },
+        "mrp": 180
+      }
+    ],
+    "subtitle": "Bright colors · Chisel tip · Mix colors",
+    "rating": {
+      "average": 4.6,
+      "count": 1287
+    },
+    "title": "Luxor Highlighter Pen - Pack of 5",
+    "id": "highlighter-luxor"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "long-copy-classmate",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate Long Copy - 172 Pages"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate Long Copy - 172 Pages",
+        "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "172 pages - Extra long notebook",
+          "Excellent value for money",
+          "Quality premium paper",
+          "Perfect for semester-long notes",
+          "Smooth writing experience",
+          "Durable stitched binding"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Classmate",
+          "Binding": "Stitched",
+          "Type": "Long copy / Single-line ruled",
+          "Pages": "172",
+          "Paper Quality": "Premium white",
+          "Size": "Regular (A4)",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Extra-long notebook with 172 pages providing exceptional value. Perfect for semester-long or year-long note-taking with consistent quality paper."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 65,
+        "sku_id": "long-copy-classmate-172",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "172 sheets",
+          "ruling": "Single line",
+          "binding": "Stitched",
+          "size": "Regular (A4)"
+        },
+        "mrp": 95
+      }
+    ],
+    "subtitle": "172 pages · Extra pages · Value pack",
+    "rating": {
+      "average": 4.6,
+      "count": 1789
+    },
+    "title": "Classmate Long Copy - 172 Pages",
+    "id": "long-copy-classmate"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "masking-tape",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgZ3JleSUyMG1hc2tpbmd8ZW58MXx8fHwxNzY5ODM5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Masking Tape - 2 inch"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Masking Tape - 2 inch",
+        "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgZ3JleSUyMG1hc2tpbmd8ZW58MXx8fHwxNzY5ODM5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "2 inch (24mm) width for versatile use",
+          "50 meter roll provides excellent value",
+          "Strong adhesive holds securely",
+          "Easy to tear by hand without tools",
+          "Paper-based with clean removal",
+          "Perfect for packing, bundling, and general use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Material": "Paper with pressure-sensitive adhesive",
+          "Type": "Masking tape roll",
+          "Features": "Hand-tearable, strong adhesion",
+          "Country of Origin": "India",
+          "Applications": "Packing, bundling, general purpose use",
+          "Length": "50 meters",
+          "Color": "Beige",
+          "Width": "2 inches (24mm)"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "General-purpose masking tape with 50-meter roll of strong adhesive paper tape. 24mm width suitable for various applications including packing, bundling, and sealing. Hand-tearable without needing scissors or tools. Strong adhesion ensures secure holding. Ideal for offices, warehouses, and domestic use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 65,
+        "sku_id": "masking-tape-50m",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Masking tape",
+          "pack": "50 meter roll",
+          "color": "Beige",
+          "size": "24mm width"
+        },
+        "mrp": 95
+      }
+    ],
+    "subtitle": "24mm width · 50 meter roll · Strong adhesive",
+    "rating": {
+      "average": 4.4,
+      "count": 1456
+    },
+    "title": "Masking Tape - 2 inch",
+    "id": "masking-tape"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "notebook-spiral-a4",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Spiral Notebook A4"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Spiral Notebook A4",
+        "url": "https://images.unsplash.com/photo-1630448925000-f014372affc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGlyYWwlMjBub3RlYm9vayUyMHJ1bGVkJTIwcGFnZXN8ZW58MXx8fHwxNzY5ODM5MjE4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "A4 size format",
+          "Spiral bound for easy page turning",
+          "100 quality sheets",
+          "Versatile multipurpose notebook",
+          "Durable wire spiral",
+          "Premium paper quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Ruling": "Single line",
+          "Binding": "Wire spiral",
+          "Type": "Spiral bound notebook",
+          "Size": "A4 (210 x 297 mm)",
+          "Pages": "100 sheets",
+          "Paper Quality": "Premium",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "A4 spiral notebook with quality paper ideal for notes, sketches, and everyday writing. Wire spiral binding allows easy page turning and lay-flat functionality."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "notebook-spiral-a4-100",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "100 sheets",
+          "ruling": "Ruled",
+          "binding": "Wire spiral",
+          "size": "A4"
+        },
+        "mrp": 140
+      }
+    ],
+    "subtitle": "Quality paper · Spiral bound · Multipurpose",
+    "rating": {
+      "average": 4.4,
+      "count": 1432
+    },
+    "title": "Spiral Notebook A4",
+    "id": "notebook-spiral-a4"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "packing-paper-brown",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1625415259768-f10363da46be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWNraW5nJTIwcGFwZXIlMjBicm93biUyMHdyYXBwaW5nfGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Brown Packing Paper"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Brown Packing Paper",
+        "url": "https://images.unsplash.com/photo-1625415259768-f10363da46be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWNraW5nJTIwcGFwZXIlMjBicm93biUyMHdyYXBwaW5nfGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "25 sheets per pack",
+          "Eco-friendly kraft paper",
+          "Versatile packing material",
+          "Multiple size options",
+          "Recyclable and sustainable",
+          "Perfect for shipping and storage"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Sustainability": "Eco-friendly & Recyclable",
+          "Material": "100% Kraft paper",
+          "Type": "Packing paper",
+          "Size": "Mixed sizes (A4 to A3)",
+          "Color": "Brown shades mix",
+          "Quantity": "25 sheets",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Bulk pack of eco-friendly brown kraft packing paper ideal for wrapping, shipping, and storage needs. Available in multiple size options. 100% recyclable and sustainable material."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 15,
+        "sku_id": "packing-paper-brown-default",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Kraft packing paper",
+          "pack": "25 sheets",
+          "color": "Brown Mix",
+          "size": "Mix sizes"
+        },
+        "mrp": 20
+      }
+    ],
+    "subtitle": "Pack of 25 · Mix sizes · Wrapping material",
+    "rating": {
+      "average": 4.2,
+      "count": 534
+    },
+    "title": "Brown Packing Paper",
+    "id": "packing-paper-brown"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "packing-tape-wonder",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Wonder",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgYnJvd24lMjBwYWNraW5nfGVufDF8fHx8MTc2OTgzOTIwOXww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Wonder Packing Tape - 2 inch"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Wonder Packing Tape - 2 inch",
+        "url": "https://images.unsplash.com/photo-1599481238028-39272270e719?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXBlIHJvbGwgYnJvd24lMjBwYWNraW5nfGVufDF8fHx8MTc2OTgzOTIwOXww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Brown kraft paper construction",
+          "2 inch (48mm) width for standard boxes",
+          "Extra-long 65 meter roll",
+          "Heavy-duty strong seal",
+          "Water-resistant adhesive",
+          "Perfect for shipping and storage"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Wonder",
+          "Material": "Brown kraft paper with strong adhesive",
+          "Type": "Heavy-duty packing tape",
+          "Strength": "Heavy-duty seal",
+          "Features": "Water-resistant, tear-resistant, secure hold",
+          "Country of Origin": "India",
+          "Length": "65 meters",
+          "Width": "2 inches (48mm)"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Wonder heavy-duty packing tape for securing packages and boxes. 65-meter roll of strong brown kraft paper tape with water-resistant adhesive. Perfect for shipping, storage, and warehouse use. Strong seal holds securely on cardboard boxes and cartons. Tear-resistant design ensures reliable performance."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "packing-tape-wonder-65m",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Packing tape",
+          "pack": "65 meter roll",
+          "color": "Brown kraft",
+          "size": "48mm width"
+        },
+        "mrp": 125
+      }
+    ],
+    "subtitle": "Brown kraft paper · 65 meter · Strong seal",
+    "rating": {
+      "average": 4.5,
+      "count": 1987
+    },
+    "title": "Wonder Packing Tape - 2 inch",
+    "id": "packing-tape-wonder"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "paint-brush-set-flat",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Magic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1760270049613-4b670a965673?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludCUyMGJydXNoZXMlMjBzZXQlMjBhcnR8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Magic Paint Brush Set - Flat 0.7G"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Magic Paint Brush Set - Flat 0.7G",
+        "url": "https://images.unsplash.com/photo-1760270049613-4b670a965673?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludCUyMGJydXNoZXMlMjBzZXQlMjBhcnR8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Art & Drawing",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "7 piece multi-size set",
+          "Flat tips for broad coverage",
+          "Premium quality bristles",
+          "Comfortable wooden handles",
+          "Suitable for all paint types",
+          "Professional grade quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Magic",
+          "Type": "Flat brush set for painting",
+          "Handle": "Comfortable wooden handles",
+          "Country of Origin": "India",
+          "Size": "0.7G multi-size (7 graduated sizes)",
+          "Suitable": "Acrylic, watercolor, oil paintings, poster color",
+          "Bristles": "Premium quality synthetic material",
+          "Quantity": "7 pieces"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional flat paint brush set from Magic containing 7 graduated brushes. Perfect for broad strokes and wide coverage in painting projects. Premium synthetic bristles with comfortable wooden handles. Ideal for watercolor, acrylic, oil, and poster color painting."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "paint-brush-set-flat-7pc",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Flat brush set",
+          "pack": "7 pieces",
+          "color": "Assorted",
+          "size": "0.7G multi-size"
+        },
+        "mrp": 120
+      }
+    ],
+    "subtitle": "7 pieces · Flat tip · Multi-size set",
+    "rating": {
+      "average": 4.6,
+      "count": 456
+    },
+    "title": "Magic Paint Brush Set - Flat 0.7G",
+    "id": "paint-brush-set-flat"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "paint-brush-set-pointed",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Magic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1760270049613-4b670a965673?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludCUyMGJydXNoZXMlMjBzZXQlMjBhcnR8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Magic Paint Brush Set - Pointed 0.7G"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Magic Paint Brush Set - Pointed 0.7G",
+        "url": "https://images.unsplash.com/photo-1760270049613-4b670a965673?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludCUyMGJydXNoZXMlMjBzZXQlMjBhcnR8ZW58MXx8fHwxNzY5ODM5MjE5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Art & Drawing",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "6 professional pointed brushes",
+          "Precise fine detail work",
+          "High-quality synthetic bristles",
+          "Comfortable wooden handles",
+          "Non-toxic and safe materials",
+          "Versatile for all art mediums"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Magic",
+          "Type": "Pointed brush set for painting",
+          "Handle": "Comfortable wooden handles",
+          "Country of Origin": "India",
+          "Size": "0.7G multi-size (6 graduated sizes)",
+          "Suitable": "Acrylic, watercolor, oil paintings",
+          "Bristles": "High-quality synthetic material",
+          "Quantity": "6 pieces"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional pointed paint brush set from Magic. Contains 6 graduated brushes perfect for fine detail work and precision painting. High-quality synthetic bristles with comfortable wooden handles. Ideal for artists, students, and hobbyists working with watercolors, acrylics, or oils."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "paint-brush-set-pointed-6pc",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Pointed brush set",
+          "pack": "6 pieces",
+          "color": "Assorted",
+          "size": "0.7G multi-size"
+        },
+        "mrp": 130
+      }
+    ],
+    "subtitle": "6 pieces · Pointed tip · Professional quality",
+    "rating": {
+      "average": 4.5,
+      "count": 543
+    },
+    "title": "Magic Paint Brush Set - Pointed 0.7G",
+    "id": "paint-brush-set-pointed"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "paper-copier-75gsm",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "JK",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1665512751717-219c5687cb6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHByaW50ZXIlMjBwYXBlciUyMEE0fGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "JK Copier A4 Paper - 75 GSM"
+        }
+      ],
+      "main_image": {
+        "alt_text": "JK Copier A4 Paper - 75 GSM",
+        "url": "https://images.unsplash.com/photo-1665512751717-219c5687cb6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHByaW50ZXIlMjBwYXBlciUyMEE0fGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Premium 75 GSM thickness",
+          "Professional quality",
+          "Jam-free printing",
+          "Trusted JK brand",
+          "Superior brightness",
+          "Extra durability"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "JK",
+          "Sheets Per Pack": "500",
+          "Series": "Copier 75",
+          "Weight": "75 GSM",
+          "Country of Origin": "India",
+          "Brightness": "ISO 93%",
+          "Size": "A4 (210 x 297 mm)",
+          "Color": "Premium White"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "High-quality JK Copier paper with premium 75 GSM thickness for professional printing and copying. Superior brightness and durability ensure consistent results. Perfect for high-volume office use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 265,
+        "sku_id": "paper-copier-75gsm-500",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "gsm": "75 GSM",
+          "color": "Premium White",
+          "pack": "500 sheets",
+          "size": "A4"
+        },
+        "mrp": 350
+      }
+    ],
+    "subtitle": "Premium white · 75 GSM · High quality",
+    "rating": {
+      "average": 4.7,
+      "count": 1876
+    },
+    "title": "JK Copier A4 Paper - 75 GSM",
+    "id": "paper-copier-75gsm"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "paper-easy-70gsm",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "JK",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1665512751717-219c5687cb6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHByaW50ZXIlMjBwYXBlciUyMEE0fGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "JK Easy A4 Paper - 70 GSM"
+        }
+      ],
+      "main_image": {
+        "alt_text": "JK Easy A4 Paper - 70 GSM",
+        "url": "https://images.unsplash.com/photo-1665512751717-219c5687cb6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHByaW50ZXIlMjBwYXBlciUyMEE0fGVufDF8fHx8MTc2OTgzOTIzNHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "70 GSM quality paper",
+          "Smooth printing surface",
+          "Compatible with all printers",
+          "Premium JK brand",
+          "Bright white finish",
+          "Perfect for everyday use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "JK",
+          "Sheets Per Pack": "500",
+          "Series": "Easy 70",
+          "Weight": "70 GSM",
+          "Country of Origin": "India",
+          "Brightness": "ISO 92%",
+          "Size": "A4 (210 x 297 mm)",
+          "Color": "Premium White"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium quality JK Easy copier paper is ideal for everyday printing and copying needs. Smooth white finish with excellent printability. Compatible with all standard printers and copiers."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 245,
+        "sku_id": "paper-easy-70gsm-500",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "gsm": "70 GSM",
+          "color": "Premium White",
+          "pack": "500 sheets",
+          "size": "A4"
+        },
+        "mrp": 320
+      }
+    ],
+    "subtitle": "Premium white · 70 GSM · Printer paper",
+    "rating": {
+      "average": 4.6,
+      "count": 2145
+    },
+    "title": "JK Easy A4 Paper - 70 GSM",
+    "id": "paper-easy-70gsm"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "paper-letter-pad",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Indo",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1642774674065-848b55d4c5c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXBlciUyMGxldHRlciUyMHBhZCUyMHdyaXRpbmd8ZW58MXx8fHwxNzY5ODM5MjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Indo Paper Letter Pad"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Indo Paper Letter Pad",
+        "url": "https://images.unsplash.com/photo-1642774674065-848b55d4c5c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXBlciUyMGxldHRlciUyMHBhZCUyMHdyaXRpbmd8ZW58MXx8fHwxNzY5ODM5MjMzfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Large format letter pad",
+          "Smooth writing surface",
+          "Quality paper",
+          "100 sheets per pad",
+          "Available in mixed colors",
+          "Perfect for correspondence"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Indo",
+          "Ruling": "Plain",
+          "Type": "Letter writing pad",
+          "Country of Origin": "India",
+          "Colors": "Mixed colors",
+          "Size": "Big (A4+ size)",
+          "Pages": "100 sheets",
+          "Paper Quality": "Premium smooth"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Quality letter writing pad with smooth premium paper in big size. Perfect for formal and personal correspondence. Ideal for businesses, schools, and personal use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 18,
+        "sku_id": "paper-letter-pad-100",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "100 sheets",
+          "ruling": "Plain",
+          "color": "Mixed colors",
+          "size": "Big (A4+)"
+        },
+        "mrp": 20
+      }
+    ],
+    "subtitle": "Big size · Quality writing paper",
+    "rating": {
+      "average": 4.3,
+      "count": 645
+    },
+    "title": "Indo Paper Letter Pad",
+    "id": "paper-letter-pad"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "pen-ball-balaji",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Balaji",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Balaji Ball Pen - Pack of 20"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Balaji Ball Pen - Pack of 20",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 20 pens",
+          "Mid-size bulk option",
+          "Smooth blue ink writing",
+          "Reliable consistent performance",
+          "Perfect for offices and schools",
+          "Economical value pack"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Balaji",
+          "Material": "Plastic barrel with standard grip",
+          "Type": "Standard ball pen",
+          "Tip Type": "Medium ballpoint (1.0mm)",
+          "Country of Origin": "India",
+          "Ink Color": "Blue",
+          "Writing Performance": "Smooth and reliable",
+          "Quantity": "Pack of 20"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Balaji ball pen mid-size pack of 20 with smooth blue ink and reliable writing performance. Ideal for offices, schools, and daily use. Good balance between bulk quantity and affordability."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "pen-ball-balaji-20pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Ball pen",
+          "pack": "20 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 140
+      }
+    ],
+    "subtitle": "Blue ink · Mid-size pack · Reliable",
+    "rating": {
+      "average": 4.3,
+      "count": 765
+    },
+    "title": "Balaji Ball Pen - Pack of 20",
+    "id": "pen-ball-balaji"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "pen-ballpen-marlow",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Marlow",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Marlow Ball Pen - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Marlow Ball Pen - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 10 pens",
+          "Excellent bulk value",
+          "Smooth blue ink",
+          "Perfect for offices and schools",
+          "Reliable writing performance",
+          "Cost-effective solution"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Marlow",
+          "Material": "Plastic barrel with standard grip",
+          "Type": "Standard ball pen",
+          "Tip Type": "Standard ballpoint (1.0mm)",
+          "Country of Origin": "India",
+          "Ink Color": "Blue",
+          "Writing Performance": "Consistent and reliable",
+          "Quantity": "Pack of 10"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Marlow ball pen bulk pack of 10 offering exceptional value for money. Each pen features smooth blue ink and reliable writing performance. Ideal for offices, schools, colleges, and institutions requiring bulk pen supplies. Cost-effective solution for everyday writing needs without compromising on quality."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "pen-ballpen-marlow-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Ball pen",
+          "pack": "10 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 90
+      }
+    ],
+    "subtitle": "Blue ink · Bulk pack · Value for money",
+    "rating": {
+      "average": 4.2,
+      "count": 876
+    },
+    "title": "Marlow Ball Pen - Pack of 10",
+    "id": "pen-ballpen-marlow"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pen-hal-apagra",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Apagra",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Apagra Hal Pen - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Apagra Hal Pen - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Special Hal design for versatility",
+          "Pack of 10 pens",
+          "Quality construction",
+          "Multi-purpose pen design",
+          "Smooth ink flow",
+          "Great for various writing tasks"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Apagra",
+          "Design": "Special ergonomic design",
+          "Type": "Hal multi-purpose pen",
+          "Material": "Quality plastic body",
+          "Features": "Multi-purpose use",
+          "Country of Origin": "India",
+          "Writing Performance": "Smooth and consistent",
+          "Quantity": "Pack of 10"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Apagra Hal pen pack of 10 with special design suitable for multi-purpose writing. Quality construction with smooth ink flow. Ideal for students, office professionals, and everyday writing needs."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "pen-hal-apagra-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Hal pen",
+          "pack": "10 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 125
+      }
+    ],
+    "subtitle": "Special design · Quality ink · Multi-purpose",
+    "rating": {
+      "average": 4.2,
+      "count": 543
+    },
+    "title": "Apagra Hal Pen - Pack of 10",
+    "id": "pen-hal-apagra"
+  }
+]

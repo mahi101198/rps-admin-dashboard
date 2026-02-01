@@ -25,12 +25,16 @@
       "type": "object",
       "properties": {
         "productId": { "type": "string" },
+        "categoryId": { "type": "string", "description": "Category ID from categories collection" },
+        "categoryName": { "type": "string", "description": "Category name for easy reference" },
+        "subcategoryId": { "type": "string", "description": "Subcategory ID from subcategories collection" },
+        "subcategoryName": { "type": "string", "description": "Subcategory name for easy reference" },
         "rank": { "type": "integer", "minimum": 1 },
         "product": { "$ref": "#/definitions/Product" },
         "addedAt": { "type": "string", "format": "date-time" },
         "priceOverride": { "type": ["number", "null"] }
       },
-      "required": ["productId", "rank", "addedAt"]
+      "required": ["productId", "categoryId", "subcategoryId", "rank", "addedAt"]
     }
   },
   "properties": {
@@ -105,6 +109,10 @@
           "popular": {
             "product123": {
               "productId": "product123",
+              "categoryId": "stationery",
+              "categoryName": "Stationery",
+              "subcategoryId": "pens",
+              "subcategoryName": "Pens",
               "rank": 1,
               "product": {
                 "productId": "product123",
@@ -125,6 +133,10 @@
           "flashSale": {
             "product456": {
               "productId": "product456",
+              "categoryId": "stationery",
+              "categoryName": "Stationery",
+              "subcategoryId": "notebooks",
+              "subcategoryName": "Notebooks",
               "rank": 1,
               "product": {
                 "productId": "product456",
@@ -161,6 +173,10 @@
           "popular": {
             "product789": {
               "productId": "product789",
+              "categoryId": "housekeeping",
+              "categoryName": "Housekeeping",
+              "subcategoryId": "cleaning-supplies",
+              "subcategoryName": "Cleaning Supplies",
               "rank": 1,
               "product": {
                 "productId": "product789",

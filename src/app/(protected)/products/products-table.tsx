@@ -1,189 +1,269 @@
 'use client';
 
-import * as React from 'react';
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-  getPaginationRowModel,
-  getSortedRowModel,
-  SortingState,
-  getFilteredRowModel,
-  ColumnFiltersState,
-} from '@tanstack/react-table';
-
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Product, ProductWithDetails, Category, SubCategory } from '@/lib/types/all-schemas';
-import { createColumns } from './columns';
-import { Search } from 'lucide-react';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { getProductAction as getProductWithDetailsAction } from '@/actions/product-actions';
+import React, { useState } from 'react';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableHead, 
+  TableHeader, 
+  TableRow 
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { 
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Trash,
+  Plus,
+  Package,
+  Tag,
+  ShoppingBag,
+  DollarSign,
+  TrendingDown,
+  CheckCircle,
+  XCircle
+} from 'lucide-react';
+import { Star } from 'lucide-react';
+import { ProductDetailsDocument } from '@/lib/types/product-details-sku';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { ProductActions } from './product-actions';
 
 interface ProductsTableProps {
-  data: Product[];
-  categories: Category[];
-  subCategories: SubCategory[];
-  onEditProduct?: (product: ProductWithDetails) => void;
-  onDataChange?: () => void; // Add this prop
+  products: ProductDetailsDocument[];
+  loading: boolean;
+  onEdit: (product: ProductDetailsDocument) => void;
+  onDelete: (productId: string) => void;
+  onViewDetails: (product: ProductDetailsDocument) => void;
 }
 
-export function ProductsTable({ data, categories, subCategories, onEditProduct, onDataChange }: ProductsTableProps) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [isLoadingProduct, setIsLoadingProduct] = React.useState(false);
-  
-  const isMobile = useIsMobile();
+export function ProductsTable({ 
+  products, 
+  loading, 
+  onEdit, 
+  onDelete, 
+  onViewDetails 
+}: ProductsTableProps) {
+  const [deleteProductId, setDeleteProductId] = useState<string | null>(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
-  const handleRowClick = async (product: Product) => {
-    // Prevent loading if we're already loading or if a dialog is open
-    if (isLoadingProduct) return;
-    
-    setIsLoadingProduct(true);
+  const handleDeleteConfirm = async () => {
+    if (!deleteProductId) return;
+
+    setDeleteLoading(true);
     try {
-      const productWithDetails = await getProductWithDetailsAction(product.productId);
-      
-      if (productWithDetails) {
-        // If there's an onEditProduct callback, call it with the product details
-        if (onEditProduct) {
-          onEditProduct(productWithDetails);
-        }
-      } else {
-        toast.error('Failed to load product details');
-      }
+      // Here you would call your delete action
+      // await deleteProductAction(deleteProductId);
+      toast.success('Product deleted successfully');
+      onDelete(deleteProductId);
     } catch (error) {
-      console.error('Error loading product details:', error);
-      toast.error('Failed to load product details');
+      console.error('Error deleting product:', error);
+      toast.error('Failed to delete product');
     } finally {
-      setIsLoadingProduct(false);
+      setDeleteLoading(false);
+      setDeleteProductId(null);
     }
   };
 
-  const table = useReactTable({
-    data,
-    columns: createColumns(categories, subCategories),
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      sorting,
-      columnFilters,
-    },
-  });
+  // Get availability badge
+  const getAvailabilityBadge = (availability: string) => {
+    switch (availability) {
+      case 'in_stock':
+        return <Badge className="bg-green-500 hover:bg-green-500">In Stock</Badge>;
+      case 'limited':
+        return <Badge className="bg-yellow-500 hover:bg-yellow-500">Limited</Badge>;
+      case 'out_of_stock':
+        return <Badge className="bg-red-500 hover:bg-red-500">Out of Stock</Badge>;
+      default:
+        return <Badge>{availability}</Badge>;
+    }
+  };
+
+  // Get category badge
+  const getCategoryBadge = (category: string) => {
+    const colors: Record<string, string> = {
+      stationery: 'bg-blue-500 hover:bg-blue-500',
+      cleaning: 'bg-green-500 hover:bg-green-500',
+      electronics: 'bg-purple-500 hover:bg-purple-500',
+      household: 'bg-orange-500 hover:bg-orange-500',
+      kitchen: 'bg-red-500 hover:bg-red-500',
+      lowcost: 'bg-gray-500 hover:bg-gray-500',
+    };
+    return <Badge className={colors[category] || 'bg-gray-500 hover:bg-gray-500'}>{category}</Badge>;
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <LoadingSpinner className="h-8 w-8" />
+        <span className="ml-2">Loading products...</span>
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <Package className="h-12 w-12 mx-auto text-muted-foreground" />
+        <h3 className="mt-2 text-lg font-medium">No products</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Get started by creating a new product.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full space-y-4">
-      <div className="flex items-center justify-between gap-2 flex-wrap">
-        <Input
-          startIcon={Search}
-          placeholder="Find products..."
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
-          className="max-w-xs"
-        />
-      </div>
-      <div className="overflow-x-auto rounded-lg border">
-        <Table className="min-w-full">
-          <TableHeader className="bg-muted sticky top-0 z-10">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} className="px-2 py-2 text-xs">
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                  className={`cursor-pointer hover:bg-muted/50 transition-colors ${
-                    isLoadingProduct ? 'opacity-50 pointer-events-none' : ''
-                  }`}
-                  onClick={(e) => {
-                    // Only trigger row click if not clicking on interactive elements
-                    const target = e.target as HTMLElement;
-                    // Check if we're clicking on a dialog or dialog trigger
-                    const isDialogElement = target.closest('[role="dialog"]') || target.closest('[data-state="open"]');
-                    const isDialogTrigger = target.closest('[data-haspopup="dialog"]');
-                    
-                    if (!isLoadingProduct && !isDialogElement && !isDialogTrigger && 
-                        !target.closest('button') && !target.closest('input')) {
-                      handleRowClick(row.original);
-                    }
-                  }}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="px-2 py-2 h-16 text-sm">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={10} className="h-24 text-center">
-                  No results.
+    <div className="rounded-md border">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Product</TableHead>
+            <TableHead>Brand</TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead>SKUs</TableHead>
+            <TableHead>Price Range</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Availability</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {products.map((product) => {
+            const skus = product.product_skus;
+            const prices = skus.map((s: any) => s.price);
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            
+            return (
+              <TableRow key={product.product_id}>
+                <TableCell className="font-medium">
+                  <div className="flex items-center gap-3">
+                    {product.media?.main_image?.url ? (
+                      <img
+                        src={product.media.main_image.url}
+                        alt={product.media.main_image.alt_text || product.title}
+                        className="w-12 h-12 object-cover rounded-md"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 bg-gray-200 rounded-md flex items-center justify-center">
+                        <Package className="h-6 w-6 text-gray-500" />
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-medium">{product.title}</div>
+                      <div className="text-sm text-muted-foreground">{product.subtitle}</div>
+                      <div className="flex items-center gap-1 mt-1 text-sm">
+                        <Star className="h-4 w-4 text-yellow-500" />
+                        <span>{typeof product.rating?.average === 'number' ? product.rating.average : 0}</span>
+                        <span className="text-muted-foreground">({typeof product.rating?.count === 'number' ? product.rating.count : 0})</span>
+                      </div>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Tag className="h-4 w-4 text-muted-foreground" />
+                    {product.brand}
+                  </div>
+                </TableCell>
+                <TableCell>
+                  {getCategoryBadge(product.category)}
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <ShoppingBag className="h-4 w-4 text-muted-foreground" />
+                    {skus.length} variants
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="h-4 w-4 text-muted-foreground" />
+                    {minPrice === maxPrice ? (
+                      <span>₹{minPrice}</span>
+                    ) : (
+                      <span>₹{minPrice} - ₹{maxPrice}</span>
+                    )}
+                  </div>
+                </TableCell>
+                <TableCell>
+                  {product.is_active ? (
+                    <Badge variant="default">
+                      <CheckCircle className="h-3 w-3 mr-1" />
+                      Active
+                    </Badge>
+                  ) : (
+                    <Badge variant="secondary">
+                      <XCircle className="h-3 w-3 mr-1" />
+                      Inactive
+                    </Badge>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {getAvailabilityBadge(product.overall_availability)}
+                </TableCell>
+                <TableCell className="text-right">
+                  <ProductActions 
+                    product={product} 
+                    onEdit={onEdit} 
+                    onDelete={onDelete} 
+                    onViewDetails={onViewDetails} 
+                  />
                 </TableCell>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 flex-wrap gap-2">
-        <div className="text-muted-foreground hidden flex-1 text-sm md:flex">
-          {table.getFilteredRowModel().rows.length} product
-          {table.getFilteredRowModel().rows.length > 1 ? 's' : ''}
-        </div>
-        <div className="flex w-full items-center gap-4 md:w-fit md:gap-8">
-          <div className="hidden items-center gap-2 md:flex">
-            <Label htmlFor="rows-per-page" className="text-xs font-medium">
-              Rows per page
-            </Label>
-            <Select
-              value={`${table.getState().pagination.pageSize}`}
-              onValueChange={(value) => {
-                table.setPageSize(Number(value));
-              }}
+            );
+          })}
+        </TableBody>
+      </Table>
+
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={!!deleteProductId} onOpenChange={() => setDeleteProductId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the product and all its associated data.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={handleDeleteConfirm} 
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              disabled={deleteLoading}
             >
-              <SelectTrigger size="sm" className="w-16" id="rows-per-page">
-                <SelectValue placeholder={table.getState().pagination.pageSize} />
-              </SelectTrigger>
-              <SelectContent side="top">
-                {[10, 20, 30, 40, 50].map((pageSize) => (
-                  <SelectItem key={pageSize} value={`${pageSize}`}>
-                    {pageSize}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex w-fit items-center justify-center text-xs font-medium">
-            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-          </div>
-          <div className="ml-auto flex items-center gap-1 md:ml-0 md:gap-2">
-            <Button variant="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-              Previous
-            </Button>
-            <Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-              Next
-            </Button>
-          </div>
-        </div>
-      </div>
+              {deleteLoading ? (
+                <>
+                  <LoadingSpinner className="h-4 w-4 mr-2" />
+                  Deleting...
+                </>
+              ) : (
+                'Delete'
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

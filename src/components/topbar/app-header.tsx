@@ -56,6 +56,7 @@ function getTitle(pathName: string): string {
       if (pathName.startsWith('/home-sections')) return 'Home Sections';
       if (pathName.startsWith('/dynamic-home-sections')) return 'Dynamic Home Sections';
       if (pathName.startsWith('/dynamic-subcollections')) return 'Dynamic Subcollections';
+      if (pathName.startsWith('/media')) return 'Media Manager';
       return 'Dashboard';
   }
 }

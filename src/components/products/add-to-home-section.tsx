@@ -14,37 +14,29 @@ import {
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
-import { Home, Check } from 'lucide-react';
-import { addToHomeSectionAction, isProductInHomeSectionAction, getHomeSectionsForCategoryAction } from '@/actions/home-section-actions';
+import { Home } from 'lucide-react';
+import { 
+  getAllHomeSectionsAction, 
+  addItemToSectionAction 
+} from '@/actions/home-section-actions';
+import { 
+  HomeSection, 
+  AddSectionItemInput,
+  calculateDiscountPercent 
+} from '@/lib/types/home-section-types';
 
 interface AddToHomeSectionProps {
   product: Product;
-}
-
-// Define the section type
-interface HomeSection {
-  sectionId: string;
-  title: string;
-  type: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// Define the return type for getHomeSectionsForCategoryAction
-interface CategoryHomeSections {
-  categoryId: string;
-  sections: HomeSection[];
-  [key: string]: any; // Allow other properties
 }
 
 export function AddToHomeSection({ product }: AddToHomeSectionProps) {
   const [open, setOpen] = React.useState(false);
   const [rank, setRank] = React.useState(1);
   const [priceOverride, setPriceOverride] = React.useState('');
+  const [badgeText, setBadgeText] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [selectedSection, setSelectedSection] = React.useState<string>('');
   const [availableSections, setAvailableSections] = React.useState<HomeSection[]>([]);
-  const [productSections, setProductSections] = React.useState<Record<string, boolean>>({});
   
   // Ref to track if dialog was recently closed
   const recentlyClosedRef = useRef(false);
@@ -56,36 +48,16 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
     if (open) {
       const loadSections = async () => {
         try {
-          // Get available sections for this product's category
-          const categorySections: CategoryHomeSections = await getHomeSectionsForCategoryAction(product.categoryId);
+          // Get all universal home sections
+          const sections = await getAllHomeSectionsAction();
           
           if (isMounted) {
-            // Set available sections from metadata
-            const sections: HomeSection[] = categorySections.sections || [];
             setAvailableSections(sections);
-            
-            // Check which sections the product is already in
-            const sectionStatus: Record<string, boolean> = {};
-            const sectionChecks = sections.map((section: HomeSection) => 
-              isProductInHomeSectionAction(
-                product.categoryId,
-                section.sectionId,
-                product.productId
-              ).catch(() => false)
-            );
-            
-            const results = await Promise.all(sectionChecks);
-            sections.forEach((section: HomeSection, index: number) => {
-              sectionStatus[section.sectionId] = results[index];
-            });
-            
-            setProductSections(sectionStatus);
           }
         } catch (error) {
           console.error('Error loading sections:', error);
           if (isMounted) {
             setAvailableSections([]);
-            setProductSections({});
           }
         }
       };
@@ -97,7 +69,7 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
     return () => {
       isMounted = false;
     };
-  }, [open, product.productId, product.categoryId]);
+  }, [open]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,13 +80,24 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
 
     setLoading(true);
     try {
-      const result = await addToHomeSectionAction(
-        product.categoryId, // Use product's categoryId
-        selectedSection,
-        product.productId,
-        rank,
-        selectedSection === 'flashSale' && priceOverride ? parseFloat(priceOverride) : undefined
-      );
+      // Prepare the item input for the universal home section
+      const itemInput: AddSectionItemInput = {
+        sku_id: product.productId, // Using productId as SKU for backward compatibility
+        product_id: product.productId,
+        rank: rank,
+        name: product.name,
+        image_url: product.image || '',
+        mrp: product.mrp || product.price,
+        price: product.price,
+        discount_percent: calculateDiscountPercent(product.mrp || product.price, product.price),
+        category_id: product.categoryId || 'unknown',
+        subcategory_id: product.subcategoryId || 'unknown',
+        currency_code: 'INR',
+        price_override: priceOverride ? parseFloat(priceOverride) : undefined,
+        badge_text: badgeText || undefined,
+      };
+
+      const result = await addItemToSectionAction(selectedSection, itemInput);
 
       if (result.success) {
         toast.success(result.message);
@@ -124,8 +107,8 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
           // Reset form state after successful submission
           setRank(1);
           setPriceOverride('');
+          setBadgeText('');
           setSelectedSection('');
-          setProductSections({});
         }, 100);
       } else {
         toast.error(result.message);
@@ -146,9 +129,9 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
         // Reset form state when dialog closes
         setRank(1);
         setPriceOverride('');
+        setBadgeText('');
         setSelectedSection('');
         setAvailableSections([]);
-        setProductSections({});
       }, 100);
       
       return () => clearTimeout(timer);
@@ -165,6 +148,7 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
           // Reset form state when dialog closes
           setRank(1);
           setPriceOverride('');
+          setBadgeText('');
           setSelectedSection('');
           
           // Reset the recently closed flag after a short delay
@@ -197,7 +181,7 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
         <DialogHeader className="p-0 mb-3">
           <DialogTitle className="text-lg">Add to Home Section</DialogTitle>
           <DialogDescription className="text-xs">
-            Add {product.name} to a homepage section. Only lightweight references are stored.
+            Add {product.name} to a homepage section.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-3">
@@ -211,11 +195,16 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
             >
               <option value="">Select a section</option>
               {availableSections.map((section) => (
-                <option key={section.sectionId} value={section.sectionId} className="text-sm">
-                  {section.title} {productSections[section.sectionId] && '(Added)'}
+                <option key={section.section_id} value={section.section_id} className="text-sm">
+                  {section.title} ({section.type})
                 </option>
               ))}
             </select>
+            {availableSections.length === 0 && (
+              <p className="text-xs text-muted-foreground">
+                No sections available. Create sections in Home Sections first.
+              </p>
+            )}
           </div>
           
           <div className="space-y-1.5">
@@ -230,25 +219,35 @@ export function AddToHomeSection({ product }: AddToHomeSectionProps) {
             />
           </div>
           
-          {selectedSection === 'flashSale' && (
-            <div className="space-y-1.5">
-              <Label htmlFor="priceOverride" className="text-xs">Flash Sale Price (Optional)</Label>
-              <Input
-                id="priceOverride"
-                type="number"
-                min="0"
-                step="0.01"
-                value={priceOverride}
-                onChange={(e) => setPriceOverride(e.target.value)}
-                placeholder="Override price for flash sale"
-                className="h-8 text-sm"
-              />
-            </div>
-          )}
+          <div className="space-y-1.5">
+            <Label htmlFor="priceOverride" className="text-xs">Price Override (Optional)</Label>
+            <Input
+              id="priceOverride"
+              type="number"
+              min="0"
+              step="0.01"
+              value={priceOverride}
+              onChange={(e) => setPriceOverride(e.target.value)}
+              placeholder="Special price for this section"
+              className="h-8 text-sm"
+            />
+          </div>
+          
+          <div className="space-y-1.5">
+            <Label htmlFor="badgeText" className="text-xs">Badge Text (Optional)</Label>
+            <Input
+              id="badgeText"
+              type="text"
+              value={badgeText}
+              onChange={(e) => setBadgeText(e.target.value)}
+              placeholder="e.g., Bestseller, New"
+              className="h-8 text-sm"
+            />
+          </div>
           
           <div className="text-xs text-muted-foreground p-2 bg-muted rounded">
-            <strong>Note:</strong> Only product references (ID, rank, price override) are stored in home sections. 
-            Product details are fetched from the main products collection when needed.
+            <strong>Note:</strong> Minimal product data is stored in home sections. 
+            Full product details are fetched when needed.
           </div>
           
           <div className="flex justify-end gap-2 pt-2">

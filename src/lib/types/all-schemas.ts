@@ -1,43 +1,4 @@
-// 1. 📦 Main Product (Lightweight data for listings)
-export interface Product {
-  productId: string;
-  name: string;
-  mrp: number;
-  price: number;
-  discount: number;
-  image: string;
-  stock: number;
-  categoryId: string;
-  subcategoryId: string;
-  isActive: boolean;
-  maxQuantityPerUser: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// 2. 📄 Product Details (Heavy data for product pages)
-export interface ProductDetails {
-  productId: string;
-  description: string;
-  images: string[]; // full-size images
-  miniInfo: string[];
-  tags: string[];
-  colors: string[];
-  shippingInfo?: string;
-  shippingInfoTitle?: string;
-  returnTitle?: string;
-  returnDescription?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// 3. 🔄 Combined Product with Details
-export interface ProductWithDetails extends Product, ProductDetails {
-  detailsCreatedAt?: Date;
-  detailsUpdatedAt?: Date;
-}
-
-// 4. ⭐ Product Review
+// ⭐ Product Review
 export interface ProductReview {
   reviewId: string;
   productId: string;
@@ -49,13 +10,7 @@ export interface ProductReview {
   updatedAt: Date;
 }
 
-// 5. 📝 Admin Product Form (For form validation)
-export interface AdminProductForm extends Omit<ProductWithDetails, 'createdAt' | 'updatedAt' | 'detailsCreatedAt' | 'detailsUpdatedAt'> {
-  maxQuantityPerUser: number;
-  colors: string[]; // Add this line
-}
-
-// 6. 🏷️ Category - Updated to match the actual structure used in category-actions.ts
+// 🏷️ Category - Updated to match the actual structure used in category-actions.ts
 export interface Category {
   id: string;
   name: string;
@@ -268,6 +223,10 @@ export interface Wishlist {
 export interface HomeSectionItem {
   id?: string;  // Optional for cases where it might not be set
   productId: string;  // Product ID for dynamic sections
+  categoryId: string;  // Category ID from categories collection
+  categoryName?: string;  // Category name for easy reference
+  subcategoryId: string;  // Subcategory ID from subcategories collection
+  subcategoryName?: string;  // Subcategory name for easy reference
   title?: string;  // Optional title
   subtitle?: string;  // Optional subtitle
   image?: string;  // Optional image

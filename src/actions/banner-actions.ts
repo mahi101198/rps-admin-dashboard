@@ -223,3 +223,291 @@ export async function toggleBannerStatusAction(
     return { success: false, message: `Failed to ${isActive ? 'activate' : 'deactivate'} banner` };
   }
 }
+
+/**
+ * Track a banner view
+ * Creates a view record in banners/{bannerId}/views/ subcollection
+ */
+export async function trackBannerViewAction(
+  bannerId: string,
+  userId: string,
+  metadata?: {
+    carousel_index?: number;
+    total_banners?: number;
+    source?: string;
+    userAgent?: string;
+    [key: string]: any;
+  }
+): Promise<{ success: boolean; message: string; viewId?: string }> {
+  try {
+    const db = getFirestore();
+    
+    if (!bannerId || !userId) {
+      return { success: false, message: 'bannerId and userId are required' };
+    }
+
+    // Generate unique viewId: bannerId_timestamp_userHash
+    const timestamp = Date.now();
+    const userHash = Math.abs(
+      userId.split('').reduce((a, b) => {
+        a = ((a << 5) - a) + b.charCodeAt(0);
+        return a & a; // Convert to 32bit integer
+      }, 0)
+    );
+    
+    const viewId = `${bannerId}_${timestamp}_${userHash}`;
+
+    const viewRecord = {
+      viewId,
+      bannerId,
+      userId,
+      viewedAt: new Date(),
+      metadata: metadata || {},
+    };
+
+    await db
+      .collection('banners')
+      .doc(bannerId)
+      .collection('views')
+      .doc(viewId)
+      .set(viewRecord);
+
+    return { success: true, message: 'View tracked successfully', viewId };
+  } catch (error) {
+    console.error('Error tracking banner view:', error);
+    return { success: false, message: 'Failed to track view' };
+  }
+}
+
+/**
+ * Track a banner click/analytics event
+ * Creates an analytics record in banners/{bannerId}/analytics/ subcollection
+ */
+export async function trackBannerAnalyticsAction(
+  bannerId: string,
+  userId: string,
+  clickData: {
+    clickType?: 'internal' | 'external' | 'app_action';
+    clickUrl?: string;
+    city?: string;
+    region?: string;
+    country?: string;
+    ipAddress?: string;
+    userEmail?: string;
+    userAgent?: string;
+    metadata?: {
+      carousel_index?: number;
+      total_banners?: number;
+      source?: string;
+      [key: string]: any;
+    };
+  }
+): Promise<{ success: boolean; message: string; analyticsId?: string }> {
+  try {
+    const db = getFirestore();
+    
+    if (!bannerId || !userId) {
+      return { success: false, message: 'bannerId and userId are required' };
+    }
+
+    // Generate unique analyticsId: bannerId_timestamp_userHash
+    const timestamp = Date.now();
+    const userHash = Math.abs(
+      userId.split('').reduce((a, b) => {
+        a = ((a << 5) - a) + b.charCodeAt(0);
+        return a & a;
+      }, 0)
+    );
+    
+    const analyticsId = `${bannerId}_${timestamp}_${userHash}`;
+
+    const analyticsRecord = {
+      analyticsId,
+      bannerId,
+      userId,
+      clickType: clickData.clickType || 'external',
+      clickUrl: clickData.clickUrl || '',
+      city: clickData.city || '',
+      region: clickData.region || '',
+      country: clickData.country || '',
+      ipAddress: clickData.ipAddress || '',
+      userEmail: clickData.userEmail || '',
+      userAgent: clickData.userAgent || '',
+      clickedAt: new Date(),
+      metadata: clickData.metadata || {},
+    };
+
+    await db
+      .collection('banners')
+      .doc(bannerId)
+      .collection('analytics')
+      .doc(analyticsId)
+      .set(analyticsRecord);
+
+    return { success: true, message: 'Analytics tracked successfully', analyticsId };
+  } catch (error) {
+    console.error('Error tracking banner analytics:', error);
+    return { success: false, message: 'Failed to track analytics' };
+  }
+}
+
+/**
+ * Get banner statistics
+ * Fetches total views count, total clicks count, and click-through rate
+ */
+export async function getBannerStatsAction(
+  bannerId: string,
+  userId?: string
+): Promise<{
+  success: boolean;
+  stats?: {
+    totalViews: number;
+    totalClicks: number;
+    ctr: number; // Click-through rate as percentage
+    userViews?: number; // Only if userId provided
+    userClicks?: number; // Only if userId provided
+  };
+  message: string;
+}> {
+  try {
+    const db = getFirestore();
+    
+    if (!bannerId) {
+      return { success: false, message: 'bannerId is required' };
+    }
+
+    // Get total views
+    const viewsSnapshot = await db
+      .collection('banners')
+      .doc(bannerId)
+      .collection('views')
+      .get();
+    
+    const totalViews = viewsSnapshot.docs.length;
+
+    // Get total clicks/analytics
+    const analyticsSnapshot = await db
+      .collection('banners')
+      .doc(bannerId)
+      .collection('analytics')
+      .get();
+    
+    const totalClicks = analyticsSnapshot.docs.length;
+
+    // Calculate CTR (Click-Through Rate)
+    const ctr = totalViews > 0 ? (totalClicks / totalViews) * 100 : 0;
+
+    const stats: any = {
+      totalViews,
+      totalClicks,
+      ctr: Math.round(ctr * 100) / 100, // Round to 2 decimal places
+    };
+
+    // Get user-specific stats if userId provided
+    if (userId) {
+      const userViewsSnapshot = await db
+        .collection('banners')
+        .doc(bannerId)
+        .collection('views')
+        .where('userId', '==', userId)
+        .get();
+      
+      const userAnalyticsSnapshot = await db
+        .collection('banners')
+        .doc(bannerId)
+        .collection('analytics')
+        .where('userId', '==', userId)
+        .get();
+
+      stats.userViews = userViewsSnapshot.docs.length;
+      stats.userClicks = userAnalyticsSnapshot.docs.length;
+    }
+
+    return {
+      success: true,
+      stats,
+      message: 'Stats retrieved successfully',
+    };
+  } catch (error) {
+    console.error('Error fetching banner stats:', error);
+    return { success: false, message: 'Failed to fetch stats' };
+  }
+}
+
+/**
+ * Get all banners with analytics and views count
+ * Enhanced version of getBannersAction that includes stats
+ */
+export async function getBannersWithStatsAction(): Promise<
+  (Banner & {
+    analytics?: {
+      totalViews: number;
+      totalClicks: number;
+      ctr: number;
+    };
+  })[]
+> {
+  try {
+    const db = getFirestore();
+    const snapshot = await db.collection('banners').orderBy('rank', 'asc').get();
+    
+    const bannersWithStats = await Promise.all(
+      snapshot.docs.map(async (doc) => {
+        const data = doc.data();
+        
+        // Get views count
+        const viewsSnapshot = await db
+          .collection('banners')
+          .doc(doc.id)
+          .collection('views')
+          .count()
+          .get();
+        
+        // Get analytics/clicks count
+        const analyticsSnapshot = await db
+          .collection('banners')
+          .doc(doc.id)
+          .collection('analytics')
+          .count()
+          .get();
+
+        const totalViews = viewsSnapshot.data().count;
+        const totalClicks = analyticsSnapshot.data().count;
+        const ctr = totalViews > 0 ? (totalClicks / totalViews) * 100 : 0;
+
+        return {
+          bannerId: doc.id,
+          title: data.title || '',
+          imageUrl: data.imageUrl || '',
+          linkTo: data.linkTo || '',
+          rank: data.rank || 0,
+          isActive: data.isActive ?? true,
+          view_change_time: data.view_change_time || 5,
+          createdAt: data.createdAt?._seconds 
+            ? new Date(data.createdAt._seconds * 1000) 
+            : data.createdAt instanceof Date ? data.createdAt
+            : new Date(),
+          updatedAt: data.updatedAt?._seconds 
+            ? new Date(data.updatedAt._seconds * 1000) 
+            : new Date(),
+          analytics: {
+            totalViews,
+            totalClicks,
+            ctr: Math.round(ctr * 100) / 100,
+          },
+        } as Banner & {
+          analytics?: {
+            totalViews: number;
+            totalClicks: number;
+            ctr: number;
+          };
+        };
+      })
+    );
+
+    return bannersWithStats;
+  } catch (error) {
+    console.error('Error fetching banners with stats:', error);
+    return [];
+  }
+}

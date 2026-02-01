@@ -1,0 +1,1272 @@
+[
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pen-klassy-goldex",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Goldex",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Goldex Klassy Ball Pen - Blue"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Goldex Klassy Ball Pen - Blue",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 5 pens",
+          "Smooth blue ink writing",
+          "Reliable and consistent",
+          "Economical value pack",
+          "Perfect for students and offices",
+          "Comfortable grip design"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Goldex",
+          "Material": "Plastic barrel with grip",
+          "Type": "Klassy ball pen",
+          "Tip Type": "Medium ballpoint (1.0mm)",
+          "Country of Origin": "India",
+          "Ink Color": "Blue",
+          "Writing Performance": "Smooth consistent flow",
+          "Quantity": "Pack of 5"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Goldex Klassy ball pen 5-pack featuring smooth blue ink and reliable writing performance. Each pen has a comfortable grip and consistent ink flow. Economical value pack perfect for students, office use, and everyday writing needs. Great for schools, colleges, and professional environments."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 35,
+        "sku_id": "pen-klassy-goldex-5pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Ball pen",
+          "pack": "5 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 55
+      }
+    ],
+    "subtitle": "Pack of 5 · Smooth writing · Blue ink",
+    "rating": {
+      "average": 4.3,
+      "count": 1234
+    },
+    "title": "Goldex Klassy Ball Pen - Blue",
+    "id": "pen-klassy-goldex"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "pen-pentonic-ballpen",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Pentonic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Pentonic Ball Pen - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Pentonic Ball Pen - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Quality Pentonic brand",
+          "Pack of 10 pens",
+          "Smooth blue ink writing",
+          "Reliable consistent performance",
+          "Perfect for bulk office use",
+          "Comfortable grip design"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Pentonic",
+          "Material": "Plastic barrel with grip",
+          "Type": "Standard ball pen",
+          "Tip Type": "Fine ballpoint (1.0mm)",
+          "Country of Origin": "India",
+          "Ink Color": "Blue",
+          "Writing Performance": "Smooth and reliable",
+          "Quantity": "Pack of 10"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Quality Pentonic ball pen pack of 10 offering reliable performance for offices and schools. Smooth blue ink with consistent writing quality. Ideal for bulk purchases, daily use, and professional environments."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 75,
+        "sku_id": "pen-pentonic-ballpen-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Ball pen",
+          "pack": "10 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 110
+      }
+    ],
+    "subtitle": "Blue ink · Quality writing · Reliable",
+    "rating": {
+      "average": 4.4,
+      "count": 1567
+    },
+    "title": "Pentonic Ball Pen - Pack of 10",
+    "id": "pen-pentonic-ballpen"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pen-pentonic-gelpen",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Pentonic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1757358678245-6151f66a699c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwZ2VsJTIwcGVuJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Pentonic Gel Pen - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Pentonic Gel Pen - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1757358678245-6151f66a699c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwZ2VsJTIwcGVuJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Smooth gel ink formula",
+          "Pack of 10 pens",
+          "Premium Pentonic quality",
+          "Quick-dry technology",
+          "Comfortable ergonomic grip",
+          "Perfect for bulk office use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Ink Technology": "Smooth gel-based quick-dry formula",
+          "Brand": "Pentonic",
+          "Material": "Premium plastic with rubber grip",
+          "Type": "Premium gel pen",
+          "Country of Origin": "India",
+          "Tip Size": "0.7mm medium",
+          "Ink Color": "Blue",
+          "Quantity": "Pack of 10"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium Pentonic gel pen pack of 10 featuring smooth gel ink and quick-dry technology. Each pen has a comfortable ergonomic grip and consistent flow. Ideal for offices, schools, and professional use requiring bulk pen supplies."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 125,
+        "sku_id": "pen-pentonic-gelpen-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "10 pens",
+          "color": "Blue",
+          "size": "0.7mm"
+        },
+        "mrp": 180
+      }
+    ],
+    "subtitle": "Blue gel ink · Smooth flow · Pack of 10",
+    "rating": {
+      "average": 4.5,
+      "count": 1876
+    },
+    "title": "Pentonic Gel Pen - Pack of 10",
+    "id": "pen-pentonic-gelpen"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "pen-use-throw-topfom",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Topfom",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Topfom Use & Throw Ball Pen - 50 Pack"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Topfom Use & Throw Ball Pen - 50 Pack",
+        "url": "https://images.unsplash.com/photo-1600531597946-f9b1d7b0f486?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxscG9pbnQlMjBwZW4lMjBibHVlJTIwd3JpdGluZ3xlbnwxfHx8fDE3Njk4MzkyMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Mega bulk pack of 50 pens",
+          "Disposable use-and-throw design",
+          "Perfect for events and distribution",
+          "Economical pricing",
+          "Smooth blue ink writing",
+          "Ideal for corporate bulk needs"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Topfom",
+          "Design": "Disposable/One-time use",
+          "Type": "Ball pen - Use & Throw",
+          "Material": "Simple plastic barrel",
+          "Tip Type": "Standard ballpoint (1.0mm)",
+          "Country of Origin": "India",
+          "Ink Color": "Blue",
+          "Quantity": "Pack of 50"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Topfom use-and-throw pen mega bulk pack of 50. Perfect for large-scale events, corporate giveaways, schools, and office distribution. Economical disposable pens with reliable writing performance. Ideal for situations requiring bulk pen supplies at minimum cost."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 195,
+        "sku_id": "pen-use-throw-topfom-50pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Ball pen - disposable",
+          "pack": "50 pens",
+          "color": "Blue",
+          "size": "Standard"
+        },
+        "mrp": 280
+      }
+    ],
+    "subtitle": "Bulk pack · Blue ink · Disposable pens",
+    "rating": {
+      "average": 4.1,
+      "count": 2345
+    },
+    "title": "Topfom Use & Throw Ball Pen - 50 Pack",
+    "id": "pen-use-throw-topfom"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pencil-hb-nataraj",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Nataraj",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1593435221502-c5d7bfc26cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW5jaWwlMjBIQiUyMHdvb2RlbiUyMHN0dWRlbnR8ZW58MXx8fHwxNzY5ODM5MjIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Nataraj HB Pencil - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Nataraj HB Pencil - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1593435221502-c5d7bfc26cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW5jaWwlMjBIQiUyMHdvb2RlbiUyMHN0dWRlbnR8ZW58MXx8fHwxNzY5ODM5MjIwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Premium Nataraj quality trusted brand",
+          "HB grade standard",
+          "Smooth consistent graphite",
+          "Perfect for students",
+          "Reliable writing performance",
+          "Pack of 10 pencils"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Grade": "HB (medium hardness)",
+          "Brand": "Nataraj",
+          "Material": "Premium wood with smooth graphite core",
+          "Type": "HB wooden pencil",
+          "Country of Origin": "India",
+          "Length": "Standard pencil size",
+          "Quantity": "Pack of 10",
+          "Writing Performance": "Consistent and reliable"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium Nataraj HB pencils pack of 10 - a trusted brand relied upon by students and professionals. Superior quality wood with smooth graphite core. Ideal for exams, daily writing, sketching, and creative work."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "pencil-hb-nataraj-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Wooden pencil",
+          "pack": "10 pencils",
+          "color": "Natural wood",
+          "size": "Standard HB"
+        },
+        "mrp": 80
+      }
+    ],
+    "subtitle": "Premium quality · HB grade · Trusted brand",
+    "rating": {
+      "average": 4.7,
+      "count": 3421
+    },
+    "title": "Nataraj HB Pencil - Pack of 10",
+    "id": "pencil-hb-nataraj"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pencil-with-lead",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1730201623502-11031bb4de85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWNoYW5pY2FsJTIwcGVuY2lsJTIwbGVhZCUyMHJlZmlsbHxlbnwxfHx8fDE3Njk4MzkyMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate Mechanical Pencil with Lead"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate Mechanical Pencil with Lead",
+        "url": "https://images.unsplash.com/photo-1730201623502-11031bb4de85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWNoYW5pY2FsJTIwcGVuY2lsJTIwbGVhZCUyMHJlZmlsbHxlbnwxfHx8fDE3Njk4MzkyMjB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "0.5mm precision lead for detail work",
+          "Includes refill lead pack in 1+1 offer",
+          "Mechanical convenience with no sharpening needed",
+          "Perfect for technical drawing and engineering",
+          "Refillable and reusable design",
+          "Trusted Classmate brand for students"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Classmate",
+          "Material": "Durable plastic body with grip",
+          "Type": "Mechanical pencil with lead refill",
+          "Pack Contents": "1 pencil + 1 lead refill pack (1+1 offer)",
+          "Features": "Refillable, no sharpening required, click mechanism",
+          "Country of Origin": "India",
+          "Applications": "Technical drawing, sketching, writing, engineering",
+          "Lead Size": "0.5mm fine precision"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Classmate mechanical pencil 1+1 pack with 0.5mm precision lead. Perfect for technical drawings, engineering, precise writing, and sketching. No need for sharpening - just click to advance the lead. Includes refill pack for extended use. Ideal for students and professionals. Durable plastic body with comfortable grip for extended writing sessions."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 14,
+        "sku_id": "pencil-with-lead-0.5mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Mechanical pencil",
+          "pack": "1 pencil + 1 refill",
+          "color": "Black",
+          "size": "0.5mm"
+        },
+        "mrp": 15
+      }
+    ],
+    "subtitle": "0.5mm lead · 1+1 pack · Refillable",
+    "rating": {
+      "average": 4.6,
+      "count": 1234
+    },
+    "title": "Classmate Mechanical Pencil with Lead",
+    "id": "pencil-with-lead"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "pencil-zoom-domes",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1593435221502-c5d7bfc26cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW5jaWwlMjBIQiUyMHdvb2RlbiUyMHN0dWRlbnR8ZW58MXx8fHwxNzY5ODM5MjIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Zoom Pencil - Pack of 10"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Zoom Pencil - Pack of 10",
+        "url": "https://images.unsplash.com/photo-1593435221502-c5d7bfc26cab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW5jaWwlMjBIQiUyMHdvb2RlbiUyMHN0dWRlbnR8ZW58MXx8fHwxNzY5ODM5MjIwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "HB grade quality graphite",
+          "Pack of 10 pencils",
+          "Smooth and sharp writing",
+          "Premium quality wood",
+          "Perfect for students and professionals",
+          "Affordable pack option"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Grade": "HB (medium hardness)",
+          "Brand": "Domes",
+          "Material": "Premium quality wood",
+          "Type": "Zoom wooden pencil",
+          "Country of Origin": "India",
+          "Graphite": "Smooth writing graphite core",
+          "Length": "Standard pencil size",
+          "Quantity": "Pack of 10"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Domes Zoom wooden pencil pack of 10 with HB grade quality graphite. Smooth writing performance perfect for school, office, and creative work. Made from premium quality wood with sharp, consistent writing."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 45,
+        "sku_id": "pencil-zoom-domes-10pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Wooden pencil",
+          "pack": "10 pencils",
+          "color": "Natural wood",
+          "size": "Standard HB"
+        },
+        "mrp": 70
+      }
+    ],
+    "subtitle": "HB grade · Quality wood · Sharp writing",
+    "rating": {
+      "average": 4.4,
+      "count": 1876
+    },
+    "title": "Domes Zoom Pencil - Pack of 10",
+    "id": "pencil-zoom-domes"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "permanent-marker-addgel",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Add Gel",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1554284191-096482f50049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJtYW5lbnQlMjBtYXJrZXIlMjBwZW4lMjBibGFja3xlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Add Gel Permanent Marker Pen"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Add Gel Permanent Marker Pen",
+        "url": "https://images.unsplash.com/photo-1554284191-096482f50049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJtYW5lbnQlMjBtYXJrZXIlMjBwZW4lMjBibGFja3xlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Fine tip precision for detailed marking",
+          "Permanent black ink won't fade",
+          "Multi-surface marking capability",
+          "Quick-drying and long-lasting",
+          "Professional Add Gel quality",
+          "Affordable single marker option"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Add Gel",
+          "Type": "Permanent marker pen",
+          "Pack Contents": "1 marker",
+          "Tip Type": "Fine point for precision",
+          "Country of Origin": "India",
+          "Applications": "Paper, cardboard, plastic, glass, metal surfaces",
+          "Features": "Permanent, fade-resistant, quick-drying",
+          "Color": "Black permanent ink"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Add Gel permanent marker with fine tip for precise marking on multiple surfaces. Black permanent ink won't fade, smudge, or erase. Perfect for labeling, writing on various materials, and detailed marking tasks. Single marker for versatile use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 18,
+        "sku_id": "permanent-marker-addgel-single",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Permanent marker",
+          "pack": "Single marker",
+          "color": "Black",
+          "size": "Fine tip"
+        },
+        "mrp": 20
+      }
+    ],
+    "subtitle": "Fine tip · Black ink · Multi-surface",
+    "rating": {
+      "average": 4.4,
+      "count": 654
+    },
+    "title": "Add Gel Permanent Marker Pen",
+    "id": "permanent-marker-addgel"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "permanent-marker-luxor-ohp",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Luxor",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1554284191-096482f50049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJtYW5lbnQlMjBtYXJrZXIlMjBwZW4lMjBibGFja3xlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Luxor Permanent Marker OHP - Pack of 5"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Luxor Permanent Marker OHP - Pack of 5",
+        "url": "https://images.unsplash.com/photo-1554284191-096482f50049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJtYW5lbnQlMjBtYXJrZXIlMjBwZW4lMjBibGFja3xlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Permanent ink won't fade or erase",
+          "Pointed tip for precise marking",
+          "OHP-compatible for transparency sheets",
+          "Pack of 5 black markers",
+          "Multi-surface application capability",
+          "Professional quality Luxor brand"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Luxor",
+          "Type": "Permanent Marker - OHP specialist",
+          "Pack Contents": "5 permanent markers",
+          "Tip Type": "Pointed for precise control",
+          "Country of Origin": "India",
+          "Applications": "OHP sheets, whiteboards, cardboard, plastic, glass",
+          "Features": "Permanent, fade-resistant, quick-drying",
+          "Color": "Black permanent ink"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Luxor permanent marker OHP specialist with pointed tip for precision marking. Pack of 5 professional-grade black markers. Perfect for transparency sheets, OHP slides, and general multi-surface marking. Fast-drying permanent ink won't fade, smudge, or erase. Ideal for offices, classrooms, and presentations."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 155,
+        "sku_id": "permanent-marker-luxor-ohp-5pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Permanent OHP marker",
+          "pack": "Pack of 5",
+          "color": "Black",
+          "size": "Pointed tip"
+        },
+        "mrp": 225
+      }
+    ],
+    "subtitle": "Pointed tip · Black ink · Permanent",
+    "rating": {
+      "average": 4.5,
+      "count": 876
+    },
+    "title": "Luxor Permanent Marker OHP - Pack of 5",
+    "id": "permanent-marker-luxor-ohp"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "pins-pushpins",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1577994849154-4ce1ce12f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdXNoIHBpbiB0aHVtYiB0YWNrIHBpbm58ZW58MXx8fHwxNzY5MTA3MDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Push Pins - Pack of 20"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Push Pins - Pack of 20",
+        "url": "https://images.unsplash.com/photo-1577994849154-4ce1ce12f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdXNoIHBpbiB0aHVtYiB0YWNrIHBpbm58ZW58MXx8fHwxNzY5MTA3MDU0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Office Equipment & Supplies",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 20 assorted color push pins",
+          "Bright vibrant colors for easy identification",
+          "Sharp metal tips for secure holding",
+          "Plastic heads for comfortable grip",
+          "Perfect for bulletin boards and cork surfaces",
+          "Economical multi-purpose office supply"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Colors": "Red, Blue, Green, Yellow, White mixed",
+          "Applications": "Bulletin boards, cork, walls, notices",
+          "Material": "Plastic head with sharp metal tip",
+          "Type": "Push pins / Thumb tacks",
+          "Pack Contents": "20 pins assorted colors",
+          "Features": "Easy grip, secure hold, bright visibility",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Pack of 20 colorful push pins for posting notices and announcements. Assorted bright colors provide easy identification and visual appeal. Sharp metal tips securely hold papers on cork boards, walls, and other surfaces. Comfortable plastic heads for easy grip and pushing. Ideal for offices, classrooms, and home organization."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "pins-pushpins-20pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Push pins / Thumb tacks",
+          "pack": "Pack of 20",
+          "color": "Multi-color (Red, Blue, Green, Yellow, White)",
+          "size": "Standard size"
+        },
+        "mrp": 85
+      }
+    ],
+    "subtitle": "Assorted colors · Metal tip · Thumb tacks",
+    "rating": {
+      "average": 4.2,
+      "count": 567
+    },
+    "title": "Push Pins - Pack of 20",
+    "id": "pins-pushpins"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "poster-color-domes",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1706593095573-f3176b2677d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3N0ZXIlMjBwYWludCUyMGNvbG9ycyUyMHNldHxlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Poster Color Set - Medium"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Poster Color Set - Medium",
+        "url": "https://images.unsplash.com/photo-1706593095573-f3176b2677d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3N0ZXIlMjBwYWludCUyMGNvbG9ycyUyMHNldHxlbnwxfHx8fDE3Njk4MzkyMTl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Art & Drawing",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "6 vibrant poster colors",
+          "Medium-sized bottles for value",
+          "Non-toxic and safe formula",
+          "Bright opaque coverage",
+          "Perfect for school and art projects",
+          "Easy to mix and blend"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Domes",
+          "Material": "Non-toxic premium quality",
+          "Type": "Poster color paint set",
+          "Suitability": "Paper, cardboard, canvas",
+          "Bottle Size": "Medium 25ml bottles",
+          "Coverage": "Opaque and matte finish",
+          "Colors": "6 assorted vibrant colors (Red, Blue, Yellow, Green, Orange, Black)",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Vibrant poster color set from Domes containing 6 assorted colors in medium-sized bottles. Non-toxic formula with excellent opaque coverage. Perfect for school art projects, creative work, and poster making. Colors blend and mix easily for creating custom shades."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 145,
+        "sku_id": "poster-color-domes-6color",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Poster colors",
+          "pack": "Single set",
+          "color": "Assorted 6-color set",
+          "size": "Medium bottles"
+        },
+        "mrp": 220
+      }
+    ],
+    "subtitle": "6 colors · Medium bottles · Vibrant colors",
+    "rating": {
+      "average": 4.7,
+      "count": 1234
+    },
+    "title": "Domes Poster Color Set - Medium",
+    "id": "poster-color-domes"
+  },
+  {
+    "variant_attributes": {},
+    "created_at": 1769796046,
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "description": "A3 Color Sheets are quality paper sheets suitable for craft work, school projects,\noffice presentations, and creative activities. The sheets offer a smooth surface\nand reliable thickness, making them easy to draw, cut, fold, and use for various\nart and stationery needs. Ideal for both personal and professional use.\n",
+    "product_id": "prod_1769796045017_kirutegvy",
+    "delivery_info": {
+      "free_delivery_above": 200,
+      "return_policy": "Not Applicable",
+      "estimated_delivery_days": 2,
+      "cod_available": false,
+      "delivery_estimate_text": "t+2"
+    },
+    "review_count": 0,
+    "brand": "Generic",
+    "media": {
+      "gallery_images": [
+        {
+          "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769796045017_kirutegvy/gallery_1769797396531.jpg",
+          "alt_text": "nil"
+        }
+      ],
+      "main_image": {
+        "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769796045017_kirutegvy/main_1769797364460.jpg",
+        "alt_text": "A3 Color Sheets"
+      }
+    },
+    "max_qty_per_user": 5,
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": 1769797435,
+    "tags": [],
+    "average_rating": 0,
+    "content_cards": [
+      {
+        "type": "text",
+        "order": 1,
+        "card_id": "1",
+        "title": "Highlights",
+        "data": "dsfghgfcggkhchgcljvjb"
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "a3-colour-paper",
+        "availability": "in_stock",
+        "image_url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769796045017_kirutegvy/sku_1769797423164.jpg",
+        "attributes": {
+          "color": "MIXED",
+          "size": "A3"
+        },
+        "available_quantity": 100,
+        "currency_code": "INR",
+        "mrp": 120
+      }
+    ],
+    "title": "A3 Bright Color Sheets",
+    "name": "A3 Color Sheets",
+    "id": "prod_1769796045017_kirutegvy"
+  },
+  {
+    "variant_attributes": {},
+    "created_at": 1769837570,
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "description": "A4 Color Sheets are versatile paper sheets designed for everyday school, office,\nand craft requirements. With a smooth finish and consistent paper quality, these\nsheets are suitable for writing, drawing, printing, and creative projects. A\npractical choice for students, professionals, and regular stationery use.\n",
+    "product_id": "prod_1769837570387_g2jgmzkho",
+    "delivery_info": {
+      "free_delivery_above": 150,
+      "return_policy": "Not Applicable",
+      "estimated_delivery_days": 2,
+      "cod_available": false,
+      "delivery_estimate_text": "t+2"
+    },
+    "review_count": 0,
+    "brand": "Generic",
+    "media": {
+      "gallery_images": [
+        {
+          "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769837570387_g2jgmzkho/gallery_1769837673598.webp",
+          "alt_text": "nil"
+        },
+        {
+          "url": "",
+          "alt_text": "nil"
+        },
+        {
+          "url": "",
+          "alt_text": "nil"
+        }
+      ],
+      "main_image": {
+        "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769837570387_g2jgmzkho/main_1769837595047.webp",
+        "alt_text": "A4 Color Sheets"
+      }
+    },
+    "max_qty_per_user": 5,
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": 1769837731,
+    "tags": [],
+    "average_rating": 0,
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "1",
+        "title": "Highlights",
+        "data": [
+          "Smooth Finish,",
+          "",
+          "Multipurpose Use,",
+          "",
+          "Daily Stationery"
+        ]
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "a4-colour-paper",
+        "availability": "in_stock",
+        "image_url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769837570387_g2jgmzkho/sku_1769837692151.webp",
+        "attributes": {
+          "color": "MIXED",
+          "size": "A4"
+        },
+        "available_quantity": 100,
+        "currency_code": "INR",
+        "mrp": 60
+      }
+    ],
+    "title": "A4 Bright Color Sheets",
+    "name": "A4 Color Sheets",
+    "id": "prod_1769837570387_g2jgmzkho"
+  },
+  {
+    "variant_attributes": {},
+    "created_at": 1769838040,
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "description": "Brown Paper is a durable paper suitable for packing, wrapping, and general stationery\nuse. The laminated surface provides added strength and resistance, making it useful\nfor protection, covering, and everyday utility purposes in homes, shops, and offices.\n",
+    "product_id": "prod_1769838039092_ki5ms70t3",
+    "delivery_info": {
+      "free_delivery_above": 0,
+      "return_policy": "Not Applicable",
+      "estimated_delivery_days": 0,
+      "cod_available": false,
+      "delivery_estimate_text": "t+2"
+    },
+    "review_count": 0,
+    "brand": "Generic",
+    "media": {
+      "gallery_images": [
+        {
+          "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769838039092_ki5ms70t3/gallery_1769838304640.webp",
+          "alt_text": "nil"
+        },
+        {
+          "url": "",
+          "alt_text": ""
+        }
+      ],
+      "main_image": {
+        "url": "https://storage.googleapis.com/rps-statationary-jaipur.firebasestorage.app/products/prod_1769838039092_ki5ms70t3/main_1769838234391.webp",
+        "alt_text": "brown paper"
+      }
+    },
+    "max_qty_per_user": 5,
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": 1769838314,
+    "tags": [],
+    "average_rating": 0,
+    "product_skus": [
+      {
+        "price": 15,
+        "sku_id": "brown-laminated-paper",
+        "availability": "in_stock",
+        "image_url": "",
+        "attributes": {
+          "color": "Brown",
+          "size": "laminated"
+        },
+        "available_quantity": 100,
+        "currency_code": "INR",
+        "mrp": 25
+      }
+    ],
+    "content_cards": [
+      {
+        "type": "text",
+        "order": 1,
+        "card_id": "1",
+        "title": "Highlights",
+        "data": "Laminated Surface\n\nStrong Material\n\nUtility Paper"
+      }
+    ],
+    "title": "Laminated Brown Paper",
+    "name": "Brown Paper",
+    "id": "prod_1769838039092_ki5ms70t3"
+  }
+]

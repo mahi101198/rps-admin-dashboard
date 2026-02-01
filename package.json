@@ -33,7 +33,11 @@
     "verify-production": "node src/scripts/verify-production-setup.js",
     "cleanup-home-sections": "node src/scripts/migrate-home-sections.js",
     "test-home-sections": "node src/scripts/test-home-sections.js",
-    "test-firebase": "node -r dotenv/config src/scripts/test-firebase.js dotenv_config_path=.env.local"
+    "test-firebase": "node -r dotenv/config src/scripts/test-firebase.js dotenv_config_path=.env.local",
+    "validate:json": "node -e \"const fs = require('fs'); ['part1', 'part2', 'part3', 'part4', 'part5'].forEach(part => { try { const data = JSON.parse(fs.readFileSync(`firebase-products-${part}.json`, 'utf8')); console.log(`✓ firebase-products-${part}.json - ${data.length} products - Valid JSON`); } catch(e) { console.error(`✗ firebase-products-${part}.json - Invalid JSON: ${e.message}`); } });\"",
+    "upload:products": "node scripts/upload-products.js",
+    "upload:products-ts": "ts-node scripts/upload-products-to-firebase.ts",
+    "inspect:products": "node scripts/inspect-products-db.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

@@ -6,7 +6,7 @@ import { ImageFile, UploadStatus } from '@/lib/types/image-file';
 import { cn } from '@/lib/utils';
 import { CheckCircle2, Loader2, Plus, UploadCloud, X, XCircle, Trash2, Upload } from 'lucide-react';
 import { toast } from 'sonner';
-import { uploadProductImageAction } from '@/actions/product-actions';
+import { uploadProductImageAction } from '@/actions/product-image-actions';
 import { Button } from '@/components/ui/button';
 
 // Helper function to optimize images before upload

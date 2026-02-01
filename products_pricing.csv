@@ -1,0 +1,78 @@
+S.N,Item,model_type,Size,Color,Pcs_in_Pack,make,MRP_pack,Selling_price,Discount_pct,max_qty_per_user
+1,A3 COLOR SHEETS,,A3,Mix,20,,120,95,21%,1
+2,A4 COLOR SHEETS,,A4,Mix,20,,60,55,8%,1
+3,BROWN PAPER,laminated,,Black,1,,25,15,40%,1
+4,Calculator,MJ-12D,N/A,,1,Casio,400,350,8%,
+5,Cell,AAA,AAA,Gold,1,Panasonic,18,15,17%,10
+6,Cell,AA,AA,Gold,1,Panasonic,18,15,17%,10
+7,COLORING BOOKS,,,,,1,,,,1
+8,Copy,Single/One Line,120 pages,Mix,,1,Classmate,32,29,9%,10
+9,Copy,Math,120 pages,Mix,,1,Classmate,32,29,9%,10
+10,Copy,English,120 pages,Mix,,1,Classmate,32,29,9%,3
+11,Correction Pen,N/A,7 MI,White,,1,Infinity,30,23,23%,3
+12,CORRECTION TAPE,TAPE,,,,Wonder,,,,
+13,DOUBLE SIDE TAPE,,,,,,,,,
+14,DRAWING BOOK,,,,,,gianto,,,,
+15,EXAM WRITING BOARD,,,,,,,,,,
+16,Fevicol,Adhesive,Small,White,1,Fevicol,10,9,10%,10
+17,FEVIKWIK,,,,15,pidilite,30,27,10%,
+18,File,No 300 Flat Cobra A4,Mix,,1,RPS,30,29,23%,24
+19,File,Display,10 Pocket,N/A,1,Solo,110,100,9%,4
+20,File,Full Index,14",Mix,1,Selwin,110,78,29%,4
+21,File,L Folder,A4,N/A,1,Ankita,12,10,17%,10
+22,Geometry Box,X1,N/A,,1,Domes,110,100,9%,3
+23,Gift Set,Painting Etc.,N/A,Mix,1,Domes,199,199,5%,
+24,Gift Set,X1,N/A,,1,Domes,20,20,,
+25,GLITTER PEN,Stick,N/A,,,Kendrik,,,
+26,Glue Stick,Stick,15gms,N/A,1,Fevistik,40,36,10%,10
+27,Highlighter,Pen,Mix,,5,Luxor,125,85,24%,3
+28,Long Copy,N/A,172 pages,N/A,1,Classmate,45,41,0%,3
+29,MASKING TAPE,TAPE,1",,1,,,,
+30,NOTE BOOKS,SPIRAL,A4,,1,,,,
+31,NOTE BOOKS DIARY,,,,,,,,,
+32,PACKING PAPER,,N/A,MIX,25,,20,15,25%,
+33,PACKING POLYTHENE,,N/A,Mix,90,,15,15,,
+34,Paint Brush Set,Pointed,0 To 6,N/A,7,Magic,60,45,25%,3
+35,Paint Brush Set,Flat,0 To 6,N/A,7,Magic,120,85,29%,3
+36,Paper,Easy 70 GSM,A4,White,1,JK,360,245,32%,3
+37,Paper,Copier 75 GSM,A4,White,1,JK,390,280,28%,3
+38,Paper Cutter,N/A,B8,Mix,1,Polo,20,18,10%,
+39,Pen,Glassy,N/A,Blue,5,Goldex,30,25,17%,3
+40,Pen,Ball Pen,N/A,Blue,10,Montex,100,85,5%,3
+41,Pen,Ball Pen,N/A,Blue,10,Pentonic,100,95,5%,3
+42,Pen,Gel Pen,N/A,Blue,10,Pentonic,100,93,5%,3
+43,Pen,Gel Pen,N/A,Blue,10,Hauser,100,85,5%,3
+44,Pen,Ball Pen Use and Thro,N/A,Blue,20,Balaji,100,55,45%,3
+45,Pencil,HB,N/A,N/A,10,Apsara,80,52,13%,3
+46,Pencil,Zoom,N/A,N/A,10,Domes,60,52,13%,10
+47,Pencil,SB,N/A,N/A,10,Natraj,50,43,14%,10
+48,Pencil with lead,Lead,0.5,N/A,1+1,Classmate,15,14,7%,
+49,Penstone,DVIWIWI,16 GB,N/A,1,Kingfon,500,450,10%,1
+50,Permanent Marker,Pointed OHP,N/A,Black,5,Luxor,100,95,5%,3
+51,Permanent Marker,Pen,N/A,black,1,Add Gel,20,18,10%,3
+52,PINBOARD,,,,,,,,,
+53,Poster Color,Poster,Medium,Mix,6,Domes,90,84,7%,3
+54,Punching Machine,No 280,N/A,,1,Kangaro,93,83,11%,
+55,Register,172 Pages,A4,N/A,1,Classmate,62,58,6%,10
+56,Scale,Plastic,12inches,N/A,1,Domes,12,10,17%,3
+57,Scale,metal,12inches,N/A,1,No Make,45,40,11%,3
+58,Scissors,N/A,4.8 inches,N/A,1,Infinity,40,35,13%,3
+59,Scotch Tape,Magic Tape,N/A,N/A,1,3M,130,125,4%,1
+60,Sharpener,N/A,N/A,N/A,1,Domes,5,4.7,6%,10
+61,Sharpener,HD 10,N/A,,1,Kangaro,54,50,7%,3
+62,Stapler,HD 10 D,N/A,N/A,1,Kangaro,54,50,7%,3
+63,Tape,Cello,half inches,Transparent,1,Wonder,15,10,33%,10
+64,Tape,Packing,2 inches,Brown,1,Wonder,45,30,33%,
+65,TAPE DISPENSER,,,,,,,,
+66,Whiteboard,,N/A,,1,Add Gel,25,23,8%,3
+67,Whiteboard Marker,Marker,N/A,Black,1,Add Gel,25,23,8%,3
+68,WRITING BOOKS,,,,,,,,
+69,Writing Pad Notebook,Spiral No 67,N/A,Mix,1,Neelgagan,88,83,6%,3
+70,Writing Pad Notebook,No 33,N/A,Mix,1,Neelgagan,44,40,9%,3
+71,Writing Pad Notebook,Contrence,N/A,N/A,1,Neelgagan,12,10,17%,3
+72,Writing Pad Notebook,Sticky Notepad,3X4,Mix,1,Desmat,30,25,17%,3
+75,Cloth Duster,N/A,Small,Mix,12,No Make,150,110,27%,3
+76,Bayonet Mag,Mosquito,400 MI,Black,1,Baypom,209,200,4%,3
+77,Mosquito Repellent,With Refill,Liquid,45 MI,N/A,1+1,All Out,89,87,2%,3
+78,Paper Napkin,N/A,N/A,White,,1,Sophile,65,60,8%,10
+79,Room Freshener Spray,Aer,240 MI,N/A,,1,Godrej,99,80,10%,

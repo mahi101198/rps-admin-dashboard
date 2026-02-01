@@ -1,0 +1,1355 @@
+[
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "a3-color-sheets",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1669286211114-9f17251fd0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmVkJTIwcGFwZXIlMjBzaGVldHMlMjBwYWNrfGVufDF8fHx8MTc2OTgzOTIxNXww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "A3 Color Sheets"
+        }
+      ],
+      "main_image": {
+        "alt_text": "A3 Color Sheets",
+        "url": "https://images.unsplash.com/photo-1669286211114-9f17251fd0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmVkJTIwcGFwZXIlMjBzaGVldHMlMjBwYWNrfGVufDF8fHx8MTc2OTgzOTIxNXww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "20 sheets per pack",
+          "Large A3 format",
+          "Vibrant assorted colors",
+          "Perfect for art projects",
+          "80 GSM quality",
+          "Smooth matte finish"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Colors": "Assorted Mix",
+          "Paper Type": "Color sheet",
+          "Finish": "White matte",
+          "Size": "A3 (297 x 420 mm)",
+          "Weight": "80 GSM",
+          "Quantity": "20 sheets",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium quality A3 colored paper sheets perfect for large format projects, presentations, and creative artwork. With vibrant assorted colors and smooth matte finish, ideal for drawings, posters, and mixed media projects."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 55,
+        "sku_id": "a3-color-sheets-default",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "gsm": "80 GSM",
+          "color": "Assorted Mix",
+          "pack": "20 sheets",
+          "size": "A3 (297 x 420 mm)"
+        },
+        "mrp": 60
+      }
+    ],
+    "subtitle": "Pack of 20 · Assorted colors · Premium quality",
+    "rating": {
+      "average": 4.5,
+      "count": 856
+    },
+    "title": "A3 Color Sheets",
+    "id": "a3-color-sheets"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "a4-color-sheets",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1669286211114-9f17251fd0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmVkJTIwcGFwZXIlMjBzaGVldHMlMjBwYWNrfGVufDF8fHx8MTc2OTgzOTIxNXww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "A4 Color Paper Sheets"
+        }
+      ],
+      "main_image": {
+        "alt_text": "A4 Color Paper Sheets",
+        "url": "https://images.unsplash.com/photo-1669286211114-9f17251fd0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmVkJTIwcGFwZXIlMjBzaGVldHMlMjBwYWNrfGVufDF8fHx8MTc2OTgzOTIxNXww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "20 sheets per pack",
+          "Standard A4 size",
+          "Multiple bright colors",
+          "Ideal for crafts and projects",
+          "80 GSM quality paper",
+          "Smooth matte finish"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Colors": "Assorted Mix",
+          "Paper Type": "Color sheet",
+          "Finish": "White matte",
+          "Size": "A4 (210 x 297 mm)",
+          "Weight": "80 GSM",
+          "Quantity": "20 sheets",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Standard A4 colored paper sheets ideal for crafts, school projects, and presentations. Available in vibrant assorted colors with smooth matte finish for excellent color application."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 80,
+        "sku_id": "a4-color-sheets-default",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "gsm": "80 GSM",
+          "color": "Assorted Mix",
+          "pack": "20 sheets",
+          "size": "A4 (210 x 297 mm)"
+        },
+        "mrp": 120
+      }
+    ],
+    "subtitle": "Pack of 20 · Assorted colors · Standard size",
+    "rating": {
+      "average": 4.4,
+      "count": 987
+    },
+    "title": "A4 Color Paper Sheets",
+    "id": "a4-color-sheets"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Housekeeping",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "battery-panasonic-aa",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Panasonic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwY2VsbCUyMGFhYXxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Panasonic AA Battery Cells - Gold"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Panasonic AA Battery Cells - Gold",
+        "url": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwY2VsbCUyMGFhYXxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Power & Batteries",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "High-capacity AA size",
+          "Reliable power output",
+          "Premium quality",
+          "10-year shelf life",
+          "Perfect for high-drain devices",
+          "Panasonic trusted brand"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Panasonic",
+          "Type": "AA Alkaline Battery",
+          "Chemistry": "Alkaline",
+          "Applications": "Cameras, Flashlights, Toys, Power tools, Gaming devices",
+          "Voltage": "1.5V",
+          "Color": "Gold",
+          "Shelf Life": "10 years",
+          "Quantity": "1 cell"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "High-capacity AA alkaline batteries from Panasonic. Reliable power for high-drain devices. Excellent performance and extended shelf life."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 40,
+        "sku_id": "battery-panasonic-aa-1",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "AA Alkaline",
+          "pack": "Single cell",
+          "color": "Gold",
+          "voltage": "1.5V"
+        },
+        "mrp": 60
+      }
+    ],
+    "subtitle": "Long-lasting power · Pack of 1 · Premium quality",
+    "rating": {
+      "average": 4.8,
+      "count": 2987
+    },
+    "title": "Panasonic AA Battery Cells - Gold",
+    "id": "battery-panasonic-aa"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Housekeeping",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "battery-panasonic-aaa",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Panasonic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwY2VsbCUyMGFhYXxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Panasonic AAA Battery Cells - Gold"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Panasonic AAA Battery Cells - Gold",
+        "url": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwY2VsbCUyMGFhYXxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Power & Batteries",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Long-lasting power output",
+          "Premium Panasonic quality",
+          "10-year shelf life",
+          "Suitable for all AAA devices",
+          "Reliable alkaline technology",
+          "Eco-conscious packaging"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Panasonic",
+          "Type": "AAA Alkaline Battery",
+          "Chemistry": "Alkaline",
+          "Applications": "Remote controls, Flashlights, Digital cameras, Toys",
+          "Voltage": "1.5V",
+          "Color": "Gold",
+          "Shelf Life": "10 years",
+          "Quantity": "1 cell"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium quality AAA alkaline battery cells from Panasonic. Delivers long-lasting and reliable power for all your AAA-compatible devices. Excellent shelf life and consistent performance."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 35,
+        "sku_id": "battery-panasonic-aaa-1",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "AAA Alkaline",
+          "pack": "Single cell",
+          "color": "Gold",
+          "voltage": "1.5V"
+        },
+        "mrp": 50
+      }
+    ],
+    "subtitle": "Long-lasting power · Pack of 1 · Premium quality",
+    "rating": {
+      "average": 4.8,
+      "count": 3214
+    },
+    "title": "Panasonic AAA Battery Cells - Gold",
+    "id": "battery-panasonic-aaa"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "brown-paper-laminated",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1763030861291-b7e65ae261c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicm93biUyMGtyYWZ0JTIwcGFwZXIlMjBsYW1pbmF0ZWR8ZW58MXx8fHwxNzY5ODM5MjE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Brown Kraft Paper - Laminated"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Brown Kraft Paper - Laminated",
+        "url": "https://images.unsplash.com/photo-1763030861291-b7e65ae261c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicm93biUyMGtyYWZ0JTIwcGFwZXIlMjBsYW1pbmF0ZWR8ZW58MXx8fHwxNzY5ODM5MjE2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Paper",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Laminated for durability",
+          "Black color finish",
+          "Perfect for book covers",
+          "Water-resistant coating",
+          "Professional grade material",
+          "Eco-friendly kraft base"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Finish": "Black laminated",
+          "Material": "Kraft paper with lamination",
+          "Type": "Laminated brown kraft paper",
+          "Coating": "Water-resistant",
+          "Color": "Black",
+          "Quantity": "1 sheet",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium durable laminated brown kraft paper in black color. Water-resistant coating makes it ideal for book covers, project work, protective wrapping, and storage purposes. Professional quality construction."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 45,
+        "sku_id": "brown-paper-laminated-default",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Laminated kraft paper",
+          "finish": "Black laminated",
+          "pack": "Single sheet",
+          "color": "Black"
+        },
+        "mrp": 65
+      }
+    ],
+    "subtitle": "Black color · Durable lamination · Quality material",
+    "rating": {
+      "average": 4.3,
+      "count": 423
+    },
+    "title": "Brown Kraft Paper - Laminated",
+    "id": "brown-paper-laminated"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 10,
+      "max_per_order": 20
+    },
+    "product_id": "calculator-casio",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Casio",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbyUyMGNhbGN1bGF0b3J8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Casio MJ-12D Calculator"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Casio MJ-12D Calculator",
+        "url": "https://images.unsplash.com/photo-1611532736579-6b16e2b50449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXNpbyUyMGNhbGN1bGF0b3J8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Calculators",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Large 12-digit display",
+          "Dual power: Solar and battery",
+          "Tax and memory functions",
+          "Durable plastic keys",
+          "Eco-friendly solar power",
+          "Reliable Casio build quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Casio",
+          "Display": "12-digit LCD",
+          "Warranty": "1 Year",
+          "Country of Origin": "India",
+          "Functions": "Tax, M+, M-, MR, Clear",
+          "Color": "Black",
+          "Model": "MJ-12D",
+          "Power Source": "Dual power (Solar + 1 x AAA Battery)"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional desktop calculator with large 12-digit display and durable keys. Dual power system with solar and battery ensures continuous operation. Ideal for office, home, and school use with essential tax and memory functions."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 350,
+        "sku_id": "calculator-casio-mj12d",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "display": "12-digit LCD",
+          "power_source": "Solar + Battery",
+          "model": "MJ-12D",
+          "color": "Black"
+        },
+        "mrp": 400
+      }
+    ],
+    "subtitle": "Desktop calculator · 12-digit display",
+    "rating": {
+      "average": 4.7,
+      "count": 1523
+    },
+    "title": "Casio MJ-12D Calculator",
+    "id": "calculator-casio"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "cello-tags-wonder",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Wonder",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1577994849154-4ce1ce12f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZWxsbyB0YWdzIGxhYmVscyBjbGVhcnxlbnwxfHx8fDE3Njk4MzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Wonder Cello Tags - Pack of 20"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Wonder Cello Tags - Pack of 20",
+        "url": "https://images.unsplash.com/photo-1577994849154-4ce1ce12f279?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZWxsbyB0YWdzIGxhYmVscyBjbGVhcnxlbnwxfHx8fDE3Njk4MzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Pack of 20 self-adhesive transparent tags",
+          "Crystal clear finish for clean appearance",
+          "Easy to peel and apply",
+          "Strong adhesive backing",
+          "Perfect for labeling and organizing",
+          "Versatile for office, home, and storage use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Wonder",
+          "Material": "Clear cellophane with adhesive backing",
+          "Type": "Cello tags / Self-adhesive labels",
+          "Pack Contents": "20 transparent tags",
+          "Features": "Easy-peel, self-adhesive, strong hold",
+          "Country of Origin": "India",
+          "Size": "Standard label size",
+          "Transparency": "Crystal clear visible"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Wonder self-adhesive cello tags pack of 20 for labeling and organizing. Crystal-clear transparent finish for neat appearance. Strong adhesive backing holds securely on packages, files, containers, and more. Easy to peel and apply without tools. Perfect for offices, warehouses, home organization, and storage."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 40,
+        "sku_id": "cello-tags-wonder-20pack",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Cello tags / Self-adhesive labels",
+          "pack": "Pack of 20",
+          "color": "Clear transparent",
+          "size": "Standard size"
+        },
+        "mrp": 60
+      }
+    ],
+    "subtitle": "Self-adhesive · Transparent · Clear labels",
+    "rating": {
+      "average": 4.3,
+      "count": 876
+    },
+    "title": "Wonder Cello Tags - Pack of 20",
+    "id": "cello-tags-wonder"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.310000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.310000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Housekeeping",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "cloth-duster",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1584622614875-2953067eb80f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyBjbG90aCBkdXN0ZXIgbWljcm9maWJlcnxlbnwxfHx8fDE3Njk4MzkyMjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Cleaning Cloth Duster"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Cleaning Cloth Duster",
+        "url": "https://images.unsplash.com/photo-1584622614875-2953067eb80f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGVhbmluZyBjbG90aCBkdXN0ZXIgbWljcm9maWJlcnxlbnwxfHx8fDE3Njk4MzkyMjR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Cleaning",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Premium microfiber material traps dust effectively",
+          "Dust-absorbing design captures even fine particles",
+          "Reusable and washable for long-term use",
+          "Machine washable for easy cleaning",
+          "Eco-friendly alternative to disposable dusters",
+          "Perfect for furniture, surfaces, and electronics"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Durability": "Long-lasting, survives multiple washes",
+          "Material": "Premium microfiber fabric",
+          "Type": "Microfiber cleaning cloth duster",
+          "Features": "Dust-absorbing, reusable, washable",
+          "Washing": "Machine washable, air dry recommended",
+          "Country of Origin": "India",
+          "Size": "Standard cloth size",
+          "Color": "Blue-Gray"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium microfiber cleaning cloth duster for effective dust removal. Superior dust-absorbing properties capture fine particles without spreading them around. Reusable and machine washable for sustainable, cost-effective cleaning. Perfect for dusting furniture, shelves, electronics, and delicate surfaces. Long-lasting quality with durability that survives hundreds of wash cycles."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 110,
+        "sku_id": "cloth-duster-single",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Microfiber cleaning duster",
+          "pack": "Single piece",
+          "color": "Blue-Gray",
+          "size": "Standard size"
+        },
+        "mrp": 150
+      }
+    ],
+    "subtitle": "Microfiber · Dust-absorbing · Reusable",
+    "rating": {
+      "average": 4.4,
+      "count": 1234
+    },
+    "title": "Cleaning Cloth Duster",
+    "id": "cloth-duster"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "coloring-book",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1649750291589-8812197b698c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmluZyUyMGJvb2slMjBjaGlsZHJlbnxlbnwxfHx8fDE3Njk4MzkyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Creative Coloring Book"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Creative Coloring Book",
+        "url": "https://images.unsplash.com/photo-1649750291589-8812197b698c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmluZyUyMGJvb2slMjBjaGlsZHJlbnxlbnwxfHx8fDE3Njk4MzkyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "40 fun and creative designs",
+          "Thick, quality paper",
+          "No color bleed-through",
+          "Perfect for creative kids",
+          "Spiral bound for durability",
+          "Safety-tested for children"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Age Group": "3-10 years",
+          "Binding": "Spiral binding",
+          "Country of Origin": "India",
+          "Pages": "40 unique designs",
+          "Paper Weight": "120 GSM (premium)",
+          "Size": "A4 (210 x 297 mm)",
+          "Paper Quality": "Thick, bleed-proof premium paper",
+          "Safety": "Child-safe, Non-toxic inks"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Engaging coloring book featuring fun and creative designs for children aged 3-10. Premium thick pages prevent color bleed-through, perfect for markers, crayons, and colored pencils. Great for developing creativity and fine motor skills."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "coloring-book-40",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "40 designs",
+          "age_group": "3-10 years",
+          "paper_quality": "Thick bleed-proof",
+          "size": "A4"
+        },
+        "mrp": 150
+      }
+    ],
+    "subtitle": "Fun designs · Thick pages · For kids",
+    "rating": {
+      "average": 4.7,
+      "count": 2341
+    },
+    "title": "Creative Coloring Book",
+    "id": "coloring-book"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "copy-english",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate English Copy"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate English Copy",
+        "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "4-line ruling for better handwriting",
+          "120 quality pages",
+          "Perfect for English practice",
+          "Improves letter formation",
+          "Premium Classmate quality",
+          "Ideal for students"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Classmate",
+          "Ruling": "4-line with guide",
+          "Type": "English / 4-line ruled notebook",
+          "Pages": "120",
+          "Paper Quality": "Premium white",
+          "Size": "Regular (A4)",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Four-line ruled notebook specially designed for English handwriting practice. 120 pages of premium paper help develop better letter formation and writing skills."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 40,
+        "sku_id": "copy-english-120",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "120 sheets",
+          "ruling": "4-line ruled",
+          "binding": "Stitched",
+          "size": "Regular (A4)"
+        },
+        "mrp": 60
+      }
+    ],
+    "subtitle": "120 pages · 4-line ruled · English writing",
+    "rating": {
+      "average": 4.4,
+      "count": 2543
+    },
+    "title": "Classmate English Copy",
+    "id": "copy-english"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "copy-math",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate Math Copy"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate Math Copy",
+        "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Square grid for math problems",
+          "120 quality pages",
+          "Ideal for calculations and geometry",
+          "Student-friendly design",
+          "Smooth writing surface",
+          "Trusted Classmate brand"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Classmate",
+          "Ruling": "Square grid",
+          "Type": "Math / Square ruled notebook",
+          "Pages": "120",
+          "Paper Quality": "Premium white",
+          "Size": "Regular (A4)",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Square ruled notebook specially designed for mathematics practice. 120 pages of quality paper help with calculations, geometry, and math problems."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 42,
+        "sku_id": "copy-math-120",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "120 sheets",
+          "ruling": "Square grid",
+          "binding": "Stitched",
+          "size": "Regular (A4)"
+        },
+        "mrp": 65
+      }
+    ],
+    "subtitle": "120 pages · Square ruled · Math practice",
+    "rating": {
+      "average": 4.5,
+      "count": 2876
+    },
+    "title": "Classmate Math Copy",
+    "id": "copy-math"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.750000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.750000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 20,
+      "max_per_order": 50
+    },
+    "product_id": "copy-single-line",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Classmate",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Classmate Single Line Copy"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Classmate Single Line Copy",
+        "url": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3RlYm9vayUyMHN0YXRpb25lcnl8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "120 pages of premium paper",
+          "Smooth writing surface",
+          "Durable cover",
+          "Perfect for daily use",
+          "Single line ruling",
+          "Trusted Classmate brand"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Classmate",
+          "Binding": "Stitched binding",
+          "Type": "Single Line / Ruled notebook",
+          "Country of Origin": "India",
+          "Line Spacing": "Single line",
+          "Pages": "120",
+          "Paper Quality": "Premium white",
+          "Size": "Regular (A4)"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium quality ruled notebook from Classmate with 120 pages. Perfect for school, college, and office use. Smooth paper ensures comfortable writing with all types of pens."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 40,
+        "sku_id": "copy-single-line-120",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "pages": "120 sheets",
+          "ruling": "Single line",
+          "binding": "Stitched",
+          "size": "Regular (A4)"
+        },
+        "mrp": 60
+      }
+    ],
+    "subtitle": "120 pages · Ruled · Premium quality",
+    "rating": {
+      "average": 4.5,
+      "count": 3421
+    },
+    "title": "Classmate Single Line Copy",
+    "id": "copy-single-line"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 40,
+      "max_per_order": 80
+    },
+    "product_id": "correction-pen-infinity",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Infinity",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3JyZWN0aW9uJTIwcGVuJTIwd2hpdGV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Infinity Correction Pen"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Infinity Correction Pen",
+        "url": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3JyZWN0aW9uJTIwcGVuJTIwd2hpdGV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Quick-drying formula - 30 seconds",
+          "Precise fine tip pen applicator",
+          "Covers all ink types",
+          "7ml generous capacity",
+          "Smooth and even application",
+          "Non-toxic and odorless"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Infinity",
+          "Drying Time": "30 seconds",
+          "Type": "Correction fluid pen",
+          "Volume": "7 ml",
+          "Tip Type": "Fine point (ball tip)",
+          "Coverage": "Approx 150-200 corrections",
+          "Country of Origin": "India",
+          "Color": "White"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Fast-drying correction pen from Infinity for quick and clean corrections on all ink types. Fine tip allows for precise application without blots. 7ml capacity provides excellent value and long-lasting use."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 25,
+        "sku_id": "correction-pen-infinity-7ml",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Correction fluid pen",
+          "pack": "Single pen",
+          "color": "White",
+          "size": "7 ml bottle"
+        },
+        "mrp": 40
+      }
+    ],
+    "subtitle": "Quick dry · 7 ml · Smooth application",
+    "rating": {
+      "average": 4.2,
+      "count": 892
+    },
+    "title": "Infinity Correction Pen",
+    "id": "correction-pen-infinity"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "correction-tape-wonder",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Wonder",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1612815154075-baa83e1c499f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3JyZWN0aW9uJTIwdGFwZSUyMHdoaXRlfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Wonder Correction Tape"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Wonder Correction Tape",
+        "url": "https://images.unsplash.com/photo-1612815154075-baa83e1c499f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3JyZWN0aW9uJTIwdGFwZSUyMHdoaXRlfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Instant correction - no drying time",
+          "Tear-resistant tape material",
+          "8 meters of tape per roll",
+          "5mm width - ideal for precise corrections",
+          "Smooth and clean application",
+          "Long-lasting supply"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Wonder",
+          "Material": "Tear-resistant tape",
+          "Type": "Correction tape roller",
+          "Country of Origin": "India",
+          "Length": "8 meters",
+          "Color": "White",
+          "Width": "5 mm",
+          "Application": "Instant dry, no waiting"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Convenient correction tape from Wonder for instant corrections without drying time. Tear-resistant tape applies smoothly and covers cleanly. 8 meters of tape provides excellent value for offices and students."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 45,
+        "sku_id": "correction-tape-wonder-8m",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Correction tape roller",
+          "pack": "Single roll",
+          "color": "White",
+          "size": "8 meters length"
+        },
+        "mrp": 65
+      }
+    ],
+    "subtitle": "Instant correction · 8m length · Tear-resistant",
+    "rating": {
+      "average": 4.5,
+      "count": 1123
+    },
+    "title": "Wonder Correction Tape",
+    "id": "correction-tape-wonder"
+  }
+]

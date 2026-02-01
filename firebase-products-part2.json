@@ -1,0 +1,1507 @@
+[
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "double-side-tape",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1701442876057-0bcbe9317600?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb3VibGUlMjBzaWRlZCUyMHRhcGUlMjByb2xsfGVufDF8fHx8MTc2OTgzOTIxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Double Sided Tape - Premium"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Double Sided Tape - Premium",
+        "url": "https://images.unsplash.com/photo-1701442876057-0bcbe9317600?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb3VibGUlMjBzaWRlZCUyMHRhcGUlMjByb2xsfGVufDF8fHx8MTc2OTgzOTIxN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Strong permanent adhesion on both sides",
+          "Perfect for mounting and display",
+          "12mm wide tape - ideal width",
+          "5 meters of tape per roll",
+          "Foam backing prevents wrinkles",
+          "Works on various surfaces"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Type": "Double sided tape",
+          "Adhesive Type": "Permanent bond",
+          "Applications": "Mounting, photos, posters, crafts, displays",
+          "Country of Origin": "India",
+          "Length": "5 meters",
+          "Color": "Clear/Transparent",
+          "Width": "12 mm",
+          "Backing Material": "Foam/Paper composite"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Strong double-sided adhesive tape ideal for mounting photos, posters, displays, and craft projects. Foam backing prevents damage to surfaces. Clean application leaves no residue. Perfect for offices, homes, and creative projects."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 35,
+        "sku_id": "double-side-tape-12mm-5m",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Foam backing double-sided",
+          "pack": "Single roll",
+          "color": "Clear / Transparent",
+          "size": "12 mm × 5 meters"
+        },
+        "mrp": 55
+      }
+    ],
+    "subtitle": "Strong adhesion · 12mm × 5m · Multi-purpose",
+    "rating": {
+      "average": 4.4,
+      "count": 765
+    },
+    "title": "Double Sided Tape - Premium",
+    "id": "double-side-tape"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 10,
+      "max_per_order": 20
+    },
+    "product_id": "exam-board",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Generic",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1614492898637-435e0f87cef8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGFtJTIwd3JpdGluZyUyMGJvYXJkJTIwY2xpcGJvYXJkfGVufDF8fHx8MTc2OTgzOTIxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Exam Writing Board"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Exam Writing Board",
+        "url": "https://images.unsplash.com/photo-1614492898637-435e0f87cef8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGFtJTIwd3JpdGluZyUyMGJvYXJkJTIwY2xpcGJvYXJkfGVufDF8fHx8MTc2OTgzOTIxNnww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Smooth hard writing surface",
+          "Strong metal spring clip",
+          "Lightweight and portable",
+          "Perfect for exams and field work",
+          "Durable construction",
+          "Compact A4 size"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Color": "Black",
+          "Material": "Plastic with reinforced backing",
+          "Type": "Exam board / Clipboard",
+          "Size": "A4 (210 x 297 mm)",
+          "Clip Type": "Metal spring clip",
+          "Surface": "Smooth hard writing surface",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Sturdy exam writing board with smooth surface and strong metal clip. Essential for students during examinations and portable for on-the-go writing."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "exam-board-a4",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "material": "Plastic with metal clip",
+          "clip_type": "Spring clip",
+          "color": "Black",
+          "size": "A4"
+        },
+        "mrp": 130
+      }
+    ],
+    "subtitle": "Clipboard style · Smooth surface · Student essential",
+    "rating": {
+      "average": 4.6,
+      "count": 1567
+    },
+    "title": "Exam Writing Board",
+    "id": "exam-board"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "fevicol-adhesive",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Fevicol",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbHVlJTIwYWRoZXNpdmV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Fevicol Adhesive Glue - Small"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Fevicol Adhesive Glue - Small",
+        "url": "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbHVlJTIwYWRoZXNpdmV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "India's most trusted adhesive brand",
+          "Strong permanent bond",
+          "Non-toxic and washable formula",
+          "Works on paper, cardboard, fabric, leather",
+          "Dries clear and waterproof",
+          "Perfect for school and craft projects"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Fevicol",
+          "Type": "White craft adhesive glue",
+          "Drying Time": "30 minutes for full cure",
+          "Features": "Non-toxic, washable, waterproof when dry",
+          "Country of Origin": "India",
+          "Size": "50 grams",
+          "Color": "White (dries clear)",
+          "Application": "Paper, cardboard, fabric, leather, wood"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "India's most trusted adhesive from Fevicol - perfect for paper, cardboard, and craft projects. Strong lasting bonds with non-toxic washable formula. 50g bottle provides excellent coverage for school and home projects."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 35,
+        "sku_id": "fevicol-adhesive-50g",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "White craft adhesive",
+          "pack": "Single bottle",
+          "color": "White",
+          "size": "50 grams"
+        },
+        "mrp": 50
+      }
+    ],
+    "subtitle": "50g bottle · White glue · All-purpose bond",
+    "rating": {
+      "average": 4.8,
+      "count": 2134
+    },
+    "title": "Fevicol Adhesive Glue - Small",
+    "id": "fevicol-adhesive"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "fevikwik-instant",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Pidilite",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbHVlJTIwYWRoZXNpdmV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Fevikwik Instant Adhesive - Pidilite"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Fevikwik Instant Adhesive - Pidilite",
+        "url": "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbHVlJTIwYWRoZXNpdmV8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Instant bonding - 10-20 seconds",
+          "15 units in convenient pack",
+          "Professional-grade quality",
+          "Works on plastic, metal, ceramics, rubber",
+          "Waterproof and weatherproof",
+          "Perfect for quick repairs",
+          "Bonds virtually anything"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Pidilite",
+          "Materials Bond": "Plastic, metal, ceramics, rubber, wood, paper",
+          "Setting Time": "10-20 seconds",
+          "Pack Contents": "15 individual tubes",
+          "Type": "Instant super glue / Cyanoacrylate",
+          "Features": "Waterproof, weatherproof, flexible bond",
+          "Country of Origin": "India",
+          "Per Unit Size": "0.5 ml",
+          "Color": "Clear/Colorless"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional-grade instant super glue from Pidilite for quick repairs and bonding. 15-pack offers excellent value for home, office, and industrial use. Bonds virtually any material instantly with waterproof and weatherproof properties."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "fevikwik-instant-15pk",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Instant super glue",
+          "pack": "15 units",
+          "color": "Clear / Colorless",
+          "size": "0.5 ml per unit"
+        },
+        "mrp": 120
+      }
+    ],
+    "subtitle": "15 pack · Instant bonding · Professional grade",
+    "rating": {
+      "average": 4.7,
+      "count": 1876
+    },
+    "title": "Fevikwik Instant Adhesive - Pidilite",
+    "id": "fevikwik-instant"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 10,
+      "max_per_order": 20
+    },
+    "product_id": "file-display-solo",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Solo",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXNwbGF5JTIwZmlsZSUyMGZvbGRlcnxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Solo Display File 10 Pocket"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Solo Display File 10 Pocket",
+        "url": "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXNwbGF5JTIwZmlsZSUyMGZvbGRlcnxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "10 clear protective pockets",
+          "A4 size documents",
+          "Professional presentation quality",
+          "Durable plastic construction",
+          "Easy document insertion",
+          "Perfect for presentations"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Solo",
+          "Material": "Durable polypropylene plastic",
+          "Type": "Display file with pockets",
+          "Pocket Capacity": "20 pages (10 sheets)",
+          "Pockets": "10 clear pockets",
+          "Country of Origin": "India",
+          "Size": "A4 (210 x 297 mm)",
+          "Color": "Clear/Transparent"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional display file from Solo featuring 10 clear protective pockets perfect for organizing and presenting documents. Ideal for office presentations, school projects, and document storage."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 85,
+        "sku_id": "file-display-solo-10pk-a4",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Display file with pockets",
+          "pack": "Single",
+          "color": "Clear / Transparent",
+          "size": "A4 (210 x 297 mm)"
+        },
+        "mrp": 120
+      }
+    ],
+    "subtitle": "10 clear pockets · A4 size · Professional presentation",
+    "rating": {
+      "average": 4.4,
+      "count": 892
+    },
+    "title": "Solo Display File 10 Pocket",
+    "id": "file-display-solo"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "file-folder-cobra",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "RPS",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1568667256549-094345857637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxlJTIwZm9sZGVyJTIwb2ZmaWNlfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "RPS Cobra File Folder No 300"
+        }
+      ],
+      "main_image": {
+        "alt_text": "RPS Cobra File Folder No 300",
+        "url": "https://images.unsplash.com/photo-1568667256549-094345857637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxlJTIwZm9sZGVyJTIwb2ZmaWNlfGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "A4 standard size fits all documents",
+          "Durable kraft cardboard construction",
+          "Reinforced edges prevent wear and tear",
+          "Flat design for easy storage",
+          "Professional appearance for offices",
+          "Capacity: up to 150 sheets",
+          "Ideal for document organization"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "RPS",
+          "Material": "Premium kraft cardboard",
+          "Type": "Flat file folder",
+          "Capacity": "100-150 sheets (80 gsm paper)",
+          "Features": "Reinforced corners and edges",
+          "Country of Origin": "India",
+          "Color": "Brown / Natural kraft",
+          "Size": "A4 (210 x 297 mm)",
+          "Model": "No 300 - Cobra series"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Professional-grade file folder from RPS Cobra series. Durable A4-sized folder made from premium kraft cardboard with reinforced edges for long-lasting use. Perfect for organizing and storing important documents in offices, schools, and institutions. Flat design enables easy storage in filing cabinets."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 65,
+        "sku_id": "file-folder-cobra-300-a4",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Flat file folder",
+          "pack": "Single",
+          "color": "Brown / Kraft",
+          "size": "A4 (210 x 297 mm)"
+        },
+        "mrp": 90
+      }
+    ],
+    "subtitle": "A4 size · Kraft cardboard · Reinforced edges",
+    "rating": {
+      "average": 4.3,
+      "count": 756
+    },
+    "title": "RPS Cobra File Folder No 300",
+    "id": "file-folder-cobra"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 10,
+      "max_per_order": 20
+    },
+    "product_id": "file-full-index",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Selwin",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1696992812765-b7522af78a5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdWxsJTIwaW5kZXglMjBmaWxlJTIwZGl2aWRlciUyMHRhYnN8ZW58MXx8fHwxNzY5ODM5MjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Selwin Full Index File - 14\""
+        }
+      ],
+      "main_image": {
+        "alt_text": "Selwin Full Index File - 14\"",
+        "url": "https://images.unsplash.com/photo-1696992812765-b7522af78a5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdWxsJTIwaW5kZXglMjBmaWxlJTIwZGl2aWRlciUyMHRhYnN8ZW58MXx8fHwxNzY5ODM5MjMyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Large 14-inch format",
+          "Full index dividers with tabs",
+          "Multi-color coded sections",
+          "Easy document organization",
+          "Quick access to files",
+          "Professional office quality"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Selwin",
+          "Material": "Durable cardboard",
+          "Type": "Full index file",
+          "Color Tabs": "Multi-color (6-10 sections)",
+          "Features": "Index dividers with colored tabs",
+          "Country of Origin": "India",
+          "Capacity": "Holds 100+ pages",
+          "Size": "14 inch (35 cm)"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Large format index file from Selwin with full index dividers and multi-colored tabs. Perfect for organized document storage in offices with easy quick-access to different file categories."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 95,
+        "sku_id": "file-full-index-14in",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Full index file",
+          "pack": "Single",
+          "color": "Multi-color tabs",
+          "size": "14 inch"
+        },
+        "mrp": 140
+      }
+    ],
+    "subtitle": "14 inch · Index dividers · Multi-color tabs",
+    "rating": {
+      "average": 4.5,
+      "count": 678
+    },
+    "title": "Selwin Full Index File - 14\"",
+    "id": "file-full-index"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "file-l-folder",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Ankita",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1630734242356-a6f858790740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxMJTIwZm9sZGVyJTIwdHJhbnNwYXJlbnQlMjBwbGFzdGljfGVufDF8fHx8MTc2OTgzOTIzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Ankita L Folder - A4"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Ankita L Folder - A4",
+        "url": "https://images.unsplash.com/photo-1630734242356-a6f858790740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxMJTIwZm9sZGVyJTIwdHJhbnNwYXJlbnQlMjBwbGFzdGljfGVufDF8fHx8MTc2OTgzOTIzMnww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Notebooks & Folders",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Clear transparent design for easy viewing",
+          "L-shaped for document protection",
+          "A4 compatible size",
+          "Lightweight and portable",
+          "Affordable budget option",
+          "Ideal for students and offices"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Ankita",
+          "Material": "Clear transparent polypropylene",
+          "Type": "L-shaped folder",
+          "Capacity": "20-30 sheets",
+          "Thickness": "Medium gauge",
+          "Country of Origin": "India",
+          "Size": "A4 (210 x 297 mm)",
+          "Color": "Clear/Transparent"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Transparent L-shaped folder from Ankita for document protection and easy viewing. A4 size compatible and lightweight, perfect for portable storage and organization."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 25,
+        "sku_id": "file-l-folder-a4-clear",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "L-shaped folder",
+          "pack": "Single",
+          "color": "Clear / Transparent",
+          "size": "A4 (210 x 297 mm)"
+        },
+        "mrp": 40
+      }
+    ],
+    "subtitle": "Transparent plastic · A4 size · Document protection",
+    "rating": {
+      "average": 4.3,
+      "count": 543
+    },
+    "title": "Ankita L Folder - A4",
+    "id": "file-l-folder"
+  },
+  {
+    "variant_attributes": {
+      "color": [
+        "Blue",
+        "Black",
+        "Red",
+        "Green"
+      ],
+      "size": [
+        "0.7mm",
+        "0.5mm",
+        "1.0mm"
+      ]
+    },
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "gel-pen-blue",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Smooth-Flow",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1757358678245-6151f66a699c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwZ2VsJTIwcGVuJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Smooth-Flow Gel Pen – Multi-color"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Smooth-Flow Gel Pen – Multi-color",
+        "url": "https://images.unsplash.com/photo-1757358678245-6151f66a699c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwZ2VsJTIwcGVuJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDF8fHx8MTc2OTEwNzAzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Smooth gel ink formula",
+          "Quick-dry technology",
+          "Comfortable ergonomic grip",
+          "Available in multiple colors",
+          "Multiple tip sizes (0.5mm, 0.7mm, 1.0mm)",
+          "Refillable cartridges"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Smooth-Flow",
+          "Tip Sizes": "0.5mm (fine), 0.7mm (standard), 1.0mm (bold)",
+          "Material": "Premium plastic body with rubber grip",
+          "Refillable": "Yes - compatible refill cartridges",
+          "Ink Colors": "Blue, Black, Red, Green options",
+          "Country of Origin": "India",
+          "Ink Type": "Smooth gel-based, quick-dry formula",
+          "Grip Type": "Comfortable ergonomic rubber grip"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Premium Smooth-Flow gel pen featuring advanced smooth gel ink technology. Quick-dry formula prevents smudging. Ergonomic rubber grip ensures comfortable writing for extended periods. Available in 4 vibrant colors (Blue, Black, Red, Green) and 3 tip sizes (0.5mm, 0.7mm, 1.0mm) to suit different writing preferences. Refillable design for long-term value. Perfect for students, professionals, and everyday writing."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-blue-size-0.7mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Blue",
+          "size": "0.7mm"
+        },
+        "mrp": 249
+      },
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-black-size-0.7mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Black",
+          "size": "0.7mm"
+        },
+        "mrp": 249
+      },
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-red-size-0.7mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Red",
+          "size": "0.7mm"
+        },
+        "mrp": 249
+      },
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-green-size-0.7mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Green",
+          "size": "0.7mm"
+        },
+        "mrp": 249
+      },
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-blue-size-0.5mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Blue",
+          "size": "0.5mm"
+        },
+        "mrp": 249
+      },
+      {
+        "price": 149,
+        "sku_id": "gel-pen-blue-color-blue-size-1.0mm",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Gel pen",
+          "pack": "Single",
+          "color": "Blue",
+          "size": "1.0mm"
+        },
+        "mrp": 249
+      }
+    ],
+    "subtitle": "Comfort grip · Smudge-free writing · Multiple colors & sizes",
+    "rating": {
+      "average": 4.5,
+      "count": 2847
+    },
+    "title": "Smooth-Flow Gel Pen – Multi-color",
+    "id": "gel-pen-blue"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 25,
+      "max_per_order": 50
+    },
+    "product_id": "geometry-box-domes",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9tZXRyeSUyMGJveCUyMG1hdGglMjBpbnN0cnVtZW50c3xlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Geometry Box X1"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Geometry Box X1",
+        "url": "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9tZXRyeSUyMGJveCUyMG1hdGglMjBpbnN0cnVtZW50c3xlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Geometry & Scales",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Complete mathematics instrument set",
+          "Durable metal instruments",
+          "Compact durable case",
+          "Student essential for geometry",
+          "All tools in one box",
+          "Perfect for school and college"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Domes",
+          "Contents": "Compass, divider, set square (45°/90°), protractor (180°), rulers (15cm, 30cm)",
+          "Material": "Metal instruments with plastic handles",
+          "Compass": "Adjustable metal compass",
+          "Case": "Durable plastic hinged box",
+          "Model": "X1",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Complete geometry box from Domes with all essential mathematical instruments. Includes compass, dividers, protractor, set squares, and rulers. Perfect for students studying mathematics and geometry."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 100,
+        "sku_id": "geometry-box-domes-x1-metal",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Complete geometry set",
+          "pack": "Single box",
+          "color": "Assorted",
+          "size": "Compact"
+        },
+        "mrp": 110
+      }
+    ],
+    "subtitle": "Complete set · Metal instruments · Student essential",
+    "rating": {
+      "average": 4.5,
+      "count": 1876
+    },
+    "title": "Domes Geometry Box X1",
+    "id": "geometry-box-domes"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "gift-set-general",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludGluZyUyMGtpdCUyMGFydCUyMHNldHxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Stationery Gift Set"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Stationery Gift Set",
+        "url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludGluZyUyMGtpdCUyMGFydCUyMHNldHxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Gifts & Specialty",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Complete stationery assortment",
+          "Mix of essential items",
+          "Attractive gift box packaging",
+          "Perfect for students and professionals",
+          "Great value bundle",
+          "Ideal for gifts and personal use"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Colors": "Multi-color assorted",
+          "Contents": "Pens, pencils, erasers, scales, sharpeners, notepads, and more",
+          "Packaging": "Beautiful gift box with ribbon",
+          "Type": "Assorted stationery gift set",
+          "Usage": "Students, office, home use",
+          "Brand": "Domes",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Comprehensive stationery gift set from Domes containing assorted essential items for students and office professionals. Includes pens, pencils, erasers, scales, sharpeners, and notepads in an attractive gift box. Perfect for birthdays, school supplies, or office gifting."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 249,
+        "sku_id": "gift-set-general-assorted",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Stationery gift set",
+          "pack": "Single gift box",
+          "color": "Multi-color assorted",
+          "size": "Standard"
+        },
+        "mrp": 380
+      }
+    ],
+    "subtitle": "Assorted items · Mix colors · Complete package",
+    "rating": {
+      "average": 4.5,
+      "count": 654
+    },
+    "title": "Domes Stationery Gift Set",
+    "id": "gift-set-general"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:52.027000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.027000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 15,
+      "max_per_order": 30
+    },
+    "product_id": "gift-set-painting-kit",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Domes",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludGluZyUyMGtpdCUyMGFydCUyMHNldHxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Domes Art & Craft Painting Gift Set"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Domes Art & Craft Painting Gift Set",
+        "url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYWludGluZyUyMGtpdCUyMGFydCUyMHNldHxlbnwxfHx8fDE3MzgzNDk0Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Gifts & Specialty",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Complete art supplies in one box",
+          "Includes colors, brushes, and palette",
+          "Premium quality materials",
+          "Perfect gift for creative kids",
+          "Non-toxic and safe paints",
+          "Beautiful gift box packaging"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Packaging": "Attractive gift box with handle",
+          "Contents": "12 colors, 5 brushes, mixing palette, palette knife, water container, instruction guide",
+          "Material": "Non-toxic premium quality",
+          "Type": "Complete painting kit gift set",
+          "Age Group": "5+ years",
+          "Brand": "Domes",
+          "Country of Origin": "India"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Complete art painting gift set from Domes with everything needed to start painting. Includes non-toxic premium quality colors, various brushes, mixing palette, and accessories. Beautifully packaged in gift box - ideal for birthdays, festivals, and special occasions. Safe and suitable for kids aged 5 and above."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 299,
+        "sku_id": "gift-set-painting-kit-complete",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Painting gift set",
+          "pack": "Single gift box",
+          "color": "Multi-color",
+          "size": "Complete kit"
+        },
+        "mrp": 450
+      }
+    ],
+    "subtitle": "Complete kit · Colors & brushes · Creative fun",
+    "rating": {
+      "average": 4.6,
+      "count": 876
+    },
+    "title": "Domes Art & Craft Painting Gift Set",
+    "id": "gift-set-painting-kit"
+  },
+  {
+    "variant_attributes": {
+      "color": [
+        "Gold",
+        "Silver",
+        "Pink",
+        "Blue",
+        "Purple"
+      ]
+    },
+    "last_updated": "2026-01-31T08:23:52.191000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:52.191000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "glitter-pen",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Sparkle",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1565967511849-76a60a516170?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbGl0dGVyJTIwcGVuJTIwY29sb3JmdWx8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Sparkle Glitter Pen"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Sparkle Glitter Pen",
+        "url": "https://images.unsplash.com/photo-1565967511849-76a60a516170?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbGl0dGVyJTIwcGVuJTIwY29sb3JmdWx8ZW58MXx8fHwxNzM4MzQ5NDM4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Writing Instruments",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Sparkly metallic colors",
+          "Smooth gel ink formula",
+          "Perfect for crafts and art",
+          "Creative and decorative writing",
+          "5 vibrant color options",
+          "Eye-catching glitter effect"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Sparkle",
+          "Type": "Glitter gel pen",
+          "Features": "Metallic shimmer finish",
+          "Country of Origin": "India",
+          "Applications": "Greeting cards, crafts, creative projects",
+          "Tip Size": "1.0mm medium",
+          "Ink Type": "Gel-based with glitter shimmer",
+          "Colors Available": "Gold, Silver, Pink, Blue, Purple"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Sparkle glitter pen with smooth gel ink featuring metallic shimmer effect. Available in 5 vibrant colors (Gold, Silver, Pink, Blue, Purple). Perfect for greeting cards, scrapbooking, creative projects, and artistic writing. Add sparkle and shine to any document."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 35,
+        "sku_id": "glitter-pen-color-gold",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Glitter gel pen",
+          "pack": "Single",
+          "color": "Gold",
+          "size": "1.0mm"
+        },
+        "mrp": 55
+      },
+      {
+        "price": 35,
+        "sku_id": "glitter-pen-color-silver",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Glitter gel pen",
+          "pack": "Single",
+          "color": "Silver",
+          "size": "1.0mm"
+        },
+        "mrp": 55
+      },
+      {
+        "price": 35,
+        "sku_id": "glitter-pen-color-pink",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Glitter gel pen",
+          "pack": "Single",
+          "color": "Pink",
+          "size": "1.0mm"
+        },
+        "mrp": 55
+      },
+      {
+        "price": 35,
+        "sku_id": "glitter-pen-color-blue",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Glitter gel pen",
+          "pack": "Single",
+          "color": "Blue",
+          "size": "1.0mm"
+        },
+        "mrp": 55
+      },
+      {
+        "price": 35,
+        "sku_id": "glitter-pen-color-purple",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Glitter gel pen",
+          "pack": "Single",
+          "color": "Purple",
+          "size": "1.0mm"
+        },
+        "mrp": 55
+      }
+    ],
+    "subtitle": "Metallic colors · Smooth flow · Creative writing",
+    "rating": {
+      "average": 4.3,
+      "count": 654
+    },
+    "title": "Sparkle Glitter Pen - Metallic",
+    "id": "glitter-pen"
+  },
+  {
+    "variant_attributes": {},
+    "last_updated": "2026-01-31T08:23:51.889000+00:00",
+    "created_at": "__SERVER_TIMESTAMP__",
+    "uploaded_at": "2026-01-31T08:23:51.889000+00:00",
+    "overall_availability": "in_stock",
+    "category": "Stationery",
+    "purchase_limits": {
+      "max_per_user_per_day": 50,
+      "max_per_order": 100
+    },
+    "product_id": "glue-stick-fevistik",
+    "delivery_info": {
+      "return_policy": "7 days return",
+      "estimated_delivery": "3-5 business days",
+      "free_delivery_threshold": 499,
+      "cod_available": true
+    },
+    "brand": "Fevistik",
+    "media": {
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1625225233840-695456021cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxnbHVlJTIwc3RpY2slMjBzdGF0aW9uZXJ5fGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+          "alt_text": "Fevistik Glue Stick - 15gms"
+        }
+      ],
+      "main_image": {
+        "alt_text": "Fevistik Glue Stick - 15gms",
+        "url": "https://images.unsplash.com/photo-1625225233840-695456021cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxnbHVlJTIwc3RpY2slMjBzdGF0aW9uZXJ5fGVufDF8fHx8MTczODM0OTQzOHww&ixlib=rb-4.1.0&q=80&w=1080"
+      }
+    },
+    "sub_category": "Adhesives & Tapes",
+    "is_active": true,
+    "updated_at": "__SERVER_TIMESTAMP__",
+    "content_cards": [
+      {
+        "type": "list",
+        "order": 1,
+        "card_id": "highlights",
+        "title": "Highlights",
+        "data": [
+          "Non-toxic and safe for children",
+          "Washable formula - washes out of clothes",
+          "Easy twist mechanism for precise application",
+          "No mess - stick format",
+          "Strong bond on paper and cardboard",
+          "Perfect for school projects and crafts"
+        ]
+      },
+      {
+        "type": "key_value",
+        "order": 3,
+        "card_id": "specifications",
+        "title": "Specifications",
+        "data": {
+          "Brand": "Fevistik",
+          "Age Group": "Suitable for children and students",
+          "Type": "Twist-cap glue stick",
+          "Formula": "Non-toxic, washable",
+          "Country of Origin": "India",
+          "Mechanism": "Easy twist-up design",
+          "Size": "15 grams",
+          "Color": "White (dries clear)",
+          "Application": "Paper, cardboard, light materials"
+        }
+      },
+      {
+        "type": "text",
+        "order": 2,
+        "card_id": "description",
+        "title": "Product Description",
+        "data": "Clean and convenient glue stick for paper and light cardboard. Non-toxic washable formula makes it perfect for children and school projects. Easy twist mechanism prevents mess and provides precise application control."
+      }
+    ],
+    "product_skus": [
+      {
+        "price": 28,
+        "sku_id": "glue-stick-fevistik-15g",
+        "availability": "in_stock",
+        "available_quantity": 100,
+        "currency": "INR",
+        "attributes": {
+          "type": "Twist-cap glue stick",
+          "pack": "Single stick",
+          "color": "White / Cream",
+          "size": "15 grams"
+        },
+        "mrp": 40
+      }
+    ],
+    "subtitle": "Washable · Safe for kids · Easy twist cap",
+    "rating": {
+      "average": 4.6,
+      "count": 1543
+    },
+    "title": "Fevistik Glue Stick - 15gms",
+    "id": "glue-stick-fevistik"
+  }
+]

@@ -16,7 +16,7 @@ export async function getCategoriesAction(): Promise<Category[]> {
     return snapshot.docs.map(doc => {
       const data = doc.data();
       return {
-        id: doc.id,
+        id: (data && data.id) || doc.id,  // Use id from data if available, otherwise use doc.id
         name: data.name || '',
         image: data.image || '',
         rank: data.rank || 0,
@@ -41,7 +41,7 @@ export async function getCategoryAction(id: string): Promise<Category | null> {
     
     const data = doc.data();
     return {
-      id: doc.id,
+      id: (data && data.id) || doc.id,  // Use id from data if available, otherwise use doc.id
       name: data?.name || '',
       image: data?.image || '',
       rank: data?.rank || 0,
@@ -61,13 +61,19 @@ export async function createCategoryAction(
     await verifyAuth();
     const db = getFirestore();
 
-    const newCategory = {
+    // First, add the document to get the auto-generated ID
+    const newCategoryWithoutId = {
       ...categoryData,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
 
-    const docRef = await db.collection('categories').add(newCategory);
+    const docRef = await db.collection('categories').add(newCategoryWithoutId);
+    
+    // Then update the document to include its own ID
+    await db.collection('categories').doc(docRef.id).update({
+      id: docRef.id,
+    });
     
     revalidatePath('/categories');
     return { success: true, message: 'Category created successfully', categoryId: docRef.id };
@@ -128,7 +134,7 @@ export async function getSubCategoriesAction(): Promise<SubCategory[]> {
     return snapshot.docs.map(doc => {
       const data = doc.data();
       return {
-        id: doc.id,
+        id: (data && data.id) || doc.id,  // Use id from data if available, otherwise use doc.id
         categoryId: data.categoryId || '',
         name: data.name || '',
         image: data.image || '',
@@ -154,7 +160,7 @@ export async function getSubCategoriesByCategoryAction(categoryId: string): Prom
     return snapshot.docs.map((doc: any) => {
       const data = doc.data();
       return {
-        id: doc.id,
+        id: (data && data.id) || doc.id,  // Use id from data if available, otherwise use doc.id
         categoryId: data.categoryId || '',
         name: data.name || '',
         image: data.image || '',
@@ -180,7 +186,7 @@ export async function getSubCategoryAction(id: string): Promise<SubCategory | nu
     
     const data = doc.data();
     return {
-      id: doc.id,
+      id: (data && data.id) || doc.id,  // Use id from data if available, otherwise use doc.id
       categoryId: data?.categoryId || '',
       name: data?.name || '',
       image: data?.image || '',
@@ -201,13 +207,19 @@ export async function createSubCategoryAction(
     await verifyAuth();
     const db = getFirestore();
 
-    const newSubCategory = {
+    // First, add the document to get the auto-generated ID
+    const newSubCategoryWithoutId = {
       ...subCategoryData,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
 
-    const docRef = await db.collection('subcategories').add(newSubCategory);
+    const docRef = await db.collection('subcategories').add(newSubCategoryWithoutId);
+    
+    // Then update the document to include its own ID
+    await db.collection('subcategories').doc(docRef.id).update({
+      id: docRef.id,
+    });
     
     revalidatePath('/categories');
     return { success: true, message: 'Subcategory created successfully', subCategoryId: docRef.id };
