@@ -112,9 +112,9 @@ export function ProductView({ product, onClose }: ProductViewProps) {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Package className="h-5 w-5" />
-                {product.name}
+                {product.title}
               </CardTitle>
-              <CardDescription className="mt-1">{product.title}</CardDescription>
+              <CardDescription className="mt-1">{product.subtitle}</CardDescription>
             </div>
             <div>
               {getStatusBadge(product.is_active)}
@@ -135,18 +135,8 @@ export function ProductView({ product, onClose }: ProductViewProps) {
             <div className="font-medium">{product.sub_category}</div>
           </div>
           <div>
-            <div className="text-sm text-muted-foreground">Tags</div>
-            <div className="flex flex-wrap gap-1 mt-1">
-              {product.tags && product.tags.length > 0 ? (
-                product.tags.map((tag, index) => (
-                  <Badge key={index} variant="secondary" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))
-              ) : (
-                <span className="text-muted-foreground text-sm">No tags</span>
-              )}
-            </div>
+            <div className="text-sm text-muted-foreground">Rating</div>
+            <div className="font-medium">{product.rating?.average || 0} ({product.rating?.count || 0} reviews)</div>
           </div>
           <div>
             <div className="text-sm text-muted-foreground">SKUs</div>
@@ -175,7 +165,11 @@ export function ProductView({ product, onClose }: ProductViewProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="whitespace-pre-wrap">{product.description}</p>
+          <p className="whitespace-pre-wrap">
+            {(typeof product.content_cards?.find(card => card.card_id === 'description')?.data === 'string' 
+              ? product.content_cards?.find(card => card.card_id === 'description')?.data 
+              : 'No description available') as string}
+          </p>
         </CardContent>
       </Card>
 
@@ -226,7 +220,7 @@ export function ProductView({ product, onClose }: ProductViewProps) {
                         {sku.price}
                       </div>
                     </TableCell>
-                    <TableCell>{sku.currency_code}</TableCell>
+                    <TableCell>{sku.currency}</TableCell>
                     <TableCell>{sku.available_quantity}</TableCell>
                     <TableCell>{getAvailabilityBadge(sku.availability)}</TableCell>
                   </TableRow>
@@ -305,24 +299,20 @@ export function ProductView({ product, onClose }: ProductViewProps) {
             <div>{product.delivery_info.cod_available ? 'Available' : 'Not Available'}</div>
           </div>
           <div>
-            <div className="text-sm text-muted-foreground">Estimated Delivery Days</div>
-            <div>{product.delivery_info.estimated_delivery_days || 'Not specified'}</div>
+            <div className="text-sm text-muted-foreground">Estimated Delivery</div>
+            <div>{product.delivery_info.estimated_delivery || 'Not specified'}</div>
           </div>
           <div>
             <div className="text-sm text-muted-foreground">Free Delivery Above</div>
             <div>
-              {product.delivery_info.free_delivery_above 
-                ? `₹${product.delivery_info.free_delivery_above}` 
+              {product.delivery_info.free_delivery_threshold 
+                ? `₹${product.delivery_info.free_delivery_threshold}` 
                 : 'Not specified'}
             </div>
           </div>
           <div>
             <div className="text-sm text-muted-foreground">Return Policy</div>
             <div>{product.delivery_info.return_policy}</div>
-          </div>
-          <div className="md:col-span-2">
-            <div className="text-sm text-muted-foreground">Delivery Estimate Text</div>
-            <div>{product.delivery_info.delivery_estimate_text}</div>
           </div>
         </CardContent>
       </Card>
@@ -355,11 +345,11 @@ export function ProductView({ product, onClose }: ProductViewProps) {
                 </div>
               )}
               
-              {product.media.gallery_images && product.media.gallery_images.length > 0 && (
+              {product.media.gallery && product.media.gallery.length > 0 && (
                 <div>
                   <div className="text-sm text-muted-foreground">Gallery Images</div>
                   <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    {product.media.gallery_images.map((image, index) => (
+                    {product.media.gallery.map((image, index) => (
                       <div key={index} className="flex flex-col items-center">
                         <img 
                           src={image.url} 

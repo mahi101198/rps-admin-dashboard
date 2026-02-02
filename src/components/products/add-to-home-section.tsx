@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Product } from '@/lib/types/all-schemas';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -26,7 +25,7 @@ import {
 } from '@/lib/types/home-section-types';
 
 interface AddToHomeSectionProps {
-  product: Product;
+  product: any; // Product data structure
 }
 
 export function AddToHomeSection({ product }: AddToHomeSectionProps) {

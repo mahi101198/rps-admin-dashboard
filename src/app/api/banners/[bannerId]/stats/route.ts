@@ -10,10 +10,10 @@ import { getBannerStatsAction } from '@/actions/banner-actions';
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { bannerId: string } }
+  { params }: { params: Promise<{ bannerId: string }> }
 ) {
   try {
-    const { bannerId } = params;
+    const { bannerId } = await params;
     const searchParams = request.nextUrl.searchParams;
     const userId = searchParams.get('userId') || undefined;
 

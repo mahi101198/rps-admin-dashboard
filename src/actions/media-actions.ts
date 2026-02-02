@@ -45,7 +45,7 @@ export async function listStorageFilesAction(
       })
     );
 
-    return { success: true, files: storageFiles };
+    return { success: true, files: storageFiles, message: 'Files listed successfully' };
   } catch (error) {
     console.error('Error listing storage files:', error);
     return { success: false, message: 'Failed to list files from storage' };

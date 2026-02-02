@@ -263,8 +263,8 @@ export default function ProductDataIngestionPage() {
                     );
                     return (
                       <TableRow key={product.product_id}>
-                        <TableCell className="font-medium">{product.name}</TableCell>
-                        <TableCell>{product.title}</TableCell>
+                        <TableCell className="font-medium">{product.title}</TableCell>
+                        <TableCell>{product.subtitle}</TableCell>
                         <TableCell>{product.brand}</TableCell>
                         <TableCell>
                           <Badge variant="outline">{product.product_skus.length}</Badge>
@@ -345,8 +345,8 @@ export default function ProductDataIngestionPage() {
             <div className="flex-1 overflow-y-auto space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>{viewProduct.name}</CardTitle>
-                  <CardDescription>{viewProduct.title}</CardDescription>
+                  <CardTitle>{viewProduct.title}</CardTitle>
+                  <CardDescription>{viewProduct.subtitle}</CardDescription>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>

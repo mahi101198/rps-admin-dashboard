@@ -72,7 +72,7 @@ const productSchema = z.object({
   brand: z.string().optional(), // Schema: optional field
   category: z.string().min(1, 'Category is required'),
   sub_category: z.string().min(1, 'Sub-category is required'),
-  is_active: z.boolean().default(true),
+  is_active: z.boolean(),
   
   media: z.object({
     main_image: z.object({
@@ -82,10 +82,10 @@ const productSchema = z.object({
     gallery: z.array(z.object({
       url: z.string().min(1, 'Gallery image URL required').url('Must be a valid URL'),
       alt_text: z.string().min(1, 'Gallery alt text required')
-    })).default([])
+    }))
   }),
   
-  variant_attributes: z.record(z.array(z.string())).default({}),
+  variant_attributes: z.record(z.array(z.string())),
   
   product_skus: z.array(z.object({
     sku_id: z.string().min(1, 'SKU ID is required'),
@@ -98,7 +98,7 @@ const productSchema = z.object({
     }).optional(),
     price: z.number().min(0, 'Price must be >= 0'),
     mrp: z.number().min(0, 'MRP must be >= 0'),
-    currency: z.string().default('INR'),
+    currency: z.string().default('INR').optional(),
     availability: z.enum(['in_stock', 'limited', 'out_of_stock']),
     available_quantity: z.number().min(0, 'Quantity must be >= 0')
   }).refine(
@@ -154,10 +154,10 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
   const [allImages, setAllImages] = useState({
     mainImage: product?.media?.main_image?.url || '',
     gallery: product?.media?.gallery || [],
-    skuImages: product?.product_skus?.filter(sku => sku.pricing) || []
+    skuImages: product?.product_skus?.filter(sku => sku.price && sku.price > 0) || []
   });
 
-  const form = useForm<ProductFormValues>({
+  const form = useForm({
     resolver: zodResolver(productSchema),
     defaultValues: {
       product_id: product?.product_id || '',
@@ -172,9 +172,9 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
           url: product?.media?.main_image?.url || '',
           alt_text: product?.media?.main_image?.alt_text || ''
         },
-        gallery: product?.media?.gallery || []
+        gallery: product?.media?.gallery ?? []
       },
-      variant_attributes: product?.variant_attributes || {},
+      variant_attributes: product?.variant_attributes ?? {},
       product_skus: product?.product_skus || [{
         sku_id: '',
         attributes: {
@@ -225,7 +225,7 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
       },
       purchase_limits: {
         max_per_order: product?.purchase_limits?.max_per_order || 50,
-        max_per_user_per_day: product?.purchase_limits?.max_per_user_per_day
+        max_per_user_per_day: product?.purchase_limits?.max_per_user_per_day || 100
       }
     } as ProductFormValues
   });
@@ -265,14 +265,27 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
         product_id: newProductId,
         title: data.title,
         subtitle: data.subtitle,
-        brand: data.brand,
+        brand: data.brand || '',
         category: data.category,
         sub_category: data.sub_category,
         media: data.media,
         variant_attributes: data.variant_attributes,
-        product_skus: data.product_skus,
+        product_skus: data.product_skus.map(sku => ({
+          ...sku,
+          currency: sku.currency || 'INR',
+          attributes: sku.attributes || {
+            color: '',
+            size: '',
+            pack: '',
+            gsm: '',
+            type: ''
+          }
+        })),
         overall_availability: overallAvailability,
-        content_cards: data.content_cards,
+        content_cards: data.content_cards.map(card => ({
+          ...card,
+          type: card.type as ContentCardType
+        })),
         delivery_info: data.delivery_info,
         rating: data.rating,
         purchase_limits: data.purchase_limits,
@@ -1140,7 +1153,7 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
                           <FormField
                             key={attrKey}
                             control={form.control}
-                            name={`product_skus.${skuIndex}.attributes.${attrKey}`}
+                            name={`product_skus.${skuIndex}.attributes.${attrKey}` as any}
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="capitalize">{attrKey}</FormLabel>
@@ -1439,11 +1452,11 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
                 )}
 
                 {/* Gallery Images Preview */}
-                {allImages.galleryImages?.length > 0 && (
+                {allImages.gallery?.length > 0 && (
                   <div className="border rounded-lg p-4 bg-muted/30">
-                    <h4 className="font-medium mb-3">Gallery Images ({allImages.galleryImages?.length})</h4>
+                    <h4 className="font-medium mb-3">Gallery Images ({allImages.gallery?.length})</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {allImages.galleryImages?.map((image, index) =>
+                      {allImages.gallery?.map((image, index) =>
                         image.url ? (
                           <div key={index} className="border rounded p-2 bg-background">
                             <img
@@ -1470,31 +1483,7 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
                   </div>
                 )}
 
-                {/* SKU Images Preview */}
-                {allImages.skuImages?.length > 0 && (
-                  <div className="border rounded-lg p-4 bg-muted/30">
-                    <h4 className="font-medium mb-3">SKU Images ({allImages.skuImages?.length})</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {allImages.skuImages?.map((sku, index) =>
-                        sku.image_url ? (
-                          <div key={index} className="border rounded p-2 bg-background">
-                            <img
-                              src={sku.image_url}
-                              alt={`SKU ${sku.sku_id}`}
-                              className="w-full h-32 object-cover rounded mb-2"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                              }}
-                            />
-                            <p className="text-xs text-muted-foreground break-all">
-                              <span className="font-medium">SKU:</span> {sku.sku_id}
-                            </p>
-                          </div>
-                        ) : null
-                      )}
-                    </div>
-                  </div>
-                )}
+                {/* SKU Images Preview - Not applicable as SKUs don't have individual images */}
               </div>
             </div>
           </CardContent>

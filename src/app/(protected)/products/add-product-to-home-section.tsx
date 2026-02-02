@@ -149,7 +149,7 @@ export function AddProductToHomeSection({ product, children }: AddProductToHomeS
         sku_id: product.product_id, // Using product_id as sku_id for this case
         product_id: product.product_id,
         rank: rank,
-        name: product.name,
+        name: product.title,
         image_url: product.media?.main_image?.url || '',
         mrp: primarySku?.mrp || primarySku?.price || 0,
         price: primarySku?.price || 0,
@@ -203,7 +203,7 @@ export function AddProductToHomeSection({ product, children }: AddProductToHomeS
         <DialogHeader className="p-0 mb-3">
           <DialogTitle className="text-lg">Add to Home Section</DialogTitle>
           <DialogDescription className="text-xs">
-            Add {product.name} to a homepage section.
+            Add {product.title} to a homepage section.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">

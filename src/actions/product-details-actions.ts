@@ -67,26 +67,6 @@ function toFirestoreDocument(product: ProductDetailsDocument): Record<string, an
  * Convert Firestore document to ProductDetailsDocument
  */
 function fromFirestoreDocument(data: any): ProductDetailsDocument {
-  // Helper to convert Firestore timestamps
-  const convertTimestamp = (timestamp: any): number => {
-    if (timestamp && typeof timestamp === 'object') {
-      // Check if it's a Firestore Timestamp object
-      if (typeof timestamp.toDate === 'function') {
-        return Math.floor(timestamp.toDate().getTime() / 1000);
-      }
-      // Check if it has _seconds property
-      if (typeof timestamp._seconds === 'number') {
-        return timestamp._seconds;
-      }
-    }
-    // If it's already a number, return as-is
-    if (typeof timestamp === 'number') {
-      return timestamp;
-    }
-    // Default to current time if invalid
-    return Math.floor(Date.now() / 1000);
-  };
-
   return {
     product_id: data.product_id || '',
     title: data.title || '',
@@ -94,8 +74,8 @@ function fromFirestoreDocument(data: any): ProductDetailsDocument {
     brand: data.brand || '',
     category: data.category || '',
     sub_category: data.sub_category || '',
-    created_at: data.created_at ? convertTimestamp(data.created_at) : Math.floor(Date.now() / 1000),
-    updated_at: data.updated_at ? convertTimestamp(data.updated_at) : Math.floor(Date.now() / 1000),
+    created_at: "__SERVER_TIMESTAMP__",
+    updated_at: "__SERVER_TIMESTAMP__",
     media: data.media || { main_image: { url: '', alt_text: '' } },
     variant_attributes: data.variant_attributes || {},
     product_skus: data.product_skus || [],
@@ -181,13 +161,12 @@ export const createSkuProductAction = withAuth(async (
     }
 
     const db = getFirestore();
-    const now = Math.floor(Date.now() / 1000);
 
     // Prepare document with timestamps
     const productToSave: ProductDetailsDocument = {
       ...product,
-      created_at: now,
-      updated_at: now,
+      created_at: "__SERVER_TIMESTAMP__",
+      updated_at: "__SERVER_TIMESTAMP__",
       overall_availability: calculateOverallAvailability(product.product_skus),
     };
 
@@ -600,7 +579,6 @@ export const bulkUploadSkuProductsAction = withAuth(async (
   try {
     const db = getFirestore();
     const batch = db.batch();
-    const now = Math.floor(Date.now() / 1000);
 
     for (const product of products) {
       // Validate each product
@@ -618,8 +596,8 @@ export const bulkUploadSkuProductsAction = withAuth(async (
       // Prepare document
       const productToSave: ProductDetailsDocument = {
         ...product,
-        created_at: now,
-        updated_at: now,
+        created_at: "__SERVER_TIMESTAMP__",
+        updated_at: "__SERVER_TIMESTAMP__",
         overall_availability: calculateOverallAvailability(product.product_skus),
       };
 
@@ -685,7 +663,6 @@ async function bulkUploadSkuProductsInternal(
   try {
     const db = getFirestore();
     const batch = db.batch();
-    const now = Math.floor(Date.now() / 1000);
 
     for (const product of products) {
       // Validate each product
@@ -703,8 +680,8 @@ async function bulkUploadSkuProductsInternal(
       // Prepare document
       const productToSave: ProductDetailsDocument = {
         ...product,
-        created_at: now,
-        updated_at: now,
+        created_at: "__SERVER_TIMESTAMP__",
+        updated_at: "__SERVER_TIMESTAMP__",
         overall_availability: calculateOverallAvailability(product.product_skus),
       };
 

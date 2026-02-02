@@ -45,7 +45,7 @@ export default function ProductsPage() {
     const term = searchTerm.toLowerCase();
     return (
       (product.title || '').toLowerCase().includes(term) ||
-      (product.name || '').toLowerCase().includes(term) ||
+      (product.subtitle || '').toLowerCase().includes(term) ||
       (product.brand || '').toLowerCase().includes(term) ||
       (product.category || '').toLowerCase().includes(term) ||
       (product.sub_category || '').toLowerCase().includes(term)

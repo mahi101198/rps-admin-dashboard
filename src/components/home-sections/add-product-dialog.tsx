@@ -102,7 +102,7 @@ export function AddProductDialog({
         product.product_skus.map(sku => ({
           ...sku,
           product_id: product.product_id,
-          product_title: product.title || product.name || '',
+          product_title: product.title || '',
           product_brand: product.brand,
           product_category: product.category,
           product_sub_category: product.sub_category,
@@ -134,8 +134,8 @@ export function AddProductDialog({
       sku.product_category.toLowerCase().includes(term) ||
       sku.product_sub_category.toLowerCase().includes(term) ||
       sku.sku_id.toLowerCase().includes(term) ||
-      Object.values(sku.attributes).some(attr => 
-        attr.toLowerCase().includes(term)
+      Object.values(sku.attributes || {}).some(attr => 
+        attr && attr.toLowerCase().includes(term)
       )
     );
     
@@ -206,14 +206,14 @@ export function AddProductDialog({
           sku_id: sku.sku_id,
           product_id: sku.product_id,
           rank: rankInputs[skuId] || 1,
-          name: `${sku.product_title} - ${Object.values(sku.attributes).join(', ')}`,
-          image_url: sku.image_url || sku.product_media?.main_image?.url || '',
+          name: `${sku.product_title} - ${Object.values(sku.attributes || {}).filter(v => v).join(', ')}`,
+          image_url: sku.product_media?.main_image?.url || '',
           mrp: sku.mrp,
           price: sku.price,
           discount_percent: Math.round(((sku.mrp - sku.price) / sku.mrp) * 100),
           category_id: categoryId,
           subcategory_id: subcategoryId,
-          currency_code: sku.currency_code || 'INR'
+          currency_code: sku.currency || 'INR'
         };
 
         try {
@@ -320,9 +320,9 @@ export function AddProductDialog({
                         
                         {/* Product Image */}
                         <div className="flex-shrink-0">
-                          {sku.image_url || sku.product_media?.main_image?.url ? (
+                          {sku.product_media?.main_image?.url ? (
                             <img
-                              src={sku.image_url || sku.product_media?.main_image?.url}
+                              src={sku.product_media?.main_image?.url}
                               alt={sku.product_title}
                               className="w-16 h-16 object-cover rounded-md border"
                             />
