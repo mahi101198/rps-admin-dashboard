@@ -27,8 +27,37 @@ export function SettingsForm({ appSettings, onSettingsUpdate }: { appSettings: a
   return (
     <form action={async (formData: FormData) => {
       try {
-        // Since we're casting appSettings as any, we'll just show success
-        // The actual implementation would need to properly handle FormData
+        // Convert FormData to object
+        const data: any = {};
+        formData.forEach((value, key) => {
+          if (key === 'isReferralActive') {
+            data[key] = value === 'on';
+          } else if (key === 'availablePincodes') {
+            data[key] = (value as string).split(',').map(p => p.trim()).filter(p => p.length > 0);
+          } else if (['deliveryFee', 'freeDeliveryAbove', 'referrerRewardValue', 'refereeRewardValue', 'minOrderAmount', 'minWithdrawalAmount'].includes(key)) {
+            data[key] = parseFloat(value as string) || 0;
+          } else {
+            data[key] = value;
+          }
+        });
+        
+        // Add the settings ID
+        data.id = appSettings.id;
+        
+        // Send POST request to update settings
+        const response = await fetch('/api/settings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to update settings');
+        }
+        
         toast.success('Settings updated successfully!');
         // Call the callback to refresh the settings in the parent component
         if (onSettingsUpdate) {

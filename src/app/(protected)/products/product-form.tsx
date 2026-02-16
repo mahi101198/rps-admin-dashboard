@@ -63,6 +63,7 @@ import {
 import { Category, SubCategory } from '@/lib/types/all-schemas';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { ProductImageUpload } from '@/components/form/product-image-upload';
+import { MultiMediaUpload } from '@/components/form/multi-media-upload';
 
 // Define Zod schema for validation - SCHEMA COMPLIANT with ALL constraints
 const productSchema = z.object({
@@ -80,9 +81,14 @@ const productSchema = z.object({
       alt_text: z.string().min(1, 'Alt text required')
     }),
     gallery: z.array(z.object({
-      url: z.string().min(1, 'Gallery image URL required').url('Must be a valid URL'),
-      alt_text: z.string().min(1, 'Gallery alt text required')
-    }))
+      url: z.string().optional(),
+      videoUrl: z.string().optional(),
+      alt_text: z.string().min(1, 'Gallery alt text required'),
+      type: z.enum(['image', 'video']).optional()
+    }).refine(
+      (item) => item.url || item.videoUrl,
+      { message: 'Gallery item must have either URL (image) or videoUrl (video)' }
+    ))
   }),
   
   variant_attributes: z.record(z.array(z.string())),
@@ -491,23 +497,6 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
     form.setValue('content_cards', newCards);
   };
 
-  // Add a gallery image
-  const addGalleryImage = () => {
-    const gallery = form.getValues('media.gallery') || [];
-    form.setValue('media.gallery', [
-      ...gallery,
-      { url: '', alt_text: '' }
-    ]);
-  };
-
-  // Remove a gallery image
-  const removeGalleryImage = (index: number) => {
-    const gallery = form.getValues('media.gallery') || [];
-    const newGallery = [...gallery];
-    newGallery.splice(index, 1);
-    form.setValue('media.gallery', newGallery);
-  };
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -825,57 +814,18 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
               />
 
               <div className="mt-4">
-                <div className="flex justify-between items-center mb-2">
-                  <FormLabel>Gallery Images</FormLabel>
-                  <Button type="button" onClick={addGalleryImage} variant="outline" size="sm">
-                    <Plus className="h-4 w-4 mr-1" />
-                    Add Image
-                  </Button>
-                </div>
-                
-                {form.watch('media.gallery')?.map((image, index) => (
-                  <div key={index} className="mb-4 p-3 border rounded-lg">
-                    <div className="flex justify-between items-center mb-3">
-                      <h5 className="font-medium">Gallery Image #{index + 1}</h5>
-                      <Button
-                        type="button"
-                        onClick={() => removeGalleryImage(index)}
-                        variant="outline"
-                        size="sm"
-                        className="text-destructive"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    
-                    <ProductImageUpload
-                      label="Image"
-                      value={image?.url || ''}
-                      onChange={(value) => {
-                        form.setValue(`media.gallery.${index}.url`, value);
-                        const updatedGallery = form.getValues('media.gallery') || [];
-                        setAllImages(prev => ({ ...prev, gallery: updatedGallery }));
-                      }}
-                      placeholder="https://example.com/image.jpg"
-                      productId={product?.product_id}
-                      imageType="gallery"
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name={`media.gallery.${index}.alt_text`}
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="mt-3">Alt Text</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Enter alt text for this gallery image" className="h-8 text-sm" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                ))}
+                <MultiMediaUpload
+                  label="Gallery Media (Images & Videos)"
+                  value={form.watch('media.gallery') || []}
+                  onChange={(media) => {
+                    form.setValue('media.gallery', media);
+                    setAllImages(prev => ({ ...prev, gallery: media }));
+                  }}
+                  placeholder="https://example.com/image.jpg"
+                  productId={product?.product_id}
+                  imageType="gallery"
+                  maxFiles={10}
+                />
               </div>
             </div>
 
@@ -1157,14 +1107,14 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="capitalize">{attrKey}</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value || ''}>
+                                <Select onValueChange={field.onChange} value={field.value || ''}>
                                   <FormControl>
                                     <SelectTrigger className="h-8 text-sm">
                                       <SelectValue placeholder={`Select ${attrKey}`} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    {(form.watch('variant_attributes')?.[attrKey] || []).map((option) => (
+                                    {(form.watch('variant_attributes')?.[attrKey] || []).filter((option) => option && option.trim()).map((option) => (
                                       <SelectItem key={option} value={option}>
                                         {option}
                                       </SelectItem>

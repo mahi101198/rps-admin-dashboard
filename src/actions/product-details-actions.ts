@@ -48,7 +48,9 @@ function toFirestoreDocument(product: ProductDetailsDocument): Record<string, an
     subtitle: product.subtitle,
     brand: product.brand,
     category: product.category,
+    category_id: product.category_id,
     sub_category: product.sub_category,
+    sub_category_id: product.sub_category_id,
     created_at: product.created_at,
     updated_at: product.updated_at,
     media: product.media,
@@ -73,7 +75,9 @@ function fromFirestoreDocument(data: any): ProductDetailsDocument {
     subtitle: data.subtitle || '',
     brand: data.brand || '',
     category: data.category || '',
+    category_id: data.category_id,
     sub_category: data.sub_category || '',
+    sub_category_id: data.sub_category_id,
     created_at: "__SERVER_TIMESTAMP__",
     updated_at: "__SERVER_TIMESTAMP__",
     media: data.media || { main_image: { url: '', alt_text: '' } },
@@ -96,6 +100,57 @@ function fromFirestoreDocument(data: any): ProductDetailsDocument {
     },
     is_active: data.is_active !== undefined ? data.is_active : true,
   };
+}
+
+/**
+ * Resolve category and subcategory IDs from their names
+ * If IDs are already present, return as is
+ * If only names are present, fetch IDs from database
+ */
+async function resolveCategoryIds(
+  categoryName: string,
+  subCategoryName: string,
+  categoryId?: string,
+  subCategoryId?: string
+): Promise<{ categoryId?: string; subCategoryId?: string }> {
+  try {
+    // If IDs are already provided, return them
+    if (categoryId && subCategoryId) {
+      return { categoryId, subCategoryId };
+    }
+
+    const db = getFirestore();
+
+    // Fetch category ID by name if not provided
+    let resolvedCategoryId = categoryId;
+    if (!resolvedCategoryId && categoryName) {
+      const catSnapshot = await db.collection('categories')
+        .where('name', '==', categoryName)
+        .limit(1)
+        .get();
+      if (!catSnapshot.empty) {
+        resolvedCategoryId = catSnapshot.docs[0].id;
+      }
+    }
+
+    // Fetch subcategory ID by name and category ID if not provided
+    let resolvedSubCategoryId = subCategoryId;
+    if (!resolvedSubCategoryId && subCategoryName && resolvedCategoryId) {
+      const subCatSnapshot = await db.collection('subcategories')
+        .where('name', '==', subCategoryName)
+        .where('categoryId', '==', resolvedCategoryId)
+        .limit(1)
+        .get();
+      if (!subCatSnapshot.empty) {
+        resolvedSubCategoryId = subCatSnapshot.docs[0].id;
+      }
+    }
+
+    return { categoryId: resolvedCategoryId, subCategoryId: resolvedSubCategoryId };
+  } catch (error) {
+    console.error('Error resolving category IDs:', error);
+    return { categoryId, subCategoryId };
+  }
 }
 
 // ============================================
@@ -162,9 +217,19 @@ export const createSkuProductAction = withAuth(async (
 
     const db = getFirestore();
 
-    // Prepare document with timestamps
+    // Resolve category and subcategory IDs from names
+    const { categoryId, subCategoryId } = await resolveCategoryIds(
+      product.category,
+      product.sub_category,
+      product.category_id,
+      product.sub_category_id
+    );
+
+    // Prepare document with timestamps and resolved IDs
     const productToSave: ProductDetailsDocument = {
       ...product,
+      category_id: categoryId,
+      sub_category_id: subCategoryId,
       created_at: "__SERVER_TIMESTAMP__",
       updated_at: "__SERVER_TIMESTAMP__",
       overall_availability: calculateOverallAvailability(product.product_skus),
@@ -264,9 +329,29 @@ export const updateSkuProductAction = withAuth(async (
       };
     }
 
+    // Resolve category and subcategory IDs from names (for backward compatibility)
+    let resolvedCategory = updates.category;
+    let resolvedSubCategory = updates.sub_category;
+    let resolvedCategoryId = updates.category_id;
+    let resolvedSubCategoryId = updates.sub_category_id;
+
+    if (updates.category || updates.sub_category) {
+      const existing = existingDoc.data() as any;
+      const categoryName = updates.category || existing.category;
+      const subCategoryName = updates.sub_category || existing.sub_category;
+      const categoryId = updates.category_id || existing.category_id;
+      const subCategoryId = updates.sub_category_id || existing.sub_category_id;
+
+      const resolved = await resolveCategoryIds(categoryName, subCategoryName, categoryId, subCategoryId);
+      resolvedCategoryId = resolved.categoryId;
+      resolvedSubCategoryId = resolved.subCategoryId;
+    }
+
     // Prepare updates
     const updateData: any = {
       ...updates,
+      category_id: resolvedCategoryId,
+      sub_category_id: resolvedSubCategoryId,
       updated_at: Math.floor(Date.now() / 1000),
     };
 

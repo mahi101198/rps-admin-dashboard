@@ -62,33 +62,95 @@ export async function getOrdersAction(): Promise<Order[]> {
         return new Date();
       };
       
-      // Debug: Log pricing data and all available fields
+      // Debug: Log pricing data
       if (doc.id) {
-        console.log(`Order ${doc.id.slice(-6)} amountBreakdown:`, data.amountBreakdown);
+        console.log(`Order ${doc.id.slice(-6)} pricingSummary:`, data.pricingSummary);
+        console.log(`Order ${doc.id.slice(-6)} paymentSummary:`, data.paymentSummary);
       }
       
-      return {
+      // Build the order object matching new interface
+      const order: Order = {
         orderId: doc.id,
         userId: data.userId || '',
-        items: data.items || [],
-        deliveryAddress: data.deliveryInfo?.address || {},
-        pricing: {
-          deliveryFee: data.amountBreakdown?.deliveryFee || 0,
-          discount: data.amountBreakdown?.discount || 0,
-          subtotal: data.amountBreakdown?.subTotal || 0,
-          tax: data.amountBreakdown?.taxAmount || 0,
-          total: data.amountBreakdown?.finalAmount || data.amountBreakdown?.totalOrderAmount || 0,
+        items: (data.items || []).map((item: any) => ({
+          productId: item.productId || '',
+          skuId: item.skuId,
+          name: item.name || '',
+          quantity: item.quantity || 1,
+          brand: item.brand,
+          category: item.category,
+          productImage: item.productImage,
+          selectedColor: item.selectedColor,
+          itemAutoDiscount: item.itemAutoDiscount,
+          itemMetadata: item.itemMetadata,
+          variants: item.variants,
+        })),
+        deliveryId: data.deliveryId,
+        deliveryInfo: {
+          address: {
+            id: data.deliveryInfo?.address?.id,
+            name: data.deliveryInfo?.address?.name || '',
+            street: data.deliveryInfo?.address?.street || '',
+            city: data.deliveryInfo?.address?.city || '',
+            state: data.deliveryInfo?.address?.state || '',
+            postalCode: data.deliveryInfo?.address?.postalCode || '',
+            country: data.deliveryInfo?.address?.country || '',
+            phoneNumber: data.deliveryInfo?.address?.phoneNumber || '',
+            email: data.deliveryInfo?.address?.email,
+            landmark: data.deliveryInfo?.address?.landmark,
+            isDefault: data.deliveryInfo?.address?.isDefault,
+          },
+          deliveryInstructions: data.deliveryInfo?.deliveryInstructions,
+          estimatedDelivery: data.deliveryInfo?.estimatedDelivery ? toDate(data.deliveryInfo.estimatedDelivery) : null,
         },
+        deliveryAddress: data.deliveryInfo?.address, // For backward compatibility
         status: data.status || 'placed',
         paymentStatus: data.paymentStatus || 'pending',
         paymentId: data.paymentId || '',
         paymentMode: data.paymentMode || 'cod',
+        razorpayOrderId: data.razorpayOrderId,
+        orderMetadata: data.orderMetadata,
+        pricingSummary: {
+          orderSubtotal: data.pricingSummary?.orderSubtotal || 0,
+          productDiscount: data.pricingSummary?.productDiscount || 0,
+          deliveryFee: data.pricingSummary?.deliveryFee || 0,
+          couponCode: data.pricingSummary?.couponCode,
+          couponDiscount: data.pricingSummary?.couponDiscount || 0,
+          totalDiscount: data.pricingSummary?.totalDiscount || 0,
+          subtotalAfterDiscount: data.pricingSummary?.subtotalAfterDiscount || 0,
+          totalBeforePayment: data.pricingSummary?.totalBeforePayment || 0,
+        },
+        paymentSummary: {
+          paymentMode: data.paymentSummary?.paymentMode || data.paymentMode || '',
+          totalOrderValue: data.paymentSummary?.totalOrderValue || 0,
+          walletPaidAmount: data.paymentSummary?.walletPaidAmount || 0,
+          onlinePaidAmount: data.paymentSummary?.onlinePaidAmount || 0,
+        },
+        transactionDetails: data.transactionDetails ? {
+          amount: data.transactionDetails.amount,
+          currency: data.transactionDetails.currency || 'INR',
+          method: data.transactionDetails.method,
+          razorpayPaymentId: data.transactionDetails.razorpayPaymentId,
+          capturedAt: data.transactionDetails.capturedAt ? toDate(data.transactionDetails.capturedAt) : undefined,
+        } : undefined,
+        createdAt: toDate(data.createdAt),
+        updatedAt: toDate(data.updatedAt),
+        // For backward compatibility
         timestamps: {
           placedAt: toDate(data.createdAt),
-          updatedAt: toDate(data.timestamps?.updatedAt || data.updatedAt),
+          updatedAt: toDate(data.updatedAt),
         },
-        updatedAt: toDate(data.timestamps?.updatedAt || data.updatedAt),
-      } as Order;
+        // Compute pricing from pricingSummary for backward compatibility
+        pricing: {
+          deliveryFee: data.pricingSummary?.deliveryFee || 0,
+          discount: data.pricingSummary?.totalDiscount || 0,
+          subtotal: data.pricingSummary?.orderSubtotal || 0,
+          tax: 0, // No tax field in pricingSummary
+          total: data.pricingSummary?.subtotalAfterDiscount || data.pricingSummary?.totalBeforePayment || 0,
+        },
+      };
+      
+      return order;
     });
     
     console.log('Orders processed successfully:', orders.length);

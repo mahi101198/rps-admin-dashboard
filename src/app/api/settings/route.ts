@@ -144,3 +144,55 @@ export async function GET() {
     return NextResponse.json(defaultSettings);
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    // Verify authentication
+    await verifyAuth();
+    
+    const adminInstance = getFirebaseAdmin();
+    if (!adminInstance) {
+      throw new Error('Firebase Admin SDK failed to initialize');
+    }
+    
+    const db = adminInstance.firestore();
+    const body = await request.json();
+    
+    // Extract the settings ID (defaults to 'app')
+    const settingsId = body.id || 'app';
+    
+    // Prepare the update object
+    const updateData = {
+      ...body,
+      updatedAt: new Date(),
+    };
+    
+    // Remove the id field from the update data
+    delete updateData.id;
+    delete updateData.createdAt;
+    
+    // Parse availablePincodes if it's a string
+    if (typeof updateData.availablePincodes === 'string') {
+      updateData.availablePincodes = updateData.availablePincodes
+        .split(',')
+        .map((p: string) => p.trim())
+        .filter((p: string) => p.length > 0);
+    }
+    
+    // Update or create the settings document
+    await db.collection('settings').doc(settingsId).set(updateData, { merge: true });
+    
+    console.log('✅ Settings updated successfully');
+    return NextResponse.json({
+      success: true,
+      message: 'Settings updated successfully',
+      id: settingsId
+    });
+  } catch (error: any) {
+    console.error('Error in POST handler:', error);
+    return NextResponse.json(
+      { success: false, message: 'Failed to update settings', error: error.message },
+      { status: 500 }
+    );
+  }
+}

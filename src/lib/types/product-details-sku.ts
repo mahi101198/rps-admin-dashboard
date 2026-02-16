@@ -45,9 +45,17 @@ export interface MediaImage {
   alt_text: string;
 }
 
+// Gallery media item - can be either image or video
+export interface GalleryMedia {
+  url?: string;        // Present for images
+  videoUrl?: string;   // Present for videos
+  alt_text: string;
+  type?: 'image' | 'video';
+}
+
 export interface ProductMedia {
   main_image: MediaImage;
-  gallery: MediaImage[];
+  gallery: GalleryMedia[];  // Updated to support both images and videos
 }
 
 // ============================================
@@ -108,10 +116,14 @@ export interface ProductDetailsDocument {
   subtitle: string;
   /** Brand name */
   brand: string;
-  /** Main category */
+  /** Main category name */
   category: string;
-  /** Sub-category */
+  /** Main category ID */
+  category_id?: string;
+  /** Sub-category name */
   sub_category: string;
+  /** Sub-category ID */
+  sub_category_id?: string;
   
   /** Product media (images) */
   media: ProductMedia;

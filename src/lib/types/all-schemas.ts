@@ -49,6 +49,19 @@ export interface Banner {
   updatedAt: Date;
 }
 
+// 8.1 💳 Payment Banner - For payment selection screen
+export interface PaymentBanner {
+  paymentPageBannerId: string;
+  title: string;
+  imageUrl: string;
+  linkTo: string;
+  rank: number;
+  isActive: boolean;
+  view_change_time: number; // Time in seconds to show each banner before changing
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 // 9. 🛒 Cart Item
 export interface CartItem {
   productId: string;
@@ -77,8 +90,8 @@ export interface Coupon {
   value: number;
   maxDiscount: number | null;
   minOrderValue: number;
-  applicableCategories: string[];
-  applicableProducts: string[];
+  applicableCategories: Array<{ id: string }>;
+  applicableProducts: Array<{ productId: string; skuId: string }>;
   isActive: boolean;
   usageLimit: number;
   usedCount: number;
@@ -91,28 +104,129 @@ export interface Coupon {
 // 13. 📦 Order Status
 export type OrderStatus = 'placed' | 'confirmed' | 'paid' | 'shipped' | 'out_for_delivery' | 'delivered' | 'cancelled';
 
-// 14. 📦 Order
+// 13a. 📦 Order Address
+export interface OrderAddress {
+  id?: string;
+  name: string;
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
+  email?: string;
+  landmark?: string;
+  isDefault?: boolean;
+}
+
+// 13b. 📦 Delivery Info
+export interface DeliveryInfo {
+  address: OrderAddress;
+  deliveryInstructions?: string | null;
+  estimatedDelivery?: Date | null;
+}
+
+// 13c. 📦 Order Item Metadata
+export interface OrderItemMetadata {
+  basePriceUsed: number;
+  currentPriceUsed: number;
+  calculatedAt: string;
+  discountPerItem: number;
+  itemSubtotalAtMRP: number;
+  itemSubtotalAtSellingPrice: number;
+  name: string;
+  productBasePrice: number;
+  productCurrentPrice: number;
+}
+
+// 13d. 📦 Order Item Variants
+export interface OrderItemVariants {
+  sku: string;
+}
+
+// 13e. 📦 Order Item
+export interface OrderItem {
+  productId: string;
+  skuId?: string;
+  name: string;
+  quantity: number;
+  brand?: string;
+  category?: string;
+  productImage?: string;
+  selectedColor?: string | null;
+  itemAutoDiscount?: number;
+  itemMetadata?: OrderItemMetadata;
+  variants?: OrderItemVariants;
+}
+
+// 13f. 📦 Order Metadata
+export interface OrderMetadataInfo {
+  source: string;
+  ipAddress?: string | null;
+  userAgent?: string | null;
+  referralCode?: string | null;
+}
+
+// 13g. 📦 Pricing Summary
+export interface PricingSummary {
+  orderSubtotal: number;
+  productDiscount: number;
+  deliveryFee: number;
+  couponCode?: string | null;
+  couponDiscount: number;
+  totalDiscount: number;
+  subtotalAfterDiscount: number;
+  totalBeforePayment: number;
+}
+
+// 13h. 📦 Payment Summary
+export interface PaymentSummary {
+  paymentMode: string;
+  totalOrderValue: number;
+  walletPaidAmount: number;
+  onlinePaidAmount: number;
+}
+
+// 13i. 📦 Transaction Details
+export interface TransactionDetailsInfo {
+  amount: number;
+  currency: string;
+  method: string;
+  razorpayPaymentId?: string;
+  capturedAt?: Date;
+}
+
+// 14. 📦 Order (Main)
 export interface Order {
   orderId: string;
   userId: string;
-  items: any[]; // Array of order items
-  deliveryAddress: any; // Address object
-  pricing: {
+  items: OrderItem[];
+  deliveryId?: string;
+  deliveryInfo: DeliveryInfo;
+  deliveryAddress?: OrderAddress; // Backward compatibility
+  status: OrderStatus;
+  paymentStatus: string;
+  paymentId: string;
+  paymentMode: string;
+  razorpayOrderId?: string;
+  orderMetadata?: OrderMetadataInfo;
+  pricingSummary: PricingSummary;
+  paymentSummary: PaymentSummary;
+  transactionDetails?: TransactionDetailsInfo;
+  createdAt: Date;
+  updatedAt: Date;
+  timestamps?: {
+    placedAt: Date;
+    updatedAt: Date;
+  };
+  // Backward compatibility - computed from pricingSummary
+  pricing?: {
     deliveryFee: number;
     discount: number;
     subtotal: number;
     tax: number;
     total: number;
   };
-  status: OrderStatus;
-  paymentStatus: string;
-  paymentId?: string;
-  paymentMode: string;
-  timestamps: {
-    placedAt: Date;
-    updatedAt: Date;
-  };
-  updatedAt: Date;
 }
 
 // 15. 💳 Payment Status

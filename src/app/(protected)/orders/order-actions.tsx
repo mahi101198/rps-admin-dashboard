@@ -258,12 +258,12 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
                   order.items.map((item, index) => (
                     <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
                       <div>
-                        <p className="font-medium">{item.name || item.productName || `Product ${item.productId}`}</p>
+                        <p className="font-medium">{item.name || `Product ${item.productId}`}</p>
                         <p className="text-sm text-muted-foreground">Quantity: {item.quantity}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-medium">₹{((item.totalPrice || item.price * item.quantity) || 0).toLocaleString()}</p>
-                        <p className="text-sm text-muted-foreground">₹{item.price?.toLocaleString() || 0} each</p>
+                        <p className="font-medium">₹{(item.itemMetadata?.itemSubtotalAtSellingPrice || 0).toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">₹{item.itemMetadata?.currentPriceUsed?.toLocaleString() || 0} each</p>
                       </div>
                     </div>
                   ))
@@ -304,16 +304,29 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
             <div>
               <Label className="text-lg font-semibold">Delivery Address</Label>
               <div className="mt-2 p-3 border rounded-lg">
-                {order.deliveryAddress ? (
+                {order.deliveryInfo?.address ? (
                   <>
-                    <p className="font-medium">{order.deliveryAddress.name || 'N/A'}</p>
-                    <p className="text-sm">{order.deliveryAddress.phone || 'N/A'}</p>
+                    <p className="font-medium">{order.deliveryInfo.address.name || 'N/A'}</p>
+                    <p className="text-sm">{order.deliveryInfo.address.phoneNumber || 'N/A'}</p>
                     <p className="text-sm mt-1">
-                      {order.deliveryAddress.addressLine1 || ''}
-                      {order.deliveryAddress.addressLine2 && `, ${order.deliveryAddress.addressLine2}`}
+                      {order.deliveryInfo.address.street || ''}
                     </p>
                     <p className="text-sm">
-                      {order.deliveryAddress.city || ''}, {order.deliveryAddress.state || ''} - {order.deliveryAddress.pincode || ''}
+                      {order.deliveryInfo.address.city || ''}, {order.deliveryInfo.address.state || ''} - {order.deliveryInfo.address.postalCode || ''}
+                    </p>
+                    <p className="text-sm">
+                      {order.deliveryInfo.address.country || ''}
+                    </p>
+                  </>
+                ) : order.deliveryAddress ? (
+                  <>
+                    <p className="font-medium">{order.deliveryAddress.name || 'N/A'}</p>
+                    <p className="text-sm">{order.deliveryAddress.phoneNumber || 'N/A'}</p>
+                    <p className="text-sm mt-1">
+                      {order.deliveryAddress.street || ''}
+                    </p>
+                    <p className="text-sm">
+                      {order.deliveryAddress.city || ''}, {order.deliveryAddress.state || ''} - {order.deliveryAddress.postalCode || ''}
                     </p>
                   </>
                 ) : (

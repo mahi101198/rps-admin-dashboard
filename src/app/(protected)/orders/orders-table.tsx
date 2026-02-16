@@ -29,23 +29,33 @@ export function OrdersTable({ data, onDataChange }: { data: Order[]; onDataChang
     return data.map(order => {
       // Ensure timestamps object exists with proper structure
       const timestamps = {
-        placedAt: order.timestamps?.placedAt || new Date(),
-        updatedAt: order.timestamps?.updatedAt || new Date()
+        placedAt: order.createdAt || order.timestamps?.placedAt || new Date(),
+        updatedAt: order.updatedAt || order.timestamps?.updatedAt || new Date()
       };
       
-      // Ensure pricing object exists with proper structure
+      // Build pricing from pricingSummary or fallback
       const pricing = {
-        deliveryFee: order.pricing?.deliveryFee !== undefined ? order.pricing.deliveryFee : 0,
-        discount: order.pricing?.discount !== undefined ? order.pricing.discount : 0,
-        subtotal: order.pricing?.subtotal !== undefined ? order.pricing.subtotal : 0,
+        deliveryFee: order.pricingSummary?.deliveryFee !== undefined ? order.pricingSummary.deliveryFee : (order.pricing?.deliveryFee || 0),
+        discount: order.pricingSummary?.totalDiscount !== undefined ? order.pricingSummary.totalDiscount : (order.pricing?.discount || 0),
+        subtotal: order.pricingSummary?.orderSubtotal !== undefined ? order.pricingSummary.orderSubtotal : (order.pricing?.subtotal || 0),
         tax: order.pricing?.tax !== undefined ? order.pricing.tax : 0,
-        total: order.pricing?.total !== undefined ? order.pricing.total : 0
+        total: order.pricingSummary?.subtotalAfterDiscount !== undefined ? order.pricingSummary.subtotalAfterDiscount : (order.pricing?.total || 0)
       };
       
       return {
         ...order,
         timestamps: { ...timestamps, ...(order.timestamps || {}) },
-        pricing: { ...pricing, ...(order.pricing || {}) }
+        pricing: { ...pricing, ...(order.pricing || {}) },
+        pricingSummary: order.pricingSummary || {
+          orderSubtotal: pricing.subtotal,
+          productDiscount: pricing.discount,
+          deliveryFee: pricing.deliveryFee,
+          couponCode: null,
+          couponDiscount: 0,
+          totalDiscount: pricing.discount,
+          subtotalAfterDiscount: pricing.total,
+          totalBeforePayment: pricing.total
+        }
       };
     });
   }, [data]);

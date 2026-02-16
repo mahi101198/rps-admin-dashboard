@@ -23,7 +23,8 @@ import {
   LayoutGrid,
   Smartphone,
   Database,
-  Image
+  Image,
+  Mail
 } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/sidebar';
 
@@ -119,6 +120,11 @@ const data = {
       title: 'Media Manager',
       url: '/media',
       icon: Image,
+    },
+    {
+      title: 'Email Marketing',
+      url: '/email-marketing',
+      icon: Mail,
     },
   ],
 };

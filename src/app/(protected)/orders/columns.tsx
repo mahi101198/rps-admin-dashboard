@@ -89,7 +89,7 @@ export const columns: ColumnDef<Order>[] = [
     }
   },
   {
-    accessorKey: 'pricing.total',
+    accessorKey: 'pricingSummary.subtotalAfterDiscount',
     header: ({ column }) => (
       <Button
         variant="ghost"
@@ -100,7 +100,7 @@ export const columns: ColumnDef<Order>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const total = row.original.pricing?.total || 0;
+      const total = row.original.pricingSummary?.subtotalAfterDiscount || row.original.pricing?.total || 0;
       return (
         <div className="font-medium">
           ₹{total.toLocaleString()}
@@ -143,15 +143,15 @@ export const columns: ColumnDef<Order>[] = [
     }
   },
   {
-    accessorKey: 'timestamps.placedAt',
+    accessorKey: 'createdAt',
     header: 'Date',
     cell: ({ row }) => {
-      const placedAt = row.original.timestamps?.placedAt;
-      if (!placedAt) return 'Unknown';
+      const createdAt = row.original.createdAt;
+      if (!createdAt) return 'Unknown';
       
       return (
         <div className="text-sm text-muted-foreground">
-          {placedAt.toLocaleDateString()}
+          {createdAt.toLocaleDateString()}
         </div>
       );
     }

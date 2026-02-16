@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { getCouponsAction, createCouponAction, updateCouponAction, deleteCouponAction, toggleCouponStatusAction } from '@/actions/coupon-actions';
+import { getCategoriesAction } from '@/actions/category-actions';
+import { getAllSkuProductsAction } from '@/actions/product-details-actions';
+import { Coupon } from '@/lib/types/all-schemas';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -12,34 +15,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Switch } from '@/components/ui/switch';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
-import { MoreHorizontal, Edit, Trash2, Power, Search } from 'lucide-react';
+import { MoreHorizontal, Edit, Trash2, Power, Search, X } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-
-// Define the Coupon type based on the usage in coupon-actions.ts
-interface Coupon {
-  couponId: string;
-  code: string;
-  title: string;
-  description: string;
-  type: 'flat' | 'percentage';
-  value: number;
-  maxDiscount: number | null;
-  minOrderValue: number;
-  applicableCategories: string[];
-  applicableProducts: string[];
-  isActive: boolean;
-  usageLimit: number;
-  usedCount: number;
-  validFrom: Date;
-  validUntil: Date;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 // Define CouponStatus type
 type CouponStatus = 'active' | 'expired' | 'draft';
@@ -131,7 +113,24 @@ function CouponForm({
   onSuccess: () => void;
 }) {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [categories, setCategories] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+  const [loadingData, setLoadingData] = useState(false);
+  const [formData, setFormData] = useState<{
+    code: string;
+    title: string;
+    description: string;
+    type: 'flat' | 'percentage';
+    value: number;
+    maxDiscount: number | null;
+    minOrderValue: number;
+    validUntil: string;
+    validFrom: string;
+    isActive: boolean;
+    usageLimit: number;
+    applicableCategories: Array<{ id: string }>;
+    applicableProducts: Array<{ productId: string; skuId: string }>;
+  }>({
     code: coupon?.code || '',
     title: coupon?.title || '',
     description: coupon?.description || '',
@@ -143,9 +142,41 @@ function CouponForm({
     validFrom: coupon?.validFrom ? convertTimestampToDate(coupon.validFrom).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
     isActive: coupon?.isActive ?? true,
     usageLimit: coupon?.usageLimit || 0,
-    applicableCategories: coupon?.applicableCategories?.join(',') || '',
-    applicableProducts: coupon?.applicableProducts?.join(',') || ''
+    applicableCategories: coupon?.applicableCategories 
+      ? (Array.isArray(coupon.applicableCategories) && typeof coupon.applicableCategories[0] === 'object')
+        ? (coupon.applicableCategories as unknown as Array<{ id: string }>)
+        : [] // Old string format, convert to empty
+      : [],
+    applicableProducts: coupon?.applicableProducts
+      ? (Array.isArray(coupon.applicableProducts) && typeof coupon.applicableProducts[0] === 'object')
+        ? (coupon.applicableProducts as unknown as Array<{ productId: string; skuId: string }>)
+        : [] // Old string format, convert to empty
+      : []
   });
+
+  // Fetch categories and products when form opens
+  useEffect(() => {
+    if (open) {
+      fetchDropdownData();
+    }
+  }, [open]);
+
+  const fetchDropdownData = async () => {
+    try {
+      setLoadingData(true);
+      const [catsData, prodsData] = await Promise.all([
+        getCategoriesAction(),
+        getAllSkuProductsAction()
+      ]);
+      setCategories(catsData || []);
+      setProducts(prodsData || []);
+    } catch (error) {
+      console.error('Error fetching dropdown data:', error);
+      toast.error('Failed to load categories and products');
+    } finally {
+      setLoadingData(false);
+    }
+  };
 
   useEffect(() => {
     if (coupon) {
@@ -161,8 +192,16 @@ function CouponForm({
         validFrom: convertTimestampToDate(coupon.validFrom).toISOString().split('T')[0],
         isActive: coupon.isActive ?? true,
         usageLimit: coupon.usageLimit || 0,
-        applicableCategories: coupon.applicableCategories?.join(',') || '',
-        applicableProducts: coupon.applicableProducts?.join(',') || ''
+        applicableCategories: coupon.applicableCategories 
+          ? (Array.isArray(coupon.applicableCategories) && typeof coupon.applicableCategories[0] === 'object')
+            ? (coupon.applicableCategories as unknown as Array<{ id: string }>)
+            : []
+          : [],
+        applicableProducts: coupon.applicableProducts
+          ? (Array.isArray(coupon.applicableProducts) && typeof coupon.applicableProducts[0] === 'object')
+            ? (coupon.applicableProducts as unknown as Array<{ productId: string; skuId: string }>)
+            : []
+          : []
       });
     } else {
       setFormData({
@@ -177,11 +216,43 @@ function CouponForm({
         validFrom: new Date().toISOString().split('T')[0],
         isActive: true,
         usageLimit: 0,
-        applicableCategories: '',
-        applicableProducts: ''
+        applicableCategories: [],
+        applicableProducts: []
       });
     }
   }, [coupon, open]);
+
+  const handleAddCategory = (categoryId: string) => {
+    if (!formData.applicableCategories.find(c => c.id === categoryId)) {
+      setFormData(prev => ({
+        ...prev,
+        applicableCategories: [...prev.applicableCategories, { id: categoryId }]
+      }));
+    }
+  };
+
+  const handleRemoveCategory = (categoryId: string) => {
+    setFormData(prev => ({
+      ...prev,
+      applicableCategories: prev.applicableCategories.filter(c => c.id !== categoryId)
+    }));
+  };
+
+  const handleAddProduct = (productData: { productId: string; skuId: string }) => {
+    if (!formData.applicableProducts.find(p => p.productId === productData.productId && p.skuId === productData.skuId)) {
+      setFormData(prev => ({
+        ...prev,
+        applicableProducts: [...prev.applicableProducts, productData]
+      }));
+    }
+  };
+
+  const handleRemoveProduct = (productId: string, skuId: string) => {
+    setFormData(prev => ({
+      ...prev,
+      applicableProducts: prev.applicableProducts.filter(p => !(p.productId === productId && p.skuId === skuId))
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -200,8 +271,8 @@ function CouponForm({
         validUntil: new Date(formData.validUntil),
         isActive: formData.isActive,
         usageLimit: formData.usageLimit,
-        applicableCategories: formData.applicableCategories.split(',').filter(Boolean),
-        applicableProducts: formData.applicableProducts.split(',').filter(Boolean)
+        applicableCategories: formData.applicableCategories,
+        applicableProducts: formData.applicableProducts
       };
 
       let result;
@@ -364,24 +435,134 @@ function CouponForm({
             />
           </div>
 
+          {/* Applicable Categories Dropdown */}
           <div className="space-y-2">
-            <Label htmlFor="applicableCategories">Applicable Categories (comma separated)</Label>
-            <Input
-              id="applicableCategories"
-              value={formData.applicableCategories}
-              onChange={(e) => setFormData(prev => ({ ...prev, applicableCategories: e.target.value }))}
-              placeholder="electronics,books"
-            />
+            <Label htmlFor="applicableCategories">Applicable Categories</Label>
+            <Select onValueChange={handleAddCategory} disabled={loadingData}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a category to add..." />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <SelectItem 
+                      key={category.id} 
+                      value={category.id}
+                      disabled={formData.applicableCategories.some(c => c.id === category.id)}
+                    >
+                      {category.name}
+                    </SelectItem>
+                  ))
+                ) : (
+                  <SelectItem value="no-categories" disabled>
+                    No categories available
+                  </SelectItem>
+                )}
+              </SelectContent>
+            </Select>
+            
+            {/* Selected Categories Display */}
+            {formData.applicableCategories.length > 0 && (
+              <div className="mt-3 space-y-2">
+                <p className="text-sm font-medium">Selected Categories:</p>
+                <div className="flex flex-wrap gap-2">
+                  {formData.applicableCategories.map((catObj) => {
+                    const category = categories.find(c => c.id === catObj.id);
+                    return (
+                      <Badge 
+                        key={catObj.id} 
+                        variant="outline" 
+                        className="px-3 py-1 flex items-center gap-2"
+                      >
+                        <span>{category?.name || catObj.id}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveCategory(catObj.id)}
+                          className="ml-1 hover:text-destructive"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </Badge>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
+          {/* Applicable Products Dropdown */}
           <div className="space-y-2">
-            <Label htmlFor="applicableProducts">Applicable Products (comma separated)</Label>
-            <Input
-              id="applicableProducts"
-              value={formData.applicableProducts}
-              onChange={(e) => setFormData(prev => ({ ...prev, applicableProducts: e.target.value }))}
-              placeholder="product1,product2"
-            />
+            <Label htmlFor="applicableProducts">Applicable Products</Label>
+            <Select 
+              onValueChange={(productId) => {
+                const product = products.find(p => p.product_id === productId);
+                if (product && product.product_skus && product.product_skus.length > 0) {
+                  // Add all SKUs from this product
+                  product.product_skus.forEach((skuObj: any) => {
+                    const skuId = skuObj.sku_id || skuObj.sku || '';
+                    if (skuId) {
+                      handleAddProduct({ productId: product.product_id, skuId });
+                    }
+                  });
+                }
+              }}
+              disabled={loadingData}
+            >
+              <SelectTrigger id="applicableProducts">
+                <SelectValue placeholder="Select a product to add all its SKUs..." />
+              </SelectTrigger>
+              <SelectContent>
+                {products.length > 0 ? (
+                  products.map((product) => {
+                    const skuCount = product.product_skus?.length || 0;
+                    const isSelected = formData.applicableProducts.some(p => p.productId === product.product_id);
+                    return (
+                      <SelectItem 
+                        key={product.product_id} 
+                        value={product.product_id}
+                        disabled={isSelected}
+                      >
+                        {product.title} ({skuCount} SKUs)
+                      </SelectItem>
+                    );
+                  })
+                ) : (
+                  <SelectItem value="no-products" disabled>
+                    No products available
+                  </SelectItem>
+                )}
+              </SelectContent>
+            </Select>
+            
+            {/* Selected Products Display */}
+            {formData.applicableProducts.length > 0 && (
+              <div className="mt-3 space-y-2">
+                <p className="text-sm font-medium">Selected Products & SKUs:</p>
+                <div className="flex flex-wrap gap-2">
+                  {formData.applicableProducts.map((prodObj, idx) => {
+                    const product = products.find(p => p.product_id === prodObj.productId);
+                    return (
+                      <Badge 
+                        key={`${prodObj.productId}-${prodObj.skuId}-${idx}`}
+                        variant="outline" 
+                        className="px-3 py-1 flex items-center gap-2"
+                      >
+                        <span className="text-xs">
+                          {product?.title || prodObj.productId} (SKU: {prodObj.skuId})
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveProduct(prodObj.productId, prodObj.skuId)}
+                          className="ml-1 hover:text-destructive"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </Badge>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex items-center justify-between">
