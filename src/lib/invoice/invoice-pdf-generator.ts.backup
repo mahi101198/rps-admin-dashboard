@@ -1,0 +1,449 @@
+import jsPDF from 'jspdf';
+
+declare global {
+  namespace jsPDF {
+    interface jsPDF {
+      text: (text: string | string[], x: number, y: number, options?: any) => jsPDF;
+      rect: (x: number, y: number, w: number, h: number, style?: string) => jsPDF;
+      setFillColor: (r: number, g: number, b: number) => jsPDF;
+    }
+  }
+}
+
+export interface InvoiceItem {
+  itemId: string;
+  productName: string;
+  quantity: number;
+  unitPrice: number;
+  tax: number;
+  total: number;
+  category?: string;
+}
+
+export interface InvoiceData {
+  invoiceNumber: string;
+  invoiceDate: Date;
+  dueDate: Date;
+  orderNumber: string;
+
+  // Customer Info
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  customerAddress: string;
+  customerCity: string;
+  customerState: string;
+  customerZip: string;
+
+  // Company Info
+  companyName: string;
+  companyAddress: string;
+  companyCity: string;
+  companyState: string;
+  companyZip: string;
+  companyPhone: string;
+  companyEmail: string;
+  companyWebsite?: string;
+
+  // Invoice Details
+  items: InvoiceItem[];
+  subtotal: number;
+  tax: number;
+  shipping: number;
+  discount: number;
+  total: number;
+  paymentStatus: 'Paid' | 'Pending' | 'Overdue';
+  paymentMethod?: string;
+  notes?: string;
+  terms?: string;
+}
+
+export class InvoicePDFGenerator {
+  private pdf: InstanceType<typeof jsPDF>;
+  private pageWidth: number;
+  private pageHeight: number;
+  private margin: number = 18;
+  private currentY: number = 0;
+
+  // Premium Jewelry Colors
+  private goldColor = { r: 184, g: 134, b: 11 }; // Gold
+  private darkColor = { r: 20, g: 20, b: 20 }; // Near black
+  private lightGold = { r: 218, g: 198, b: 140 }; // Light gold
+  private lightBg = { r: 250, g: 248, b: 245 }; // Cream beige
+
+  constructor() {
+    this.pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    this.pageWidth = this.pdf.internal.pageSize.getWidth();
+    this.pageHeight = this.pdf.internal.pageSize.getHeight();
+    this.currentY = this.margin;
+  }
+
+  private addNewPageIfNeeded(requiredSpace: number): void {
+    if (this.currentY + requiredSpace > this.pageHeight - this.margin) {
+      this.pdf.addPage();
+      this.addPageDecoration();
+      this.currentY = this.margin;
+    }
+  }
+
+  private addPageDecoration(): void {
+    // Top gold bar
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.rect(0, 0, this.pageWidth, 3, 'F');
+
+    // Bottom gold bar
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.rect(0, this.pageHeight - 3, this.pageWidth, 3, 'F');
+  }
+
+  private addHeader(invoiceData: InvoiceData): void {
+    // Premium header with gradient effect (simulated with colored box)
+    this.pdf.setFillColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+    this.pdf.rect(0, 0, this.pageWidth, 60, 'F');
+
+    // Gold accent line
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.rect(0, 60, this.pageWidth, 2, 'F');
+
+    // Company branding with gold accents
+    this.pdf.setTextColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setFontSize(32);
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.text('ABC', this.margin, 25);
+    this.pdf.text('JEWELLERY', this.margin, 42);
+
+    // Tagline
+    this.pdf.setFontSize(9);
+    this.pdf.setFont('Helvetica', 'italic');
+    this.pdf.setTextColor(218, 198, 140);
+    this.pdf.text('✦ Premium Jewelry & Exquisite Designs ✦', this.margin, 50);
+
+    // Invoice label on right side
+    this.pdf.setTextColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setFontSize(20);
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.text('INVOICE', this.pageWidth - this.margin - 55, 25);
+
+    // Invoice details box
+    this.pdf.setFillColor(this.lightBg.r, this.lightBg.g, this.lightBg.b);
+    this.pdf.rect(this.pageWidth - this.margin - 58, 32, 55, 28, 'F');
+
+    // Border for details box
+    this.pdf.setDrawColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setLineWidth(1);
+    this.pdf.rect(this.pageWidth - this.margin - 58, 32, 55, 28);
+
+    this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+    this.pdf.setFontSize(8);
+    this.pdf.setFont('Helvetica', 'normal');
+    const detailsX = this.pageWidth - this.margin - 55;
+    let detailsY = 37;
+
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.text(`INV: ${invoiceData.invoiceNumber}`, detailsX, detailsY);
+    detailsY += 4;
+    this.pdf.setFont('Helvetica', 'normal');
+    this.pdf.text(`ORDER: ${invoiceData.orderNumber}`, detailsX, detailsY);
+    detailsY += 4;
+    this.pdf.text(`ISSUED: ${this.formatDate(invoiceData.invoiceDate)}`, detailsX, detailsY);
+    detailsY += 4;
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.setTextColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.text(`DUE: ${this.formatDate(invoiceData.dueDate)}`, detailsX, detailsY);
+
+    this.currentY = 65;
+  }
+
+  private addCustomerInfo(invoiceData: InvoiceData): void {
+    this.addNewPageIfNeeded(35);
+
+    // Section title with gold underline
+    this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+    this.pdf.setFontSize(10);
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.text('CUSTOMER DETAILS', this.margin, this.currentY);
+
+    // Gold underline
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.rect(this.margin, this.currentY + 1.5, 40, 0.5, 'F');
+
+    this.currentY += 7;
+
+    // Customer info
+    this.pdf.setFontSize(9);
+    this.pdf.setFont('Helvetica', 'normal');
+    this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+
+    const customerLines = [
+      invoiceData.customerName,
+      invoiceData.customerAddress,
+      `${invoiceData.customerCity}, ${invoiceData.customerState} ${invoiceData.customerZip}`,
+      `Phone: ${invoiceData.customerPhone}`,
+      `Email: ${invoiceData.customerEmail}`,
+    ];
+
+    customerLines.forEach((line) => {
+      this.pdf.text(line, this.margin, this.currentY);
+      this.currentY += 4;
+    });
+
+    this.currentY += 2;
+  }
+
+  private addItemsTable(invoiceData: InvoiceData): void {
+    this.addNewPageIfNeeded(60);
+
+    const columns = ['Product / Description', 'Category', 'Qty', 'Unit Price', 'Tax', 'Total'];
+    const rows = invoiceData.items.map((item) => [
+      item.productName.substring(0, 32),
+      item.category || '-',
+      item.quantity.toString(),
+      `₹${item.unitPrice.toFixed(2)}`,
+      `₹${item.tax.toFixed(2)}`,
+      `₹${item.total.toFixed(2)}`,
+    ]);
+
+    const colWidths = [70, 20, 12, 25, 20, 28];
+    const rowHeight = 7;
+    const tableStartX = this.margin;
+    const tableStartY = this.currentY;
+
+    // Premium table header with gold background
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setTextColor(255, 255, 255);
+    this.pdf.setFontSize(9);
+    this.pdf.setFont('Helvetica', 'bold');
+
+    let cellX = tableStartX;
+    columns.forEach((col, idx) => {
+      this.pdf.rect(cellX, tableStartY, colWidths[idx], rowHeight, 'F');
+      const padding = idx === 0 ? 3 : 2;
+      this.pdf.text(col.substring(0, 18), cellX + padding, tableStartY + 5);
+      cellX += colWidths[idx];
+    });
+
+    // Table rows with alternating background
+    this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+    this.pdf.setFont('Helvetica', 'normal');
+    this.pdf.setFontSize(8);
+    let rowY = tableStartY + rowHeight;
+    let isEvenRow = false;
+
+    rows.forEach((row) => {
+      // Alternating row background
+      if (isEvenRow) {
+        this.pdf.setFillColor(this.lightBg.r, this.lightBg.g, this.lightBg.b);
+        cellX = tableStartX;
+        row.forEach((_, idx) => {
+          this.pdf.rect(cellX, rowY, colWidths[idx], rowHeight, 'F');
+          cellX += colWidths[idx];
+        });
+      }
+
+      // Cell borders
+      cellX = tableStartX;
+      row.forEach((cell, idx) => {
+        this.pdf.setDrawColor(200, 200, 200);
+        this.pdf.setLineWidth(0.3);
+        this.pdf.rect(cellX, rowY, colWidths[idx], rowHeight);
+        const align = idx === 0 || idx === 1 ? 'left' : 'right';
+        const textX = align === 'left' ? cellX + 2 : cellX + colWidths[idx] - 2;
+        this.pdf.text(cell, textX, rowY + 4.5, { align });
+        cellX += colWidths[idx];
+      });
+      rowY += rowHeight;
+      isEvenRow = !isEvenRow;
+    });
+
+    this.currentY = rowY + 3;
+  }
+
+  private addTotalsSection(invoiceData: InvoiceData): void {
+    this.addNewPageIfNeeded(50);
+
+    const totalsX = this.pageWidth - this.margin - 75;
+    const valueX = this.pageWidth - this.margin - 5;
+
+    this.pdf.setFontSize(9);
+    let currentLineY = this.currentY;
+
+    // Subtotal
+    this.pdf.setFont('Helvetica', 'normal');
+    this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+    this.pdf.text('Subtotal:', totalsX, currentLineY);
+    this.pdf.text(`₹${invoiceData.subtotal.toFixed(2)}`, valueX, currentLineY, { align: 'right' });
+    currentLineY += 5;
+
+    // Tax
+    if (invoiceData.tax > 0) {
+      this.pdf.text('Tax (GST 18%):', totalsX, currentLineY);
+      this.pdf.text(`₹${invoiceData.tax.toFixed(2)}`, valueX, currentLineY, { align: 'right' });
+      currentLineY += 5;
+    }
+
+    // Shipping
+    if (invoiceData.shipping > 0) {
+      this.pdf.text('Shipping:', totalsX, currentLineY);
+      this.pdf.text(`₹${invoiceData.shipping.toFixed(2)}`, valueX, currentLineY, { align: 'right' });
+      currentLineY += 5;
+    }
+
+    // Discount
+    if (invoiceData.discount > 0) {
+      this.pdf.setTextColor(220, 53, 69);
+      this.pdf.text('Discount:', totalsX, currentLineY);
+      this.pdf.text(`-₹${invoiceData.discount.toFixed(2)}`, valueX, currentLineY, { align: 'right' });
+      currentLineY += 5;
+    }
+
+    // Separator line
+    currentLineY += 2;
+    this.pdf.setDrawColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setLineWidth(1);
+    this.pdf.line(totalsX, currentLineY, valueX, currentLineY);
+    currentLineY += 5;
+
+    // Total with premium styling
+    this.pdf.setFillColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.rect(totalsX - 2, currentLineY - 3, 78, 10, 'F');
+    this.pdf.setTextColor(255, 255, 255);
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.setFontSize(12);
+    this.pdf.text('TOTAL AMOUNT:', totalsX, currentLineY + 3);
+    this.pdf.text(`₹${invoiceData.total.toFixed(2)}`, valueX, currentLineY + 3, { align: 'right' });
+
+    currentLineY += 12;
+
+    // Payment Status Badge
+    const statusColor =
+      invoiceData.paymentStatus === 'Paid'
+        ? [76, 175, 80]
+        : invoiceData.paymentStatus === 'Pending'
+          ? [255, 152, 0]
+          : [220, 53, 69];
+
+    this.pdf.setFillColor(statusColor[0], statusColor[1], statusColor[2]);
+    this.pdf.rect(this.margin, currentLineY - 3, 55, 8, 'F');
+    this.pdf.setTextColor(255, 255, 255);
+    this.pdf.setFont('Helvetica', 'bold');
+    this.pdf.setFontSize(9);
+    this.pdf.text(`Status: ${invoiceData.paymentStatus}`, this.margin + 3, currentLineY + 2);
+
+    this.currentY = currentLineY + 10;
+  }
+
+  private addAdditionalInfo(invoiceData: InvoiceData): void {
+    this.addNewPageIfNeeded(30);
+
+    // Section divider
+    this.pdf.setDrawColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setLineWidth(0.5);
+    this.pdf.line(this.margin, this.currentY, this.pageWidth - this.margin, this.currentY);
+    this.currentY += 5;
+
+    this.pdf.setFontSize(9);
+
+    // Payment method
+    if (invoiceData.paymentMethod) {
+      this.pdf.setFont('Helvetica', 'bold');
+      this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+      this.pdf.text('Payment Method:', this.margin, this.currentY);
+      this.pdf.setFont('Helvetica', 'normal');
+      this.pdf.text(invoiceData.paymentMethod, this.margin + 45, this.currentY);
+      this.currentY += 5;
+    }
+
+    // Notes
+    if (invoiceData.notes) {
+      this.pdf.setFont('Helvetica', 'bold');
+      this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+      this.pdf.text('Special Instructions:', this.margin, this.currentY);
+      this.currentY += 4;
+      this.pdf.setFont('Helvetica', 'normal');
+      this.pdf.setFontSize(8);
+      const noteLines = (this.pdf as any).splitTextToSize(
+        invoiceData.notes,
+        this.pageWidth - 2 * this.margin
+      );
+      noteLines.forEach((line: string) => {
+        this.pdf.text(line, this.margin, this.currentY);
+        this.currentY += 3;
+      });
+      this.currentY += 2;
+    }
+
+    // Terms
+    if (invoiceData.terms) {
+      this.pdf.setFontSize(9);
+      this.pdf.setFont('Helvetica', 'bold');
+      this.pdf.setTextColor(this.darkColor.r, this.darkColor.g, this.darkColor.b);
+      this.pdf.text('Terms & Conditions:', this.margin, this.currentY);
+      this.currentY += 4;
+      this.pdf.setFont('Helvetica', 'normal');
+      this.pdf.setFontSize(8);
+      const termLines = (this.pdf as any).splitTextToSize(
+        invoiceData.terms,
+        this.pageWidth - 2 * this.margin
+      );
+      termLines.forEach((line: string) => {
+        this.pdf.text(line, this.margin, this.currentY);
+        this.currentY += 3;
+      });
+    }
+  }
+
+  private addFooter(): void {
+    const footerY = this.pageHeight - 12;
+
+    // Decorative line
+    this.pdf.setDrawColor(this.goldColor.r, this.goldColor.g, this.goldColor.b);
+    this.pdf.setLineWidth(0.5);
+    this.pdf.line(this.margin, footerY - 4, this.pageWidth -this.margin, footerY - 4);
+
+    // Footer text
+    this.pdf.setFont('Helvetica', 'normal');
+    this.pdf.setFontSize(8);
+    this.pdf.setTextColor(128, 128, 128);
+    this.pdf.text(
+      'Thank you for choosing ABC Jewellery! | www.abcjewellery.com',
+      this.pageWidth / 2,
+      footerY,
+      { align: 'center' }
+    );
+  }
+
+  private formatDate(date: Date): string {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    }).format(date);
+  }
+
+  public generate(invoiceData: InvoiceData): jsPDF {
+    this.addPageDecoration();
+    this.addHeader(invoiceData);
+    this.addCustomerInfo(invoiceData);
+    this.addItemsTable(invoiceData);
+    this.addTotalsSection(invoiceData);
+    this.addAdditionalInfo(invoiceData);
+    this.addFooter();
+
+    return this.pdf;
+  }
+
+  public getBuffer(): Buffer {
+    return Buffer.from(this.pdf.output('arraybuffer'));
+  }
+
+  public getPdfBytes(): Uint8Array {
+    const arrayBuffer = this.pdf.output('arraybuffer') as ArrayBuffer;
+    return new Uint8Array(arrayBuffer);
+  }
+}
+
+export function generateInvoicePDF(invoiceData: InvoiceData): Uint8Array {
+  const generator = new InvoicePDFGenerator();
+  generator.generate(invoiceData);
+  return generator.getPdfBytes();
+}

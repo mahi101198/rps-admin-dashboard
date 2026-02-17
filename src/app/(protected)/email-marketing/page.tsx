@@ -6,7 +6,8 @@ import EmailComposer from './components/email-composer';
 import BulkEmailSender from './components/bulk-email-sender';
 import CampaignAnalytics from './components/campaign-analytics';
 import BannerManager from './components/banner-manager';
-import { Mail, Settings, BarChart3, Image as ImageIcon, Send } from 'lucide-react';
+import InvoiceTesting from './components/invoice-testing';
+import { Mail, Settings, BarChart3, Image as ImageIcon, Send, FileText } from 'lucide-react';
 
 export default function EmailMarketingPage() {
   const [activeTab, setActiveTab] = useState('composer');
@@ -62,13 +63,14 @@ export default function EmailMarketingPage() {
       {/* Main Tabs */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Tab Buttons */}
-        <div className="w-full bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200 grid grid-cols-5 gap-0">
+        <div className="w-full bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200 grid grid-cols-6 gap-0 overflow-x-auto">
           {[
             { id: 'composer', label: 'Compose', icon: Mail },
             { id: 'templates', label: 'Templates', icon: Settings },
             { id: 'banners', label: 'Banners', icon: ImageIcon },
             { id: 'bulk', label: 'Bulk Send', icon: Send },
             { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+            { id: 'invoice', label: 'Invoice Test', icon: FileText },
           ].map(({ id, label, icon: Icon }) => (
             <button
               key={id}
@@ -92,6 +94,7 @@ export default function EmailMarketingPage() {
           {activeTab === 'banners' && <BannerManager />}
           {activeTab === 'bulk' && <BulkEmailSender />}
           {activeTab === 'analytics' && <CampaignAnalytics />}
+          {activeTab === 'invoice' && <InvoiceTesting />}
         </div>
       </div>
     </div>

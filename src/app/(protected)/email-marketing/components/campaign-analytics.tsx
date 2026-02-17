@@ -252,6 +252,7 @@ export default function CampaignAnalytics() {
           <h3 className="font-semibold text-gray-900 mb-4">Top Campaigns by Revenue</h3>
           <div className="space-y-3">
             {campaignData
+              .slice()
               .sort((a, b) => b.revenue - a.revenue)
               .map((campaign, index) => (
                 <div key={campaign.name} className="pb-3 border-b border-gray-200 last:border-b-0">
