@@ -275,6 +275,36 @@ export async function getSkuProductAction(productId: string): Promise<ProductDet
 }
 
 /**
+ * Get a copy of an existing product for duplication
+ * Returns the product with a new ID and reset timestamps (ready for user editing)
+ */
+export async function copySkuProductAction(productId: string): Promise<ProductDetailsDocument | null> {
+  try {
+    const product = await getSkuProductAction(productId);
+    if (!product) {
+      return null;
+    }
+
+    // Generate a completely new product ID - just add timestamp suffix
+    const timestamp = Date.now();
+    const newProductId = `${product.product_id}-${timestamp}`;
+
+    // Create a copy with the new ID and reset timestamps
+    const copiedProduct: ProductDetailsDocument = {
+      ...product,
+      product_id: newProductId,
+      created_at: "__SERVER_TIMESTAMP__",
+      updated_at: "__SERVER_TIMESTAMP__",
+    };
+
+    return copiedProduct;
+  } catch (error) {
+    console.error('Error copying SKU product:', error);
+    return null;
+  }
+}
+
+/**
  * Get all SKU-based products
  */
 export async function getAllSkuProductsAction(): Promise<ProductDetailsDocument[]> {

@@ -144,11 +144,12 @@ type ProductFormValues = z.infer<typeof productSchema>;
 
 interface ProductFormProps {
   product?: ProductDetailsDocument;
+  isNew?: boolean;
   onSubmitSuccess?: () => void;
   onCancel?: () => void;
 }
 
-export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormProps) {
+export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel }: ProductFormProps) {
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -303,7 +304,10 @@ export function ProductForm({ product, onSubmitSuccess, onCancel }: ProductFormP
       // Log the prepared payload
       console.log('Product payload ready for submission:', productPayload);
       
-      if (product) {
+      // Determine if this is a new product or existing product update
+      // isNew = true means always create (even if product data is provided)
+      // isNew = false means we're editing an existing product
+      if (product && !isNew) {
         // Update existing product
         const result = await updateSkuProductAction(
           product.product_id,

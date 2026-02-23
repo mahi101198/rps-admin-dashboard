@@ -7,22 +7,26 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Package,
   Plus,
-  Search
+  Search,
+  FileJson
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { 
-  getAllSkuProductsAction
+  getAllSkuProductsAction,
+  copySkuProductAction
 } from '@/actions/product-details-actions';
 import { 
   ProductDetailsDocument
 } from '@/lib/types/product-details-sku';
 import { ProductForm } from './product-form';
 import { ProductsTable } from './products-table';
+import { JsonImportDialog } from './json-import-dialog';
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<ProductDetailsDocument[]>([]);
   const [loading, setLoading] = useState(false);
   const [editingProduct, setEditingProduct] = useState<ProductDetailsDocument | null>(null);
+  const [isEditingExisting, setIsEditingExisting] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -56,14 +60,48 @@ export default function ProductsPage() {
   const handleFormSubmitSuccess = () => {
     loadProducts();
     setEditingProduct(null);
+    setIsEditingExisting(false);
     setShowForm(false);
-    toast.success(editingProduct ? 'Product updated successfully' : 'Product created successfully');
+    toast.success(isEditingExisting ? 'Product updated successfully' : 'Product created successfully');
   };
 
-  // Handle edit product
+  // Handle edit product - editing an existing product from list
   const handleEditProduct = (product: ProductDetailsDocument) => {
     setEditingProduct(product);
+    setIsEditingExisting(true);
     setShowForm(true);
+  };
+
+  // Handle copy product - creates a new product with copied data
+  const handleCopyProduct = async (product: ProductDetailsDocument) => {
+    try {
+      const copiedProduct = await copySkuProductAction(product.product_id);
+      if (copiedProduct) {
+        setEditingProduct(copiedProduct);
+        setIsEditingExisting(false);
+        setShowForm(true);
+        toast.success('Product data copied! Now edit and save as a new product.');
+      } else {
+        toast.error('Failed to copy product');
+      }
+    } catch (error) {
+      console.error('Error copying product:', error);
+      toast.error('Failed to copy product');
+    }
+  };
+
+  // Handle new product from JSON
+  const handleJsonImport = (product: ProductDetailsDocument) => {
+    // Create a new product with the JSON data
+    const newProduct: ProductDetailsDocument = {
+      ...product,
+      created_at: "__SERVER_TIMESTAMP__",
+      updated_at: "__SERVER_TIMESTAMP__"
+    };
+    setEditingProduct(newProduct);
+    setIsEditingExisting(false);
+    setShowForm(true);
+    toast.success('Form filled from JSON! Edit and save your new product.');
   };
 
   // Handle delete product
@@ -81,6 +119,7 @@ export default function ProductsPage() {
   // Reset form
   const resetForm = () => {
     setEditingProduct(null);
+    setIsEditingExisting(false);
     setShowForm(false);
   };
 
@@ -101,23 +140,34 @@ export default function ProductsPage() {
             Manage your product catalog with detailed information
           </p>
         </div>
-        <Button onClick={() => {
-          setEditingProduct(null);
-          setShowForm(true);
-        }} className="flex items-center gap-2">
-          <Plus className="h-4 w-4" />
-          Add New Product
-        </Button>
+        <div className="flex gap-2">
+          <Button onClick={() => {
+            setEditingProduct(null);
+            setIsEditingExisting(false);
+            setShowForm(true);
+          }} className="flex items-center gap-2">
+            <Plus className="h-4 w-4" />
+            Add New Product
+          </Button>
+          <JsonImportDialog onImport={handleJsonImport}>
+            <Button variant="outline" className="flex items-center gap-2">
+              <FileJson className="h-4 w-4" />
+              Add from JSON
+            </Button>
+          </JsonImportDialog>
+        </div>
       </div>
 
       {showForm ? (
         <Card>
           <CardHeader>
             <CardTitle>
-              {editingProduct ? 'Edit Product' : 'Create New Product'}
+              {isEditingExisting 
+                ? 'Edit Product' 
+                : 'Create New Product'}
             </CardTitle>
             <CardDescription>
-              {editingProduct 
+              {isEditingExisting 
                 ? 'Update the product information below'
                 : 'Fill in the product details to create a new product'}
             </CardDescription>
@@ -125,6 +175,7 @@ export default function ProductsPage() {
           <CardContent>
             <ProductForm 
               product={editingProduct || undefined}
+              isNew={!isEditingExisting}
               onSubmitSuccess={handleFormSubmitSuccess}
               onCancel={resetForm}
             />
@@ -167,6 +218,7 @@ export default function ProductsPage() {
                 products={filteredProducts}
                 loading={loading}
                 onEdit={handleEditProduct}
+                onCopy={handleCopyProduct}
                 onDelete={handleDeleteProduct}
                 onViewDetails={handleViewDetails}
               />

@@ -35,6 +35,7 @@ import {
   Edit,
   Trash,
   Plus,
+  Copy,
   Package,
   Tag,
   ShoppingBag,
@@ -56,6 +57,7 @@ import { ProductView } from './product-view';
 interface ProductActionsProps {
   product: ProductDetailsDocument;
   onEdit: (product: ProductDetailsDocument) => void;
+  onCopy: (product: ProductDetailsDocument) => void;
   onDelete: (productId: string) => void;
   onViewDetails?: (product: ProductDetailsDocument) => void;
 }
@@ -63,6 +65,7 @@ interface ProductActionsProps {
 export function ProductActions({ 
   product, 
   onEdit, 
+  onCopy,
   onDelete, 
   onViewDetails 
 }: ProductActionsProps) {
@@ -169,6 +172,11 @@ export function ProductActions({
           <DropdownMenuItem onClick={() => onEdit(product)}>
             <Edit className="mr-2 h-4 w-4" />
             Edit
+          </DropdownMenuItem>
+          
+          <DropdownMenuItem onClick={() => onCopy(product)}>
+            <Copy className="mr-2 h-4 w-4" />
+            Copy Product
           </DropdownMenuItem>
           
           <AddProductToHomeSection product={product}>

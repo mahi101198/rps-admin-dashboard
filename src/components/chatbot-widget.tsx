@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { getIdToken } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { MessageCircle, X, Send } from 'lucide-react';
@@ -14,13 +13,21 @@ interface Message {
   text: string;
 }
 
+function generateSessionId(): string {
+  return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
 export function ChatbotWidget() {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const websocketRef = useRef<WebSocket | null>(null);
+  const sessionIdRef = useRef<string | null>(null);
+  const userIdRef = useRef<string | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -30,8 +37,155 @@ export function ChatbotWidget() {
     scrollToBottom();
   }, [messages]);
 
+  // Initialize or retrieve session ID
+  const getSessionId = (): string => {
+    let sessionId = sessionStorage.getItem('chat_session_id');
+    if (!sessionId) {
+      sessionId = generateSessionId();
+      sessionStorage.setItem('chat_session_id', sessionId);
+    }
+    return sessionId;
+  };
+
+  // Connect to WebSocket
+  const connectWebSocket = async () => {
+    if (!user) {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: 'Please log in to use the chat.',
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      return;
+    }
+
+    if (websocketRef.current?.readyState === WebSocket.OPEN) {
+      setIsConnected(true);
+      return;
+    }
+
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+      if (!baseUrl) {
+        const errorMessage: Message = {
+          id: Date.now().toString(),
+          type: 'bot',
+          text: 'Chat service is not configured.',
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+        return;
+      }
+
+      const userId = user.uid;
+      const sessionId = getSessionId();
+
+      userIdRef.current = userId;
+      sessionIdRef.current = sessionId;
+
+      // Convert http to ws, https to wss
+      const wsUrl = baseUrl.replace(/^http/, 'ws');
+      const wsEndpoint = `${wsUrl}/ws/${userId}/${sessionId}`;
+
+      console.log('Connecting to WebSocket:', wsEndpoint);
+
+      const ws = new WebSocket(wsEndpoint);
+
+      ws.onopen = () => {
+        console.log('WebSocket connected');
+        setIsConnected(true);
+        setIsLoading(false);
+      };
+
+      ws.onmessage = (event) => {
+        const text = event.data;
+        console.log('Received:', text);
+
+        // Update the last bot message or create a new one
+        setMessages((prev) => {
+          const lastMessage = prev[prev.length - 1];
+          if (lastMessage && lastMessage.type === 'bot' && lastMessage.id === 'streaming') {
+            // Append to existing streaming message
+            return [
+              ...prev.slice(0, -1),
+              {
+                ...lastMessage,
+                text: lastMessage.text + text,
+              },
+            ];
+          } else {
+            // Create new bot message
+            return [
+              ...prev,
+              {
+                id: 'streaming',
+                type: 'bot',
+                text: text,
+              },
+            ];
+          }
+        });
+
+        scrollToBottom();
+      };
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+        const errorMessage: Message = {
+          id: Date.now().toString(),
+          type: 'bot',
+          text: 'Connection error. Please try again.',
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+        setIsConnected(false);
+        setIsLoading(false);
+      };
+
+      ws.onclose = () => {
+        console.log('WebSocket disconnected');
+        setIsConnected(false);
+      };
+
+      websocketRef.current = ws;
+    } catch (error) {
+      console.error('Failed to connect:', error);
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `Connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      setIsLoading(false);
+    }
+  };
+
+  // Connect when widget opens
+  useEffect(() => {
+    if (isOpen && !isConnected && user) {
+      connectWebSocket();
+    }
+  }, [isOpen, user]);
+
+  // Cleanup on component unmount
+  useEffect(() => {
+    return () => {
+      if (websocketRef.current) {
+        websocketRef.current.close();
+      }
+    };
+  }, []);
+
   const handleSendMessage = async () => {
     if (!input.trim()) return;
+    if (!websocketRef.current || websocketRef.current.readyState !== WebSocket.OPEN) {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: 'Not connected. Please try again.',
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -44,72 +198,25 @@ export function ChatbotWidget() {
     setIsLoading(true);
 
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+      // Send message through WebSocket
+      websocketRef.current.send(input);
 
-      if (!baseUrl) {
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          type: 'bot',
-          text: 'Chat service is not configured. Please check the NEXT_PUBLIC_BASE_URL environment variable.',
-        };
-        setMessages((prev) => [...prev, errorMessage]);
+      // Reset the streaming message ID after sending
+      setTimeout(() => {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === 'streaming' ? { ...msg, id: Date.now().toString() } : msg
+          )
+        );
         setIsLoading(false);
-        return;
-      }
-
-      const chatUrl = `${baseUrl}/chat`;
-
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-      };
-
-      // Get Firebase ID token from authenticated user
-      if (user) {
-        try {
-          const token = await getIdToken(user, true);
-          if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
-          }
-        } catch (error) {
-          console.error('Failed to get Firebase token:', error);
-        }
-      }
-
-      const response = await fetch(chatUrl, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          message: input,
-          conversation_id: sessionStorage.getItem('chat_conversation_id') || 'new',
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-
-      // Store conversation ID for continuity
-      if (data.conversation_id) {
-        sessionStorage.setItem('chat_conversation_id', data.conversation_id);
-      }
-
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        text: data.response || data.message || 'Unable to process your request.',
-      };
-
-      setMessages((prev) => [...prev, botMessage]);
+      }, 500);
     } catch (error) {
       const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: Date.now().toString(),
         type: 'bot',
         text: `Error: ${error instanceof Error ? error.message : 'Failed to send message'}`,
       };
       setMessages((prev) => [...prev, errorMessage]);
-    } finally {
       setIsLoading(false);
     }
   };
@@ -119,6 +226,15 @@ export function ChatbotWidget() {
       e.preventDefault();
       handleSendMessage();
     }
+  };
+
+  const handleOpen = () => {
+    setIsOpen(true);
+    // Connection will be established in the useEffect
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -131,9 +247,10 @@ export function ChatbotWidget() {
             <div className="flex items-center gap-2">
               <MessageCircle size={20} />
               <h3 className="font-semibold text-sm">Ask AI</h3>
+              <span className={cn('w-2 h-2 rounded-full', isConnected ? 'bg-green-400' : 'bg-red-400')} />
             </div>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
               className="hover:bg-blue-800 p-1 rounded transition-colors"
             >
               <X size={18} />
@@ -167,7 +284,7 @@ export function ChatbotWidget() {
                 </div>
               </div>
             ))}
-            {isLoading && (
+            {isLoading && !messages.some((m) => m.id === 'streaming') && (
               <div className="flex justify-start">
                 <div className="bg-white text-gray-900 border border-gray-200 px-4 py-2 rounded-lg text-sm rounded-bl-none">
                   <div className="flex gap-1">
@@ -185,16 +302,16 @@ export function ChatbotWidget() {
           <div className="border-t border-gray-200 p-3 bg-white rounded-b-lg flex gap-2">
             <Input
               type="text"
-              placeholder="Type your message..."
+              placeholder={isConnected ? 'Type your message...' : 'Connecting...'}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              disabled={isLoading}
+              disabled={!isConnected || isLoading}
               className="text-sm"
             />
             <Button
               onClick={handleSendMessage}
-              disabled={isLoading || !input.trim()}
+              disabled={!isConnected || isLoading || !input.trim()}
               size="sm"
               className="bg-blue-600 hover:bg-blue-700"
             >
@@ -206,7 +323,7 @@ export function ChatbotWidget() {
 
       {/* Toggle Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOpen}
         className={cn(
           'rounded-full p-4 shadow-lg transition-all duration-300 flex items-center justify-center',
           isOpen

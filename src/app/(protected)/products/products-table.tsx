@@ -53,6 +53,7 @@ interface ProductsTableProps {
   products: ProductDetailsDocument[];
   loading: boolean;
   onEdit: (product: ProductDetailsDocument) => void;
+  onCopy: (product: ProductDetailsDocument) => void;
   onDelete: (productId: string) => void;
   onViewDetails: (product: ProductDetailsDocument) => void;
 }
@@ -60,7 +61,8 @@ interface ProductsTableProps {
 export function ProductsTable({ 
   products, 
   loading, 
-  onEdit, 
+  onEdit,
+  onCopy, 
   onDelete, 
   onViewDetails 
 }: ProductsTableProps) {
@@ -225,7 +227,8 @@ export function ProductsTable({
                 <TableCell className="text-right">
                   <ProductActions 
                     product={product} 
-                    onEdit={onEdit} 
+                    onEdit={onEdit}
+                    onCopy={onCopy}
                     onDelete={onDelete} 
                     onViewDetails={onViewDetails} 
                   />
