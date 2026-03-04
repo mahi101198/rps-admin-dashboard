@@ -25,7 +25,10 @@ export function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-
+    // Public playstore routes (no authentication required)
+    if (pathname.startsWith('/playstore')) {
+      return NextResponse.next();
+    }
 
     // All other routes require authentication
     if (!token) {
