@@ -57,7 +57,19 @@ Thumbs.db
 # Firebase
 .firebase/
 functions/node_modules/
+firebase-service-account.json
+firebase-products-part*.json
+.firebaserc
 
-# Temporary files
+# Data files
+products_pricing.csv
+all-products.ts
+newproducts*.json
+
+# Logs and temporary files
 *.tmp
 *.temp
+*.log
+upload-output.log
+.qoder/
+tsconfig.tsbuildinfo

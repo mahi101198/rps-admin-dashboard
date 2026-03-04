@@ -25,6 +25,15 @@ export function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
+    // Public policy routes (no authentication required)
+    if (
+      pathname.startsWith('/playstore/privacy-policy') ||
+      pathname.startsWith('/playstore/data-deletion') ||
+      pathname === '/playstore'
+    ) {
+      return NextResponse.next();
+    }
+
     // All other routes require authentication
     if (!token) {
       const url = new URL('/', request.url);
