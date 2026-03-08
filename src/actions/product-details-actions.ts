@@ -184,7 +184,8 @@ export async function uploadProductImageAction(
 
     const imageUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
     
-    revalidatePath('/products');
+    // Don't revalidate path for image uploads - it causes unnecessary page refreshes
+    // The image URL is returned directly and handled client-side
     return { success: true, message: 'Image uploaded successfully', imageUrl };
   } catch (error) {
     console.error('Error uploading product image:', error);

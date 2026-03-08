@@ -40,7 +40,7 @@ export async function uploadProductImageAction(
 
     const imageUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
     
-    revalidatePath('/products');
+    // Don't revalidate path for image uploads - it causes unnecessary page refreshes
     return { success: true, message: 'Image uploaded successfully', imageUrl };
   } catch (error) {
     console.error('Error uploading product image:', error);
@@ -87,7 +87,7 @@ export async function uploadProductImagesAction(
       imageUrls.push(imageUrl);
     }
     
-    revalidatePath('/products');
+    // Don't revalidate path for image uploads - it causes unnecessary page refreshes
     return { success: true, message: 'Images uploaded successfully', imageUrls };
   } catch (error) {
     console.error('Error uploading product images:', error);
@@ -120,7 +120,7 @@ export async function deleteProductImageAction(
       }
     }
 
-    revalidatePath('/products');
+    // Don't revalidate path for image operations - causes unnecessary page refreshes
     return { success: true, message: 'Image deleted successfully' };
   } catch (error) {
     console.error('Error deleting product image:', error);
@@ -157,7 +157,7 @@ export async function deleteProductImagesAction(
       }
     }
 
-    revalidatePath('/products');
+    // Don't revalidate path for image operations - causes unnecessary page refreshes
     return { success: true, message: 'Images deleted successfully' };
   } catch (error) {
     console.error('Error deleting product images:', error);
