@@ -149,14 +149,13 @@ export function BannerForm({ isOpen, onClose, banner, onSuccess }: BannerFormPro
         </div>
 
         <div>
-          <Label htmlFor="linkTo">Link URL *</Label>
+          <Label htmlFor="linkTo">Link URL</Label>
           <Input
             id="linkTo"
             type="url"
             value={formData.linkTo}
             onChange={(e) => setFormData(prev => ({ ...prev, linkTo: e.target.value }))}
             placeholder="https://example.com/product"
-            required
           />
         </div>
 

@@ -41,7 +41,7 @@ export interface Banner {
   bannerId: string;
   title: string;
   imageUrl: string;
-  linkTo: string;
+  linkTo?: string;
   rank: number;
   isActive: boolean;
   view_change_time: number; // Time in seconds to show each banner before changing
@@ -54,7 +54,7 @@ export interface PaymentBanner {
   paymentPageBannerId: string;
   title: string;
   imageUrl: string;
-  linkTo: string;
+  linkTo?: string;
   rank: number;
   isActive: boolean;
   view_change_time: number; // Time in seconds to show each banner before changing
