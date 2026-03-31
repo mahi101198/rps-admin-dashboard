@@ -70,7 +70,8 @@ export async function getOrdersAction(): Promise<Order[]> {
       
       // Build the order object matching new interface
       const order: Order = {
-        orderId: doc.id,
+        orderId: data.orderId || doc.id,
+        docId: doc.id,
         userId: data.userId || '',
         items: (data.items || []).map((item: any) => ({
           productId: item.productId || '',
@@ -82,8 +83,25 @@ export async function getOrdersAction(): Promise<Order[]> {
           productImage: item.productImage,
           selectedColor: item.selectedColor,
           itemAutoDiscount: item.itemAutoDiscount,
-          itemMetadata: item.itemMetadata,
+          itemMetadata: item.itemMetadata || {
+            basePriceUsed: item.basePriceUsed || 0,
+            currentPriceUsed: item.currentPriceUsed || 0,
+            calculatedAt: item.calculatedAt || '',
+            discountPerItem: item.discountPerItem || 0,
+            itemSubtotalAtMRP: item.itemSubtotalAtMRP || 0,
+            itemSubtotalAtSellingPrice: item.itemSubtotalAtSellingPrice || 0,
+            name: item.name || '',
+            productBasePrice: item.productBasePrice || 0,
+            productCurrentPrice: item.productCurrentPrice || 0,
+          },
           variants: item.variants,
+          basePriceUsed: item.basePriceUsed,
+          currentPriceUsed: item.currentPriceUsed,
+          itemSubtotalAtMRP: item.itemSubtotalAtMRP,
+          itemSubtotalAtSellingPrice: item.itemSubtotalAtSellingPrice,
+          discountPerItem: item.discountPerItem,
+          productBasePrice: item.productBasePrice,
+          productCurrentPrice: item.productCurrentPrice,
         })),
         deliveryId: data.deliveryId,
         deliveryInfo: {
@@ -280,7 +298,8 @@ export async function getOrderAction(orderId: string): Promise<Order | null> {
     };
     
     return {
-      orderId: doc.id,
+      orderId: data?.orderId || doc.id,
+      docId: doc.id,
       userId: data?.userId || '',
       items: data?.items || [],
       deliveryAddress: data?.deliveryInfo?.address || {},
@@ -309,14 +328,14 @@ export async function getOrderAction(orderId: string): Promise<Order | null> {
 
 // Update order status
 export async function updateOrderStatusAction(
-  orderId: string,
+  orderDocId: string,
   status: OrderStatus
 ): Promise<{ success: boolean; message: string }> {
   try {
     await verifyAuth();
     const db = getFirestore();
     
-    await db.collection('orders').doc(orderId).update({
+    await db.collection('orders').doc(orderDocId).update({
       status,
       'timestamps.updatedAt': new Date(),
       updatedAt: new Date(),
@@ -332,14 +351,14 @@ export async function updateOrderStatusAction(
 
 // Update payment status
 export async function updatePaymentStatusAction(
-  orderId: string,
+  orderDocId: string,
   paymentStatus: string
 ): Promise<{ success: boolean; message: string }> {
   try {
     await verifyAuth();
     const db = getFirestore();
     
-    await db.collection('orders').doc(orderId).update({
+    await db.collection('orders').doc(orderDocId).update({
       paymentStatus,
       'timestamps.updatedAt': new Date(),
       updatedAt: new Date(),
@@ -355,13 +374,13 @@ export async function updatePaymentStatusAction(
 
 // Delete order
 export async function deleteOrderAction(
-  orderId: string
+  orderDocId: string
 ): Promise<{ success: boolean; message: string }> {
   try {
     await verifyAuth();
     const db = getFirestore();
     
-    await db.collection('orders').doc(orderId).delete();
+    await db.collection('orders').doc(orderDocId).delete();
     
     revalidatePath('/orders');
     return { success: true, message: 'Order deleted successfully' };
@@ -410,7 +429,8 @@ export async function getOrdersByUserAction(userId: string): Promise<Order[]> {
     return snapshot.docs.map((doc: any) => {
       const data = doc.data();
       return {
-        orderId: doc.id,
+        orderId: data.orderId || doc.id,
+        docId: doc.id,
         userId: data.userId || '',
         items: data.items || [],
         deliveryAddress: data.deliveryAddress || {},

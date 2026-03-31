@@ -157,9 +157,16 @@ export interface OrderItem {
   itemAutoDiscount?: number;
   itemMetadata?: OrderItemMetadata;
   variants?: OrderItemVariants;
-}
 
-// 13f. 📦 Order Metadata
+  // Backward-compatible raw fields from older order payloads
+  basePriceUsed?: number;
+  currentPriceUsed?: number;
+  itemSubtotalAtMRP?: number;
+  itemSubtotalAtSellingPrice?: number;
+  discountPerItem?: number;
+  productBasePrice?: number;
+  productCurrentPrice?: number;
+}
 export interface OrderMetadataInfo {
   source: string;
   ipAddress?: string | null;
@@ -215,6 +222,7 @@ export interface Order {
   transactionDetails?: TransactionDetailsInfo;
   createdAt: Date;
   updatedAt: Date;
+  docId?: string;
   timestamps?: {
     placedAt: Date;
     updatedAt: Date;

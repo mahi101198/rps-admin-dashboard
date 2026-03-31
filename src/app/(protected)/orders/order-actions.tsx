@@ -31,7 +31,8 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
   const handleStatusUpdate = async () => {
     setLoading(true);
     try {
-      const result = await updateOrderStatusAction(order.orderId, newStatus as any);
+      const orderDocId = order.docId || order.orderId;
+      const result = await updateOrderStatusAction(orderDocId, newStatus as any);
       if (result.success) {
         toast.success(result.message);
         setShowStatusDialog(false);
@@ -50,7 +51,8 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
   const handlePaymentUpdate = async () => {
     setLoading(true);
     try {
-      const result = await updatePaymentStatusAction(order.orderId, paymentStatus as any);
+      const orderDocId = order.docId || order.orderId;
+      const result = await updatePaymentStatusAction(orderDocId, paymentStatus as any);
       if (result.success) {
         toast.success(result.message);
         setShowPaymentDialog(false);
@@ -69,7 +71,8 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      const result = await deleteOrderAction(order.orderId);
+      const orderDocId = order.docId || order.orderId;
+      const result = await deleteOrderAction(orderDocId);
       if (result.success) {
         toast.success(result.message);
         setShowDeleteDialog(false);
@@ -262,8 +265,8 @@ export function OrderActions({ order, onDataChange }: OrderActionsProps) {
                         <p className="text-sm text-muted-foreground">Quantity: {item.quantity}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-medium">₹{(item.itemMetadata?.itemSubtotalAtSellingPrice || 0).toLocaleString()}</p>
-                        <p className="text-sm text-muted-foreground">₹{item.itemMetadata?.currentPriceUsed?.toLocaleString() || 0} each</p>
+                        <p className="font-medium">₹{((item.itemMetadata?.itemSubtotalAtSellingPrice || item.itemSubtotalAtSellingPrice || 0)).toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">₹{((item.itemMetadata?.currentPriceUsed || item.currentPriceUsed || 0)).toLocaleString()} each</p>
                       </div>
                     </div>
                   ))

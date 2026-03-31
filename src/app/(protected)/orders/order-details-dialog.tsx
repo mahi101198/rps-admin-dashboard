@@ -188,11 +188,11 @@ export function OrderDetailsDialog({ order, open, onOpenChange }: OrderDetailsDi
                       <div className="text-muted-foreground text-xs">{item.productId}</div>
                     </div>
                     <div className="col-span-2 text-right">
-                      ₹{item.itemMetadata?.currentPriceUsed?.toLocaleString() || 0}
+                      ₹{((item.itemMetadata?.currentPriceUsed || item.currentPriceUsed || 0)).toLocaleString()}
                     </div>
                     <div className="col-span-2 text-right">{item.quantity}</div>
                     <div className="col-span-2 text-right font-medium">
-                      ₹{item.itemMetadata?.itemSubtotalAtSellingPrice?.toLocaleString() || 0}
+                      ₹{((item.itemMetadata?.itemSubtotalAtSellingPrice || item.itemSubtotalAtSellingPrice || 0)).toLocaleString()}
                     </div>
                   </div>
                 ))}
