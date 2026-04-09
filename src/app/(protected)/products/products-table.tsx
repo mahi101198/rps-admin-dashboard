@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { 
@@ -42,7 +42,9 @@ import {
   DollarSign,
   TrendingDown,
   CheckCircle,
-  XCircle
+  XCircle,
+  ArrowUp,
+  ArrowDown
 } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { ProductDetailsDocument } from '@/lib/types/product-details-sku';
@@ -55,8 +57,11 @@ interface ProductsTableProps {
   onEdit: (product: ProductDetailsDocument) => void;
   onCopy: (product: ProductDetailsDocument) => void;
   onDelete: (productId: string) => void;
-  onViewDetails: (product: ProductDetailsDocument) => void;
+  onViewDetails?: (product: ProductDetailsDocument) => void;
 }
+
+type SortColumn = 'title' | 'brand' | 'category' | 'price' | 'rating' | 'skus' | 'status' | 'availability' | null;
+type SortDirection = 'asc' | 'desc' | null;
 
 export function ProductsTable({ 
   products, 
@@ -68,6 +73,8 @@ export function ProductsTable({
 }: ProductsTableProps) {
   const [deleteProductId, setDeleteProductId] = useState<string | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [sortColumn, setSortColumn] = useState<SortColumn>(null);
+  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
 
   const handleDeleteConfirm = async () => {
     if (!deleteProductId) return;
@@ -86,6 +93,119 @@ export function ProductsTable({
       setDeleteProductId(null);
     }
   };
+
+  // Sort the products
+  const sortedProducts = useMemo(() => {
+    if (!sortColumn || !sortDirection) {
+      return products;
+    }
+
+    const sorted = [...products].sort((a, b) => {
+      let aValue: any;
+      let bValue: any;
+
+      switch (sortColumn) {
+        case 'title':
+          aValue = a.title.toLowerCase();
+          bValue = b.title.toLowerCase();
+          break;
+        case 'brand':
+          aValue = (a.brand || '').toLowerCase();
+          bValue = (b.brand || '').toLowerCase();
+          break;
+        case 'category':
+          aValue = (a.category || '').toLowerCase();
+          bValue = (b.category || '').toLowerCase();
+          break;
+        case 'price':
+          const aPrices = a.product_skus.map((s: any) => s.price);
+          const bPrices = b.product_skus.map((s: any) => s.price);
+          aValue = Math.min(...aPrices);
+          bValue = Math.min(...bPrices);
+          break;
+        case 'rating':
+          aValue = a.rating?.average || 0;
+          bValue = b.rating?.average || 0;
+          break;
+        case 'skus':
+          aValue = a.product_skus.length;
+          bValue = b.product_skus.length;
+          break;
+        case 'status':
+          aValue = a.is_active ? 1 : 0;
+          bValue = b.is_active ? 1 : 0;
+          break;
+        case 'availability':
+          const availabilityOrder = { 'in_stock': 3, 'limited': 2, 'out_of_stock': 1 };
+          aValue = availabilityOrder[a.overall_availability as keyof typeof availabilityOrder] || 0;
+          bValue = availabilityOrder[b.overall_availability as keyof typeof availabilityOrder] || 0;
+          break;
+        default:
+          return 0;
+      }
+
+      // Handle string comparisons
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return sortDirection === 'asc'
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      }
+
+      // Handle numeric comparisons
+      if (sortDirection === 'asc') {
+        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+      } else {
+        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+      }
+    });
+
+    return sorted;
+  }, [products, sortColumn, sortDirection]);
+
+  // Handle column sort
+  const handleSort = (column: SortColumn) => {
+    if (sortColumn === column) {
+      // Toggle direction or reset
+      if (sortDirection === 'asc') {
+        setSortDirection('desc');
+      } else if (sortDirection === 'desc') {
+        setSortColumn(null);
+        setSortDirection(null);
+      }
+    } else {
+      setSortColumn(column);
+      setSortDirection('asc');
+    }
+  };
+
+  // Sort header component
+  const SortHeader = ({ 
+    column, 
+    children 
+  }: { 
+    column: SortColumn; 
+    children: React.ReactNode;
+  }) => (
+    <TableHead className="cursor-pointer hover:bg-blue-50 transition-colors border-b-2 border-gray-200 hover:border-blue-300">
+      <button
+        onClick={() => handleSort(column)}
+        className="flex items-center gap-2 font-semibold whitespace-nowrap w-full py-2"
+      >
+        {children}
+        <div className="ml-1">
+          {sortColumn === column && sortDirection === 'asc' && (
+            <ArrowUp className="h-4 w-4 text-blue-600" />
+          )}
+          {sortColumn === column && sortDirection === 'desc' && (
+            <ArrowDown className="h-4 w-4 text-blue-600" />
+          )}
+          {sortColumn !== column && (
+            <span className="text-gray-300 text-sm">⇅</span>
+          )}
+        </div>
+      </button>
+    </TableHead>
+  );
 
   // Get availability badge
   const getAvailabilityBadge = (availability: string) => {
@@ -136,22 +256,28 @@ export function ProductsTable({
   }
 
   return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Product</TableHead>
-            <TableHead>Brand</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>SKUs</TableHead>
-            <TableHead>Price Range</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Availability</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {products.map((product) => {
+    <div className="space-y-4">
+      
+
+      {/* Sort Controls */}
+      
+      <div className="rounded-md border overflow-hidden shadow-sm">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <SortHeader column="title">Product</SortHeader>
+              <SortHeader column="brand">Brand</SortHeader>
+              <SortHeader column="category">Category</SortHeader>
+              <SortHeader column="skus">SKUs</SortHeader>
+              <SortHeader column="price">Price Range</SortHeader>
+              <SortHeader column="rating">Rating</SortHeader>
+              <SortHeader column="status">Status</SortHeader>
+              <SortHeader column="availability">Availability</SortHeader>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {sortedProducts.map((product) => {
             const skus = product.product_skus;
             const prices = skus.map((s: any) => s.price);
             const minPrice = Math.min(...prices);
@@ -209,6 +335,13 @@ export function ProductsTable({
                   </div>
                 </TableCell>
                 <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Star className="h-4 w-4 text-yellow-500" />
+                    <span>{typeof product.rating?.average === 'number' ? product.rating.average.toFixed(1) : '0'}</span>
+                    <span className="text-muted-foreground text-xs">({typeof product.rating?.count === 'number' ? product.rating.count : '0'})</span>
+                  </div>
+                </TableCell>
+                <TableCell>
                   {product.is_active ? (
                     <Badge variant="default">
                       <CheckCircle className="h-3 w-3 mr-1" />
@@ -236,8 +369,9 @@ export function ProductsTable({
               </TableRow>
             );
           })}
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
+      </div>
 
       {/* Delete Confirmation Dialog */}
       <AlertDialog open={!!deleteProductId} onOpenChange={() => setDeleteProductId(null)}>

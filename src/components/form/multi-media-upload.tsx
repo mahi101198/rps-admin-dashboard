@@ -76,7 +76,7 @@ export function MultiMediaUpload({
 
   // Handle file selection
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled || !productId) return;
+    if (disabled) return;
 
     const files = Array.from(e.target.files || []);
     if (files.length === 0) return;
@@ -91,6 +91,9 @@ export function MultiMediaUpload({
 
     try {
       const { uploadProductImageAction } = await import('@/actions/product-details-actions');
+      
+      // Use productId if available, otherwise generate a temporary one
+      const uploadProductId = productId || `temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
       const newMediaIds = files.map(() => `temp_${Date.now()}_${Math.random()}`);
       const placeholders: UploadedMedia[] = files.map((file, idx) => {
@@ -137,7 +140,7 @@ export function MultiMediaUpload({
           }
 
           // Upload using the image action (handles both images and videos)
-          const result = await uploadProductImageAction(file, productId, imageType);
+          const result = await uploadProductImageAction(file, uploadProductId, imageType);
 
           if (result.success && result.imageUrl) {
             return {
@@ -248,12 +251,12 @@ export function MultiMediaUpload({
             className="hidden"
             id={`multi-media-upload-${imageType}`}
             multiple
-            disabled={disabled || isUploading || !productId}
+            disabled={disabled || isUploading}
           />
           <Label
             htmlFor={`multi-media-upload-${imageType}`}
             className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
-              disabled || !productId || isUploading
+              disabled || isUploading
                 ? 'bg-muted text-muted-foreground cursor-not-allowed'
                 : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 cursor-pointer'
             }`}
@@ -273,14 +276,6 @@ export function MultiMediaUpload({
           <span className="text-sm text-muted-foreground pt-2">
             {uploadedMedia.length}/{maxFiles}
           </span>
-        </div>
-      )}
-
-      {!productId && (
-        <div className="bg-amber-50 border border-amber-200 rounded p-2">
-          <p className="text-sm text-amber-800">
-            Save the product first to upload media directly.
-          </p>
         </div>
       )}
 

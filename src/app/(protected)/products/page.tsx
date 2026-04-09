@@ -110,12 +110,6 @@ export default function ProductsPage() {
     toast.success('Product deleted successfully');
   };
 
-  // Handle view details
-  const handleViewDetails = (product: ProductDetailsDocument) => {
-    console.log('Viewing product details:', product);
-    toast.info('Product details would be shown in a modal');
-  };
-
   // Reset form
   const resetForm = () => {
     setEditingProduct(null);
@@ -220,7 +214,6 @@ export default function ProductsPage() {
                 onEdit={handleEditProduct}
                 onCopy={handleCopyProduct}
                 onDelete={handleDeleteProduct}
-                onViewDetails={handleViewDetails}
               />
             </CardContent>
           </Card>

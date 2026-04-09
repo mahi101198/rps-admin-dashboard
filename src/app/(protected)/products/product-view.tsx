@@ -24,7 +24,9 @@ import {
   Tag,
   ShoppingCart,
   Truck,
-  IndianRupee
+  IndianRupee,
+  Play,
+  Copy
 } from 'lucide-react';
 
 interface ProductViewProps {
@@ -122,6 +124,21 @@ export function ProductView({ product, onClose }: ProductViewProps) {
           </div>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div>
+            <div className="text-sm text-muted-foreground">Product ID</div>
+            <div className="font-medium font-mono text-sm flex items-center gap-2">
+              {product.product_id}
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText(product.product_id);
+                }}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                title="Copy to clipboard"
+              >
+                <Copy className="h-3 w-3" />
+              </button>
+            </div>
+          </div>
           <div>
             <div className="text-sm text-muted-foreground">Brand</div>
             <div className="font-medium">{product.brand}</div>
@@ -317,6 +334,26 @@ export function ProductView({ product, onClose }: ProductViewProps) {
         </CardContent>
       </Card>
 
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ShoppingCart className="h-5 w-5" />
+            Purchase Limits
+          </CardTitle>
+          <CardDescription>Order and usage restrictions for this product</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <div className="text-sm text-muted-foreground">Max Per Order</div>
+            <div className="font-medium">{product.purchase_limits?.max_per_order || 'Not specified'} items</div>
+          </div>
+          <div>
+            <div className="text-sm text-muted-foreground">Max Per User Per Day</div>
+            <div className="font-medium">{product.purchase_limits?.max_per_user_per_day ? `${product.purchase_limits.max_per_user_per_day} items` : 'Unlimited'}</div>
+          </div>
+        </CardContent>
+      </Card>
+
       {product.media && (
         <Card>
           <CardHeader>
@@ -326,19 +363,26 @@ export function ProductView({ product, onClose }: ProductViewProps) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {product.media.main_image && (
                 <div>
-                  <div className="text-sm text-muted-foreground">Main Image</div>
-                  <div className="mt-2 flex items-center gap-4">
+                  <div className="text-sm font-semibold text-muted-foreground mb-2">Main Image</div>
+                  <div className="flex items-center gap-4">
                     <img 
                       src={product.media.main_image.url} 
                       alt={product.media.main_image.alt_text} 
-                      className="w-32 h-32 object-cover rounded-md border"
+                      className="w-40 h-40 object-cover rounded-md border"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                     <div>
                       <div className="text-sm">
                         <span className="font-semibold">Alt Text:</span> {product.media.main_image.alt_text}
+                      </div>
+                      <div className="text-sm mt-2">
+                        <span className="font-semibold">URL:</span>
+                        <div className="text-xs font-mono text-gray-600 break-all mt-1">{product.media.main_image.url}</div>
                       </div>
                     </div>
                   </div>
@@ -347,16 +391,28 @@ export function ProductView({ product, onClose }: ProductViewProps) {
               
               {product.media.gallery && product.media.gallery.length > 0 && (
                 <div>
-                  <div className="text-sm text-muted-foreground">Gallery Images</div>
-                  <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    {product.media.gallery.map((image, index) => (
+                  <div className="text-sm font-semibold text-muted-foreground mb-3">Gallery Media ({product.media.gallery.length})</div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {product.media.gallery.map((media, index) => (
                       <div key={index} className="flex flex-col items-center">
-                        <img 
-                          src={image.url} 
-                          alt={image.alt_text} 
-                          className="w-24 h-24 object-cover rounded-md border"
-                        />
-                        <div className="text-xs mt-1 text-center">{image.alt_text}</div>
+                        {media.type === 'video' || media.videoUrl ? (
+                          <div className="relative w-full aspect-square bg-black rounded-md border border-gray-300 flex items-center justify-center">
+                            <Play className="h-8 w-8 text-white opacity-70" />
+                            <span className="absolute bottom-1 right-1 text-xs bg-black/70 text-white px-2 py-1 rounded">
+                              Video
+                            </span>
+                          </div>
+                        ) : (
+                          <img 
+                            src={media.url} 
+                            alt={media.alt_text} 
+                            className="w-full aspect-square object-cover rounded-md border border-gray-300"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        )}
+                        <div className="text-xs mt-2 text-center text-gray-600 break-words w-full">{media.alt_text}</div>
                       </div>
                     ))}
                   </div>

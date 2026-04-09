@@ -34,7 +34,7 @@ export function ProductImageUpload({
 
   // Handle file selection and upload
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled || !productId) return;
+    if (disabled) return;
     
     const file = e.target.files?.[0];
     if (!file) return;
@@ -62,9 +62,12 @@ export function ProductImageUpload({
       };
       reader.readAsDataURL(file);
 
+      // Use productId if available, otherwise generate a temporary one
+      const uploadProductId = productId || `temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
       // Upload the file
       const { uploadProductImageAction } = await import('@/actions/product-details-actions');
-      const result = await uploadProductImageAction(file, productId, imageType);
+      const result = await uploadProductImageAction(file, uploadProductId, imageType);
       
       if (result.success && result.imageUrl) {
         // Set the actual URL from server
@@ -129,9 +132,9 @@ export function ProductImageUpload({
             checked={uploadType === 'upload'}
             onChange={() => !disabled && setUploadType('upload')}
             className="h-4 w-4"
-            disabled={disabled || !productId}
+            disabled={disabled}
           />
-          <Label htmlFor="upload-option">Upload {!productId && '(Save product first)'}</Label>
+          <Label htmlFor="upload-option">Upload</Label>
         </div>
       </div>
       
@@ -156,13 +159,6 @@ export function ProductImageUpload({
       {/* File Upload */}
       {uploadType === 'upload' && (
         <div className="space-y-2">
-          {!productId && (
-            <div className="bg-amber-50 border border-amber-200 rounded p-2">
-              <p className="text-sm text-amber-800">
-                Save the product first to upload images directly. Or use the URL option above.
-              </p>
-            </div>
-          )}
           <div className="flex items-center gap-2">
             <Input
               ref={fileInputRef}
@@ -171,12 +167,12 @@ export function ProductImageUpload({
               onChange={handleFileSelect}
               className="hidden"
               id={`product-image-upload-${imageType}`}
-              disabled={disabled || uploading || !productId}
+              disabled={disabled || uploading}
             />
             <Label
               htmlFor={`product-image-upload-${imageType}`}
               className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
-                disabled || !productId
+                disabled
                   ? 'bg-muted text-muted-foreground cursor-not-allowed' 
                   : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 cursor-pointer'
               }`}

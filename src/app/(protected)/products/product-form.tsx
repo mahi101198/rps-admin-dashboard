@@ -157,6 +157,15 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>('');
   const [loadingCategories, setLoadingCategories] = useState(false);
   
+  // Generate temporary product ID for new products to enable image uploads before saving
+  const [temporaryProductId] = useState<string>(() => {
+    if (product?.product_id) {
+      return product.product_id; // Use existing product ID for editing
+    }
+    // Generate temporary ID for new products (will be used for uploads, then replaced with final ID on save)
+    return `prod_temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  });
+  
   // State to track all images for comprehensive preview
   const [allImages, setAllImages] = useState({
     mainImage: product?.media?.main_image?.url || '',
@@ -167,7 +176,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
   const form = useForm({
     resolver: zodResolver(productSchema),
     defaultValues: {
-      product_id: product?.product_id || '',
+      product_id: product?.product_id || temporaryProductId,
       title: product?.title || '',
       subtitle: product?.subtitle || '',
       brand: product?.brand || '',
@@ -259,8 +268,9 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
     setLoading(true);
     
     try {
-      // Generate product_id if not provided
-      const newProductId = data.product_id || `prod_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      // Use the temporary product ID that was created for this form, or generate a new one
+      // This ensures consistency if images were uploaded before saving
+      const finalProductId = data.product_id || temporaryProductId || `prod_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       
       // Calculate overall_availability from SKUs
       const hasInStock = data.product_skus.some(sku => sku.availability === 'in_stock');
@@ -269,7 +279,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
       
       // Prepare the payload matching NEW SCHEMA
       const productPayload: ProductDetailsDocument = {
-        product_id: newProductId,
+        product_id: finalProductId,
         title: data.title,
         subtitle: data.subtitle,
         brand: data.brand || '',
@@ -799,7 +809,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                   setAllImages(prev => ({ ...prev, mainImage: value || '' }));
                 }}
                 placeholder="https://example.com/image.jpg"
-                productId={product?.product_id}
+                productId={product?.product_id || temporaryProductId}
                 imageType="main"
               />
 
@@ -826,7 +836,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                     setAllImages(prev => ({ ...prev, gallery: media }));
                   }}
                   placeholder="https://example.com/image.jpg"
-                  productId={product?.product_id}
+                  productId={product?.product_id || temporaryProductId}
                   imageType="gallery"
                   maxFiles={10}
                 />
@@ -1313,19 +1323,54 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                         )}
                         
                         {(card.type === 'list' || card.type === 'steps') && (
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Enter items, one per line" 
-                              rows={3}
-                              className="text-sm"
-                              value={Array.isArray(field.value) ? field.value.join('\n') : ''}
-                              onChange={(e) => field.onChange(e.target.value.split('\n').filter(line => line.trim()))}
-                            />
-                          </FormControl>
+                          <div className="space-y-3">
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Enter items, one per line" 
+                                rows={3}
+                                className="text-sm"
+                                value={Array.isArray(field.value) ? field.value.join('\n') : ''}
+                                onChange={(e) => field.onChange(e.target.value.split('\n').filter(line => line.trim()))}
+                              />
+                            </FormControl>
+                            
+                            {/* Quick Add Item Button */}
+                            <div className="flex gap-2 pt-2">
+                              <Input
+                                placeholder={`Add a new ${card.type === 'steps' ? 'step' : 'item'}`}
+                                className="h-8 text-sm flex-1"
+                                onKeyPress={(e) => {
+                                  if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim()) {
+                                    const currentItems = Array.isArray(field.value) ? [...field.value] : [];
+                                    currentItems.push((e.target as HTMLInputElement).value.trim());
+                                    field.onChange(currentItems);
+                                    (e.target as HTMLInputElement).value = '';
+                                  }
+                                }}
+                                id={`quick-add-${cardIndex}-list`}
+                              />
+                              <Button
+                                type="button"
+                                size="sm"
+                                className="h-8 px-3"
+                                onClick={(e) => {
+                                  const input = document.getElementById(`quick-add-${cardIndex}-list`) as HTMLInputElement;
+                                  if (input && input.value.trim()) {
+                                    const currentItems = Array.isArray(field.value) ? [...field.value] : [];
+                                    currentItems.push(input.value.trim());
+                                    field.onChange(currentItems);
+                                    input.value = '';
+                                  }
+                                }}
+                              >
+                                <Plus className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
                         )}
                         
                         {card.type === 'key_value' && (
-                          <div className="space-y-2">
+                          <div className="space-y-3">
                             <div className="text-xs text-gray-500 mb-2 p-2 bg-blue-50 rounded border border-blue-200">
                               Enter key-value pairs: each line in format "Key: Value"
                             </div>
@@ -1349,6 +1394,40 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                                 }}
                               />
                             </FormControl>
+                            
+                            {/* Quick Add Key-Value Button */}
+                            <div className="flex gap-2 pt-2">
+                              <Input
+                                placeholder="Key"
+                                className="h-8 text-sm flex-1"
+                                id={`quick-add-${cardIndex}-key`}
+                              />
+                              <Input
+                                placeholder="Value"
+                                className="h-8 text-sm flex-1"
+                                id={`quick-add-${cardIndex}-value`}
+                              />
+                              <Button
+                                type="button"
+                                size="sm"
+                                className="h-8 px-3"
+                                onClick={(e) => {
+                                  const keyInput = document.getElementById(`quick-add-${cardIndex}-key`) as HTMLInputElement;
+                                  const valueInput = document.getElementById(`quick-add-${cardIndex}-value`) as HTMLInputElement;
+                                  if (keyInput && valueInput && keyInput.value.trim() && valueInput.value.trim()) {
+                                    const currentObj = typeof field.value === 'object' && field.value !== null 
+                                      ? { ...field.value as Record<string, string> }
+                                      : {};
+                                    currentObj[keyInput.value.trim()] = valueInput.value.trim();
+                                    field.onChange(currentObj);
+                                    keyInput.value = '';
+                                    valueInput.value = '';
+                                  }
+                                }}
+                              >
+                                <Plus className="h-4 w-4" />
+                              </Button>
+                            </div>
                           </div>
                         )}
 
@@ -1365,6 +1444,91 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                         )}
                         
                         <FormMessage />
+                        
+                        {/* Preview Section */}
+                        {card.type === 'list' && Array.isArray(field.value) && field.value.length > 0 && (
+                          <div className="mt-4 pt-4 border-t">
+                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (List Items):</p>
+                            <div className="space-y-2">
+                              {(field.value as string[]).map((item, idx) => (
+                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between group">
+                                  <p className="text-sm text-gray-700 flex-1">{item}</p>
+                                  <Button
+                                    type="button"
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    onClick={() => {
+                                      const newItems = (field.value as string[]).filter((_, i) => i !== idx);
+                                      field.onChange(newItems);
+                                    }}
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {card.type === 'steps' && Array.isArray(field.value) && field.value.length > 0 && (
+                          <div className="mt-4 pt-4 border-t">
+                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (Steps):</p>
+                            <div className="space-y-2">
+                              {(field.value as string[]).map((item, idx) => (
+                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex gap-3 items-center justify-between group">
+                                  <div className="flex gap-3 flex-1">
+                                    <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
+                                      {idx + 1}
+                                    </span>
+                                    <p className="text-sm text-gray-700 pt-0.5">{item}</p>
+                                  </div>
+                                  <Button
+                                    type="button"
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    onClick={() => {
+                                      const newItems = (field.value as string[]).filter((_, i) => i !== idx);
+                                      field.onChange(newItems);
+                                    }}
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {card.type === 'key_value' && typeof field.value === 'object' && field.value !== null && Object.keys(field.value).length > 0 && (
+                          <div className="mt-4 pt-4 border-t">
+                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (Key-Value Pairs):</p>
+                            <div className="space-y-2">
+                              {Object.entries(field.value as Record<string, string>).map(([key, value], idx) => (
+                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between group">
+                                  <div className="flex gap-3 flex-1">
+                                    <span className="flex-shrink-0 font-medium text-gray-700 min-w-max">{key}:</span>
+                                    <span className="text-sm text-gray-600">{value}</span>
+                                  </div>
+                                  <Button
+                                    type="button"
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    onClick={() => {
+                                      const newObj = { ...field.value as Record<string, string> };
+                                      delete newObj[key];
+                                      field.onChange(newObj);
+                                    }}
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </FormItem>
                     )}
                   />
