@@ -286,11 +286,16 @@ export function ProductView({ product, onClose }: ProductViewProps) {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {product.content_cards.map((card) => (
+            {product.content_cards.map((card, index) => (
               <Card key={card.card_id}>
                 <CardHeader className="pb-2">
                   <CardTitle className="flex items-center justify-between">
-                    <span>{card.title}</span>
+                    <span className="flex items-center gap-2">
+                      <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-xs px-1.5 py-0.5 font-bold">
+                        Card {index + 1}
+                      </Badge>
+                      {card.title}
+                    </span>
                     {getContentTypeBadge(card.type)}
                   </CardTitle>
                 </CardHeader>

@@ -107,8 +107,8 @@ const EXAMPLE_JSON = {
   ],
   delivery_info: {
     estimated_delivery: '2-3 business days',
-    return_policy: '30 days returns',
-    cod_available: true
+    return_policy: 'No Return Applicable Except Damaged Product',
+    cod_available: false
   },
   rating: {
     average: 4.5,
@@ -195,7 +195,10 @@ export function JsonImportDialog({ onImport, children }: JsonImportDialogProps) 
         validationErrors.push('At least one SKU is required in product_skus array');
       } else {
         data.product_skus.forEach((sku: any, index: number) => {
-          if (!sku.sku_id) validationErrors.push(`SKU ${index}: sku_id is required`);
+          if (!sku.sku_id) {
+            const prefix = (data.title || 'SKU').replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, 4) || 'SKU';
+            sku.sku_id = `${prefix}-${Math.floor(1000 + Math.random() * 9000)}-${index + 1}`;
+          }
           if (typeof sku.price !== 'number' || sku.price < 0) {
             validationErrors.push(`SKU ${index}: price must be a non-negative number`);
           }

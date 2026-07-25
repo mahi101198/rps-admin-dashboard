@@ -122,12 +122,12 @@ export default function ProductsPage() {
   }, []);
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-3 p-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
-            <Package className="h-8 w-8" />
+          <h1 className="text-xl font-bold flex items-center gap-2">
+            <Package className="h-5 w-5" />
             Products Management
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -179,13 +179,10 @@ export default function ProductsPage() {
         <>
           {/* Search */}
           <Card>
-            <CardHeader>
-              <CardTitle>Search Products</CardTitle>
-              <CardDescription>
-                Filter products by name, brand, category, or other details
-              </CardDescription>
+            <CardHeader className="py-2 px-4">
+            <CardTitle className="text-sm">Search Products</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="py-2 px-4">
               <div className="relative w-full max-w-md">
                 <Search className="absolute left-2 top-3 h-4 w-4 text-muted-foreground" />
                 <input
@@ -201,14 +198,11 @@ export default function ProductsPage() {
 
           {/* Products Table */}
           <Card>
-            <CardHeader>
-              <CardTitle>Product Catalog ({filteredProducts.length})</CardTitle>
-              <CardDescription>
-                Browse and manage your products
-              </CardDescription>
+            <CardHeader className="py-2 px-4">
+            <CardTitle className="text-sm">Product Catalog ({filteredProducts.length})</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ProductsTable 
+            <CardContent className="py-2 px-2">
+              <ProductsTable
                 products={filteredProducts}
                 loading={loading}
                 onEdit={handleEditProduct}
@@ -220,11 +214,8 @@ export default function ProductsPage() {
 
           {/* Summary Card */}
           <Card>
-            <CardHeader>
-              <CardTitle>Product Summary</CardTitle>
-              <CardDescription>
-                Overview of your product catalog
-              </CardDescription>
+            <CardHeader className="py-2 px-4">
+              <CardTitle className="text-sm">Product Summary</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

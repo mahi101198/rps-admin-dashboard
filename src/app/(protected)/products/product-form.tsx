@@ -42,8 +42,21 @@ import {
   Trash2,
   AlertTriangle,
   CheckCircle,
-  X
+  X,
+  RotateCw
 } from 'lucide-react';
+
+// Helper to auto-generate SKU ID
+export const generateSkuId = (productTitle?: string, index: number = 0) => {
+  const cleanTitle = (productTitle || '')
+    .trim()
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .toUpperCase()
+    .slice(0, 4);
+  const prefix = cleanTitle || 'SKU';
+  const randomCode = Math.floor(1000 + Math.random() * 9000);
+  return `${prefix}-${randomCode}-${index + 1}`;
+};
 import { 
   createSkuProductAction,
   updateSkuProductAction,
@@ -70,7 +83,7 @@ const productSchema = z.object({
   product_id: z.string().optional(),
   title: z.string().min(1, 'Title is required').max(100, 'Title must be max 100 characters'),
   subtitle: z.string().min(1, 'Subtitle is required').max(150, 'Subtitle must be max 150 characters'),
-  brand: z.string().optional(), // Schema: optional field
+  brand: z.string().min(1, 'Brand is required'),
   category: z.string().min(1, 'Category is required'),
   sub_category: z.string().min(1, 'Sub-category is required'),
   is_active: z.boolean(),
@@ -191,8 +204,8 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
         gallery: product?.media?.gallery ?? []
       },
       variant_attributes: product?.variant_attributes ?? {},
-      product_skus: product?.product_skus || [{
-        sku_id: '',
+      product_skus: product?.product_skus?.length ? product.product_skus : [{
+        sku_id: isNew ? generateSkuId(product?.title, 0) : '',
         attributes: {
           color: '',
           size: '',
@@ -231,8 +244,8 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
       ],
       delivery_info: {
         estimated_delivery: product?.delivery_info?.estimated_delivery || '3-5 business days',
-        return_policy: product?.delivery_info?.return_policy || '7 days return',
-        cod_available: product?.delivery_info?.cod_available ?? true,
+        return_policy: product?.delivery_info?.return_policy || 'No Return Applicable Except Damaged Product',
+        cod_available: product?.delivery_info?.cod_available ?? false,
         free_delivery_threshold: product?.delivery_info?.free_delivery_threshold || 499
       },
       rating: {
@@ -287,8 +300,9 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
         sub_category: data.sub_category,
         media: data.media,
         variant_attributes: data.variant_attributes,
-        product_skus: data.product_skus.map(sku => ({
+        product_skus: data.product_skus.map((sku, index) => ({
           ...sku,
+          sku_id: sku.sku_id?.trim() || (isNew ? generateSkuId(data.title, index) : ''),
           currency: sku.currency || 'INR',
           attributes: sku.attributes || {
             color: '',
@@ -397,10 +411,11 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
   // Add a new SKU
   const addSku = () => {
     const skus = form.getValues('product_skus') || [];
+    const title = form.getValues('title') || '';
     form.setValue('product_skus', [
       ...skus,
       {
-        sku_id: '',
+        sku_id: isNew ? generateSkuId(title, skus.length) : '',
         attributes: {},
         price: 0,
         mrp: 0,
@@ -573,11 +588,10 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                 name="brand"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Brand</FormLabel>
+                    <FormLabel>Brand <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Generic, Classmate, Camlin (optional)" {...field} className="h-8 text-sm" />
+                      <Input placeholder="e.g., Generic, Classmate, Camlin" {...field} className="h-8 text-sm" />
                     </FormControl>
-                    <FormDescription className="text-xs">Optional field</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -729,7 +743,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                     <FormItem>
                       <FormLabel>Return Policy *</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., 7 days return" className="h-8 text-sm" {...field} />
+                        <Input placeholder="e.g., No Return Applicable Except Damaged Product" className="h-8 text-sm" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -992,9 +1006,24 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                       name={`product_skus.${skuIndex}.sku_id`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>SKU ID *</FormLabel>
+                          <div className="flex justify-between items-center">
+                            <FormLabel className="text-xs">SKU ID *</FormLabel>
+                            {isNew && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const title = form.getValues('title');
+                                  field.onChange(generateSkuId(title, skuIndex));
+                                }}
+                                className="text-xs text-blue-600 hover:text-blue-800 font-normal flex items-center gap-1 cursor-pointer"
+                                title="Auto-generate new SKU ID"
+                              >
+                                <RotateCw className="h-3 w-3" /> Auto-generate
+                              </button>
+                            )}
+                          </div>
                           <FormControl>
-                            <Input placeholder="Enter SKU ID" className="h-8 text-sm" {...field} />
+                            <Input placeholder="e.g. SKU-1234-1" className="h-8 text-sm" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -1227,7 +1256,12 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
               {form.watch('content_cards')?.map((card, cardIndex) => (
                 <div key={cardIndex} className="mb-4 p-4 border rounded-lg bg-slate-50">
                   <div className="flex justify-between items-center mb-3">
-                    <h4 className="font-medium">{card.title || 'Card'}</h4>
+                    <h4 className="font-medium flex items-center gap-2 text-slate-800">
+                      <span className="inline-flex items-center justify-center bg-blue-600 text-white rounded-full h-5 w-5 text-xs font-bold shrink-0">
+                        {cardIndex + 1}
+                      </span>
+                      <span>{card.title || `Card ${cardIndex + 1}`}</span>
+                    </h4>
                     <div className="flex gap-2">
                       <div className="text-xs text-gray-500 bg-white px-2 py-1 rounded border">
                         {card.type}
@@ -1445,90 +1479,7 @@ export function ProductForm({ product, isNew = false, onSubmitSuccess, onCancel 
                         
                         <FormMessage />
                         
-                        {/* Preview Section */}
-                        {card.type === 'list' && Array.isArray(field.value) && field.value.length > 0 && (
-                          <div className="mt-4 pt-4 border-t">
-                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (List Items):</p>
-                            <div className="space-y-2">
-                              {(field.value as string[]).map((item, idx) => (
-                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between group">
-                                  <p className="text-sm text-gray-700 flex-1">{item}</p>
-                                  <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="ghost"
-                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    onClick={() => {
-                                      const newItems = (field.value as string[]).filter((_, i) => i !== idx);
-                                      field.onChange(newItems);
-                                    }}
-                                  >
-                                    <X className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                        
-                        {card.type === 'steps' && Array.isArray(field.value) && field.value.length > 0 && (
-                          <div className="mt-4 pt-4 border-t">
-                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (Steps):</p>
-                            <div className="space-y-2">
-                              {(field.value as string[]).map((item, idx) => (
-                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex gap-3 items-center justify-between group">
-                                  <div className="flex gap-3 flex-1">
-                                    <span className="flex-shrink-0 w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
-                                      {idx + 1}
-                                    </span>
-                                    <p className="text-sm text-gray-700 pt-0.5">{item}</p>
-                                  </div>
-                                  <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="ghost"
-                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    onClick={() => {
-                                      const newItems = (field.value as string[]).filter((_, i) => i !== idx);
-                                      field.onChange(newItems);
-                                    }}
-                                  >
-                                    <X className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                        
-                        {card.type === 'key_value' && typeof field.value === 'object' && field.value !== null && Object.keys(field.value).length > 0 && (
-                          <div className="mt-4 pt-4 border-t">
-                            <p className="text-xs font-medium text-gray-600 mb-3">Preview (Key-Value Pairs):</p>
-                            <div className="space-y-2">
-                              {Object.entries(field.value as Record<string, string>).map(([key, value], idx) => (
-                                <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-between group">
-                                  <div className="flex gap-3 flex-1">
-                                    <span className="flex-shrink-0 font-medium text-gray-700 min-w-max">{key}:</span>
-                                    <span className="text-sm text-gray-600">{value}</span>
-                                  </div>
-                                  <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="ghost"
-                                    className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    onClick={() => {
-                                      const newObj = { ...field.value as Record<string, string> };
-                                      delete newObj[key];
-                                      field.onChange(newObj);
-                                    }}
-                                  >
-                                    <X className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+
                       </FormItem>
                     )}
                   />

@@ -86,8 +86,8 @@ function fromFirestoreDocument(data: any): ProductDetailsDocument {
     overall_availability: data.overall_availability || 'out_of_stock',
     content_cards: data.content_cards || [],
     delivery_info: data.delivery_info || {
-      cod_available: true,
-      return_policy: '',
+      cod_available: false,
+      return_policy: 'No Return Applicable Except Damaged Product',
       estimated_delivery: '',
     },
     rating: {

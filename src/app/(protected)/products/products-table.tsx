@@ -186,21 +186,21 @@ export function ProductsTable({
     column: SortColumn; 
     children: React.ReactNode;
   }) => (
-    <TableHead className="cursor-pointer hover:bg-blue-50 transition-colors border-b-2 border-gray-200 hover:border-blue-300">
+    <TableHead className="cursor-pointer hover:bg-blue-50 transition-colors border-b-2 border-gray-200 hover:border-blue-300 px-2 py-1">
       <button
         onClick={() => handleSort(column)}
-        className="flex items-center gap-2 font-semibold whitespace-nowrap w-full py-2"
+        className="flex items-center gap-1 font-semibold whitespace-nowrap w-full py-1 text-xs"
       >
         {children}
-        <div className="ml-1">
+        <div className="ml-0.5">
           {sortColumn === column && sortDirection === 'asc' && (
-            <ArrowUp className="h-4 w-4 text-blue-600" />
+            <ArrowUp className="h-3 w-3 text-blue-600" />
           )}
           {sortColumn === column && sortDirection === 'desc' && (
-            <ArrowDown className="h-4 w-4 text-blue-600" />
+            <ArrowDown className="h-3 w-3 text-blue-600" />
           )}
           {sortColumn !== column && (
-            <span className="text-gray-300 text-sm">⇅</span>
+            <span className="text-gray-300 text-xs">⇅</span>
           )}
         </div>
       </button>
@@ -211,13 +211,13 @@ export function ProductsTable({
   const getAvailabilityBadge = (availability: string) => {
     switch (availability) {
       case 'in_stock':
-        return <Badge className="bg-green-500 hover:bg-green-500">In Stock</Badge>;
+        return <Badge className="bg-green-500 hover:bg-green-500 text-xs px-1.5 py-0">In Stock</Badge>;
       case 'limited':
-        return <Badge className="bg-yellow-500 hover:bg-yellow-500">Limited</Badge>;
+        return <Badge className="bg-yellow-500 hover:bg-yellow-500 text-xs px-1.5 py-0">Limited</Badge>;
       case 'out_of_stock':
-        return <Badge className="bg-red-500 hover:bg-red-500">Out of Stock</Badge>;
+        return <Badge className="bg-red-500 hover:bg-red-500 text-xs px-1.5 py-0">OOS</Badge>;
       default:
-        return <Badge>{availability}</Badge>;
+        return <Badge className="text-xs px-1.5 py-0">{availability}</Badge>;
     }
   };
 
@@ -231,7 +231,7 @@ export function ProductsTable({
       kitchen: 'bg-red-500 hover:bg-red-500',
       lowcost: 'bg-gray-500 hover:bg-gray-500',
     };
-    return <Badge className={colors[category] || 'bg-gray-500 hover:bg-gray-500'}>{category}</Badge>;
+    return <Badge className={`${colors[category] || 'bg-gray-500 hover:bg-gray-500'} text-xs px-1.5 py-0`}>{category}</Badge>;
   };
 
   if (loading) {
@@ -256,24 +256,30 @@ export function ProductsTable({
   }
 
   return (
-    <div className="space-y-4">
-      
-
-      {/* Sort Controls */}
-      
-      <div className="rounded-md border overflow-hidden shadow-sm">
-        <Table>
+    <div className="space-y-2">
+      <div className="rounded-md border overflow-hidden shadow-sm w-full">
+        <div className="w-full overflow-x-auto">
+        <Table className="w-full table-fixed">
+          <colgroup>
+            <col style={{ width: '28%' }} />
+            <col style={{ width: '10%' }} />
+            <col style={{ width: '10%' }} />
+            <col style={{ width: '9%' }} />
+            <col style={{ width: '15%' }} />
+            <col style={{ width: '10%' }} />
+            <col style={{ width: '10%' }} />
+            <col style={{ width: '8%' }} />
+          </colgroup>
           <TableHeader>
             <TableRow>
               <SortHeader column="title">Product</SortHeader>
               <SortHeader column="brand">Brand</SortHeader>
               <SortHeader column="category">Category</SortHeader>
               <SortHeader column="skus">SKUs</SortHeader>
-              <SortHeader column="price">Price Range</SortHeader>
-              <SortHeader column="rating">Rating</SortHeader>
+              <SortHeader column="price">Price</SortHeader>
               <SortHeader column="status">Status</SortHeader>
-              <SortHeader column="availability">Availability</SortHeader>
-              <TableHead className="text-right">Actions</TableHead>
+              <SortHeader column="availability">Stock</SortHeader>
+              <TableHead className="text-right px-2 py-1 text-xs">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -284,80 +290,65 @@ export function ProductsTable({
             const maxPrice = Math.max(...prices);
             
             return (
-              <TableRow key={product.product_id}>
-                <TableCell className="font-medium">
-                  <div className="flex items-center gap-3">
+              <TableRow key={product.product_id} className="h-auto">
+                <TableCell className="font-medium px-2 py-1.5">
+                  <div className="flex items-center gap-2 min-w-0">
                     {product.media?.main_image?.url ? (
                       <img
                         src={product.media.main_image.url}
                         alt={product.media.main_image.alt_text || product.title}
-                        className="w-12 h-12 object-cover rounded-md"
+                        className="w-8 h-8 object-cover rounded flex-shrink-0"
                       />
                     ) : (
-                      <div className="w-12 h-12 bg-gray-200 rounded-md flex items-center justify-center">
-                        <Package className="h-6 w-6 text-gray-500" />
+                      <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center flex-shrink-0">
+                        <Package className="h-4 w-4 text-gray-500" />
                       </div>
                     )}
-                    <div>
-                      <div className="font-medium">{product.title}</div>
-                      <div className="text-sm text-muted-foreground">{product.subtitle}</div>
-                      <div className="flex items-center gap-1 mt-1 text-sm">
-                        <Star className="h-4 w-4 text-yellow-500" />
-                        <span>{typeof product.rating?.average === 'number' ? product.rating.average : 0}</span>
+                    <div className="min-w-0">
+                      <div className="font-medium text-xs leading-tight truncate">{product.title}</div>
+                      <div className="flex items-center gap-0.5 text-xs text-yellow-500">
+                        <Star className="h-3 w-3" />
+                        <span className="text-gray-700">{typeof product.rating?.average === 'number' ? product.rating.average.toFixed(1) : '0'}</span>
                         <span className="text-muted-foreground">({typeof product.rating?.count === 'number' ? product.rating.count : 0})</span>
                       </div>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <Tag className="h-4 w-4 text-muted-foreground" />
-                    {product.brand}
-                  </div>
+                <TableCell className="px-2 py-1.5">
+                  <span className="text-xs truncate block">{product.brand}</span>
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-1.5">
                   {getCategoryBadge(product.category)}
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <ShoppingBag className="h-4 w-4 text-muted-foreground" />
-                    {skus.length} variants
-                  </div>
+                <TableCell className="px-2 py-1.5">
+                  <span className="text-xs">{skus.length}v</span>
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <DollarSign className="h-4 w-4 text-muted-foreground" />
+                <TableCell className="px-2 py-1.5">
+                  <span className="text-xs font-medium">
                     {minPrice === maxPrice ? (
-                      <span>₹{minPrice}</span>
+                      <>₹{minPrice}</>
                     ) : (
-                      <span>₹{minPrice} - ₹{maxPrice}</span>
+                      <>₹{minPrice}–{maxPrice}</>
                     )}
-                  </div>
+                  </span>
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-yellow-500" />
-                    <span>{typeof product.rating?.average === 'number' ? product.rating.average.toFixed(1) : '0'}</span>
-                    <span className="text-muted-foreground text-xs">({typeof product.rating?.count === 'number' ? product.rating.count : '0'})</span>
-                  </div>
-                </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-1.5">
                   {product.is_active ? (
-                    <Badge variant="default">
-                      <CheckCircle className="h-3 w-3 mr-1" />
+                    <Badge variant="default" className="text-xs px-1.5 py-0">
+                      <CheckCircle className="h-2.5 w-2.5 mr-0.5" />
                       Active
                     </Badge>
                   ) : (
-                    <Badge variant="secondary">
-                      <XCircle className="h-3 w-3 mr-1" />
+                    <Badge variant="secondary" className="text-xs px-1.5 py-0">
+                      <XCircle className="h-2.5 w-2.5 mr-0.5" />
                       Inactive
                     </Badge>
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell className="px-2 py-1.5">
                   {getAvailabilityBadge(product.overall_availability)}
                 </TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-right px-2 py-1.5">
                   <ProductActions 
                     product={product} 
                     onEdit={onEdit}
@@ -371,6 +362,7 @@ export function ProductsTable({
           })}
           </TableBody>
         </Table>
+        </div>
       </div>
 
       {/* Delete Confirmation Dialog */}

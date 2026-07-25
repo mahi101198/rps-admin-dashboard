@@ -7,7 +7,7 @@
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
-.env.local.example
+
 !.yarn/releases
 !.yarn/versions
 
@@ -60,6 +60,8 @@ functions/node_modules/
 firebase-service-account.json
 firebase-products-part*.json
 .firebaserc
+# Firebase Admin SDK service account keys (NEVER commit these)
+*firebase-adminsdk*.json
 
 # Data files
 products_pricing.csv
